@@ -7,6 +7,7 @@ export interface Flip {
     author:   string;
     image:    string;
     message:  string;
+    date: Date;
     kudos:    User[]; //list of users that gave a kudo to this flip
     comments: Comment[];
 }
