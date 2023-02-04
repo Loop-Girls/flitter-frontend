@@ -15,5 +15,6 @@ export interface Flit {
 export interface Comment {
     author:  string;
     message: string;
+    date: Date;
     kudos: User[];
 }

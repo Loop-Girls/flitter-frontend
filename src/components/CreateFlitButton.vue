@@ -1,5 +1,5 @@
 <template>
-    <button @click="showFlitForm">New Flit</button> 
+    <button class="btn" @click="showFlitForm">New Flit</button> 
 </template> 
 
 <script lang="ts">
@@ -19,3 +19,11 @@ export default defineComponent({
     }
 });
 </script>
+<style scoped>
+.btn{
+    margin: 15px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+</style>

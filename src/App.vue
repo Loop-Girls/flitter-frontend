@@ -1,10 +1,14 @@
 
+import FlitComponent from './components/FlitComponent.vue';
+
+
 import CreateFlitButton from './components/CreateFlitButton.vue';
 
 <template>
   <nav>
     <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link>
+
 
   </nav>  <router-view/>
 </template>

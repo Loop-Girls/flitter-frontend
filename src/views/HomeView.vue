@@ -3,6 +3,7 @@
     <img alt="Vue logo" src="../assets/logo.png">
     <CreateFlitButton></CreateFlitButton>
     <!-- <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/> -->
+    <FlitComponent></FlitComponent>
   </div>
 </template>
 
@@ -10,12 +11,14 @@
 import { defineComponent } from 'vue';
 import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
 import CreateFlitButton from '@/components/CreateFlitButton.vue';
+import FlitComponent from '@/components/FlitComponent.vue';
 
 export default defineComponent({
   name: 'HomeView',
   components: {
     HelloWorld,
-    CreateFlitButton
+    CreateFlitButton,
+    FlitComponent
 },
 });
 </script>
