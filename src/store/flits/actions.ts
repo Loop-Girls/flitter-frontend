@@ -35,12 +35,19 @@ const actions: ActionTree<IFlitsState, IState> = {
 
     commit("setIsLoading", false);
   },
-  async createFlit({commit},body:{}){
+  async createFlit({commit},body:Flit){
+    console.log('Body received' + body);
     try {
-        const { data } = await flitterApi.post("/flits", body);
+        const { data } = await flitterApi.post("/flits", {
+          author: "vue",
+          message: "flit from vue",
+          "date": "2023-02-04T00:00:00.000Z",
+          "kudos": [],
+          "comments": [],
+        });
         router.push("/");
     } catch (error) {
-        alert("error, not created");
+        alert(error);
         console.log(error)   
     }
   }
