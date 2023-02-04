@@ -2,13 +2,13 @@
 
 import { User } from "./user";
 
-export interface Flip {
+export interface Flit {
     id:       number;
     author:   string;
     image:    string;
     message:  string;
     date: Date;
-    kudos:    User[]; //list of users that gave a kudo to this flip
+    kudos:    User[]; //list of users that gave a kudo to this flit
     comments: Comment[];
 }
 
