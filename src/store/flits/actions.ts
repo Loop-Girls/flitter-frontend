@@ -1,5 +1,6 @@
-import fakeShopApi from "@/api/flitterApi";
+import flitterApi from "@/api/flitterApi";
 import { Flit } from "@/models/flit";
+import router from "@/router";
 import { AxiosResponse } from "axios";
 import { ActionTree } from "vuex";
 import { IState } from "..";
@@ -11,8 +12,8 @@ const actions: ActionTree<IFlitsState, IState> = {
     commit("setIsLoading", true);
 
     // obtenemos los datos de manera asíncrona y vemos si hay que filtrar
-    const url = `/flits${filter ? "/?author=" + filter : ""}`;
-    const { data } = await fakeShopApi.get<Flit, AxiosResponse<Flit>>(
+    const url = `/flits${filter ? "/?"+filter +"=" + filter : ""}`;
+    const { data } = await flitterApi.get<Flit, AxiosResponse<Flit>>(
       url
     );
 
@@ -20,13 +21,13 @@ const actions: ActionTree<IFlitsState, IState> = {
     commit("setIsLoading", false);
 
     // usamos la mutación para volcar los datos obtenidos en la variable del state users
-    commit("setProducts", data);
+    commit("setFlit", data);
   },
 
-  async getProductById({ commit }, id: string) {
+  async getFlitById({ commit }, id: string) {
     commit("setIsLoading", true);
 
-    const { data } = await fakeShopApi.get<Flit, AxiosResponse<Flit>>(
+    const { data } = await flitterApi.get<Flit, AxiosResponse<Flit>>(
       `/flits/${id}`
     );
 
@@ -34,6 +35,15 @@ const actions: ActionTree<IFlitsState, IState> = {
 
     commit("setIsLoading", false);
   },
+  async createFlit({commit},body:{}){
+    try {
+        const { data } = await flitterApi.post("/flits", body);
+        router.push("/");
+    } catch (error) {
+        alert("error, not created");
+        console.log(error)   
+    }
+  }
 };
 
 export default actions;

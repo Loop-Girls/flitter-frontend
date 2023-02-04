@@ -12,6 +12,8 @@ const useFlits = () => {
       store.dispatch("flits/getFlits", filter),
     getProductById: (id: string) =>
       store.dispatch("flits/getFlitById", id),
+      createFlit: (flit: Flit) =>
+      store.dispatch('flits/createFlit', flit)
   };
 };
 

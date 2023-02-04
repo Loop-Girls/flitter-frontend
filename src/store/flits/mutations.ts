@@ -14,6 +14,7 @@ const mutations: MutationTree<IFlitsState> = {
   setSelectedFlit(state: IFlitsState, flit: Flit) {
     state.selectedFlit = flit;
   },
+  
 };
 
 export default mutations;
