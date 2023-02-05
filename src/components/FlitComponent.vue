@@ -1,33 +1,54 @@
 <template>
     <div class="header">
-        <p class="username" v-model="author">Username</p>
-        <p class="date" v-model="date">Date</p>
-        <button class="follow_btn">Follow/Unfollow</button>
+        <p class="username">
+            {{flit.author}}
+        </p>
+        <p class="date">
+            {{flit.date}}
+        </p>
+        <!-- //TODO: check if user follows this author -->
+        <button class="follow_btn">
+            Follow/Unfollow
+        </button>
     </div>
-    <div class="message">
-        <p>Hola, esto es un mensaje de prueba</p>
+    <div class="message" v-if="flit.message">
+        <p>{{flit.message}}</p>
     </div>
-    <div class="img">
-        <img src="@/assets/logo.png"/>
+    <div class="img" v-if="flit.image">
+        <img {{ flit.image }} />
     </div>
-    <div class="footer">
-        <button class="kudo_img" @click="giveKudo">Kudo</button> <p class="kudo_int">0</p>
+    <!-- //TODO:check if it works -->
+    <div class="footer"  v-if="flit.kudos.includes(user)"> 
+        <button class="kudo_img" @click="$emit('giveKudo', flit)">Kudo</button>
+        <p class="kudo_int">{{flit.kudos.length}}</p>
+    </div>
+    <div class="footer"  v-else>
+        <button class="kudo_img" @click="$emit('removeKudo', flit)">Kudo</button>
+        <p class="kudo_int">{{flit.kudos.length}}</p>
     </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import useFlits from '@/composables/useFlits';
+import { User } from '@/models/user';
+import { defineComponent, PropType } from 'vue';
+import {Flit} from '../models/flit';
+
 
 export default defineComponent({
-  name: 'FlitComponent',
-  setup(){
-    const {selectedFlit} = useFlits();
-    return{
-        giveKudo: ()=>{
-
+    name: "FlitComponent",
+    props:{
+        flit: {
+        type: Object as PropType<Flit>,
+        required: true,
+        },
+        user:{
+            type: Object as PropType<User>,
+            required: true,
         }
-    }
-  }
+    },
+    setup() {
+        return {
+        };
+    },
 });
 </script>
