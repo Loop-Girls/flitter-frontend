@@ -25,7 +25,7 @@ export default defineComponent({
         let message = "";
         let date =<Date>{};
         let image = "";
-        let selectedImage= null;
+        let selectedImage: File | null;
         const {createFlit} = useFlits();
         return {
             message,

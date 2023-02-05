@@ -36,7 +36,7 @@
 </template>
 
 <script lang="ts">
-import useUsers from '@/composables/useUsers';
+// import useUsers from '@/composables/useUsers';
 import { User } from '@/models/user';
 import { defineComponent, PropType } from 'vue';
 import { Flit } from '../models/flit';
@@ -55,18 +55,19 @@ export default defineComponent({
         },
     },
     setup(props) {
-        const {fetchUserByUsername, followUser} = useUsers();
+        // const {fetchUserByUsername, followUser} = useUsers();
         return {
             follow:async (username: string)=>{
-                console.log(username);
-                await fetchUserByUsername(username).then(
-                    (resp)=>{
-                        followUser(resp);
-                    },
-                    (error) =>{
-                        console.log(error);
-                    }
-                );
+                //TODO: waiting for useUsers composable implemented.
+                // console.log(username);
+                // await fetchUserByUsername(username).then(
+                //     (resp)=>{
+                //         followUser(resp);
+                //     },
+                //     (error) =>{
+                //         console.log(error);
+                //     }
+                // );
             }
         };
     },
