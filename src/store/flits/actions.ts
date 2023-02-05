@@ -52,9 +52,9 @@ const actions: ActionTree<IFlitsState, IState> = {
     }
   },
   async updateFlit({commit},flit: Flit){
-    console.log('Body received' + flit.id);
+    console.log('Body received' + flit._id);
     try {
-        const { data } = await flitterApi.put(`/flits/${flit.id}`, {
+        const { data } = await flitterApi.put(`/flits/${flit._id}`, {
           author: "vue",
           message: "flit from vue",
           "date": "2023-02-04T00:00:00.000Z",
