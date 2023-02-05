@@ -3,7 +3,6 @@
     <img alt="Vue logo" src="../assets/logo.png">
     <CreateFlitButton></CreateFlitButton>
     <!-- <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/> -->
-    <FlitComponent></FlitComponent>
   </div>
 </template>
 
