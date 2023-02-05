@@ -3,7 +3,7 @@
 import { User } from "./user";
 
 export interface Flit {
-    id:       number;
+    _id:       number;
     author:   string;
     image:    string;
     message:  string;

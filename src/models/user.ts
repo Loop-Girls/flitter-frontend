@@ -1,8 +1,8 @@
 export interface User {
-    id: number;
+    _id: number;
     email: string;
     password: string;
-    name: string;
+    username: string;
     avatar: string;
     following: User[];
     followers:User[];

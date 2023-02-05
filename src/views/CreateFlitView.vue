@@ -55,7 +55,7 @@ export default defineComponent({
             },
             sendFlit: () => {
                 let flit =  {
-                    id: 0,
+                    id: "0",
                     author: 'theBest',
                     image: selectedImage.name,
                     message: message,
