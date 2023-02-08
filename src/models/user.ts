@@ -4,6 +4,6 @@ export interface User {
     password: string;
     username: string;
     avatar: string;
-    following: User[];
-    followers:User[];
+    following: string[]; //TODO: change to User when implemented
+    followers:string[];//TODO: change to User when implemented
   }

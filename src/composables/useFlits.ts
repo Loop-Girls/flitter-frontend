@@ -6,7 +6,7 @@ const useFlits = () => {
   const store = useStore();
 
   return {
-    flits: computed<Flit>(() => store.getters["flits/getFlits"]),
+    flits: computed<Flit[]>(() => store.getters["flits/getFlits"]),
     isLoading: computed(() => store.getters["flits/getIsLoading"]),
     selectedFlit: computed<Flit>(() => store.getters['flits/getSelectedFlit']),
     flit: computed(() => store.getters["flits/getFlit"]),

@@ -52,8 +52,8 @@ export default defineComponent({
     const router = useRouter();
 
     getFlits();
-
     return {
+      user,
       flits,
       isLoading,
      /* goDetail: (user: User) =>

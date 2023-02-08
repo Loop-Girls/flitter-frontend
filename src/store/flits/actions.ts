@@ -13,7 +13,7 @@ const actions: ActionTree<IFlitsState, IState> = {
 
     // obtenemos los datos de manera asíncrona y vemos si hay que filtrar
     const url = `/flits${filter ? "/?"+filter +"=" + filter : ""}`;
-    const { data } = await flitterApi.get<Flit, AxiosResponse<Flit>>(
+    const { data } = await flitterApi.get<Flit[], AxiosResponse<Flit[]>>(
       url
     );
 

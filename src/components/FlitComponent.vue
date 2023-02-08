@@ -8,7 +8,7 @@
                 <!-- //TODO: change to nice date format -->
                 {{flit.date}}
             </p>
-            <!-- //TODO: implement bottons -->
+            <!-- //TODO: implement bottons, change v-if in case following[] type changed to User -->
             <button class="follow_btn" @click="$emit('unfollow', flit.author)" v-if="user.following.includes(flit.author) ">
                 Unfollow
             </button>
