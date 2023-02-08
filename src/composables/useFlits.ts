@@ -7,7 +7,11 @@ const useFlits = () => {
 
   return {
     flits: computed<Flit>(() => store.getters["flits/getFlits"]),
+    isLoading: computed(() => store.getters["flits/getIsLoading"]),
     selectedFlit: computed<Flit>(() => store.getters['flits/getSelectedFlit']),
+    flit: computed(() => store.getters["flits/getFlit"]),
+
+
     getFlits: (filter?: string) =>
       store.dispatch("flits/getFlits", filter),
     getFlitById: (id: string) =>

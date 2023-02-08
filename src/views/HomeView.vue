@@ -1,7 +1,28 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <CreateFlitButton></CreateFlitButton>
+    <div v-if="isLoading">Cargando...</div>
+    <div class="flit-list" v-else>
+      <FlitComponent
+        v-for="flit in flits"
+        :key="flit._id"
+        :author="flit.author"
+        :message="flit.message"
+        :image="flit.image"
+        :kudos="flit.kudos"
+        :flit="flit"
+      />
+    </div>
+    <div class="search">
+      <SearchbarComponent
+      />
+    </div>
+    <div>
+      <CreateFlitButton></CreateFlitButton>
+    </div>
+    <div class="pagination">
+      <PaginationComponent
+      />
+    </div>
     <!-- <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/> -->
   </div>
 </template>
@@ -13,6 +34,8 @@ import CreateFlitButton from '@/components/CreateFlitButton.vue';
 import FlitComponent from '@/components/FlitComponent.vue';
 import PaginationComponent from '@/components/PaginationComponent.vue';
 import SearchbarComponent from '@/components/SearchbarComponent.vue';
+import useFlits from '@/composables/useFlits';
+import { useRouter } from 'vue-router';
 
 
 export default defineComponent({
@@ -22,7 +45,29 @@ export default defineComponent({
     CreateFlitButton,
     FlitComponent,
     PaginationComponent,
-    SearchbarComponent
+    SearchbarComponent,
 },
+  setup() {
+    const { flits, isLoading, getFlits } = useFlits();
+    const router = useRouter();
+
+    getFlits();
+
+    return {
+      flits,
+      isLoading,
+     /* goDetail: (user: User) =>
+        router.push({ name: "detail", params: { id: user.id } }),*/
+    };
+  },
 });
 </script>
+
+<style scoped>
+  .flit-list {
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+  gap: 1rem 1rem;
+}
+</style>
