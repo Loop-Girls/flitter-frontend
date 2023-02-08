@@ -31,7 +31,7 @@ const actions: ActionTree<IFlitsState, IState> = {
       `/flits/${id}`
     );
 
-    commit("setSelectedProduct", data);
+    commit("setSelectedFlit", data);
 
     commit("setIsLoading", false);
   },

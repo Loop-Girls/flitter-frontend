@@ -8,16 +8,21 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+/*import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src*/
 import CreateFlitButton from '@/components/CreateFlitButton.vue';
 import FlitComponent from '@/components/FlitComponent.vue';
+import PaginationComponent from '@/components/PaginationComponent.vue';
+import SearchbarComponent from '@/components/SearchbarComponent.vue';
+
 
 export default defineComponent({
   name: 'HomeView',
   components: {
-    HelloWorld,
+    /*HelloWorld,*/
     CreateFlitButton,
-    FlitComponent
+    FlitComponent,
+    PaginationComponent,
+    SearchbarComponent
 },
 });
 </script>
