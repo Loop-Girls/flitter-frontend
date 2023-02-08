@@ -73,7 +73,7 @@ export default defineComponent({
     },
 });
 </script>
-<style>
+<style scoped>
 .card {
     border-style: solid;
     padding: 20px;
