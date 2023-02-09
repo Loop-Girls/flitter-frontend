@@ -11,6 +11,7 @@ const actions: ActionTree<IFlitsState, IState> = {
   async getFlits({ commit }, filter: string | null) {
     // usamos la mutación para poner isLoading = true
     commit("setIsLoading", true);
+    //TODO: change sort dates
     const chronoFilter = 'date=-'
     // obtenemos los datos de manera asíncrona y vemos si hay que filtrar
     const url = `/flits${filter ? "/?" + chronoFilter + "&" + filter + "=" + filter : ""}`;
@@ -48,11 +49,8 @@ const actions: ActionTree<IFlitsState, IState> = {
 
     });
 
-
     // usamos la mutación para poner isLoading = false
     commit("setIsLoading", false);
-
-
   },
 
   async getFlitById({ commit }, id: string) {
@@ -72,28 +70,15 @@ const actions: ActionTree<IFlitsState, IState> = {
   
       try {
         const { data } = await flitterApi.post('/flits/post', formData);
-    
+        router.push('/');
         return data;
       } catch (error) {
-        alert(error);
+        //  alert(error);
         console.log(error)
       }
-      router.push('/');
+   
       commit("setIsLoading", false);
   },
-  // async createFlit({commit}, flit:Object) {
-  //   commit("setIsLoading", true);
-  
-  //     try {
-  //       const { data } = await flitterApi.post('/flits/post', flit);
-  //       return data;
-  //     } catch (error) {
-  //       alert(error);
-  //       console.log(error)
-  //     }
-  
-  //     commit("setIsLoading", false);
-  // },
   async updateFlit({ commit }, body: Flit) {
     console.log('Body received' + body);
     try {
@@ -108,7 +93,7 @@ const actions: ActionTree<IFlitsState, IState> = {
     } catch (error) {
       alert(error);
       console.log(error)
-    };
+    }
 
   },
 };

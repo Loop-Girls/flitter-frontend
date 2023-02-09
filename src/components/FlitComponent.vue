@@ -79,11 +79,13 @@ export default defineComponent({
     padding: 20px;
     border-color: rgb(217, 115, 195);
     border-radius: 10px;
+    border-width: 2px;
     margin-bottom: 1px;
-    
+    margin-left: auto;
+    margin-right: auto;
 }
 .card:hover {
-    border-color: aqua;
+    border-color: gray;
  
     
 }
