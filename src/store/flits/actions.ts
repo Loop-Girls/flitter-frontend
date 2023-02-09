@@ -35,6 +35,28 @@ const actions: ActionTree<IFlitsState, IState> = {
 
     commit("setIsLoading", false);
   },
+  async searchByAuthor({ commit }, author: string) {
+    commit("setIsLoading", true);
+
+    const { data } = await flitterApi.get<Flit, AxiosResponse<Flit>>(
+      `/flits/?${author}`
+    );
+
+    commit("setSelectedFlit", data);
+
+    commit("setIsLoading", false);
+  },
+  async searchByMessage({ commit }, message: string) {
+    commit("setIsLoading", true);
+
+    const { data } = await flitterApi.get<Flit, AxiosResponse<Flit>>(
+      `/flits/?${message}`
+    );
+
+    commit("setSelectedFlit", data);
+
+    commit("setIsLoading", false);
+  },
   async createFlit({commit},body:FormData){
     console.log('Body received' + body);
     try {
@@ -59,7 +81,23 @@ const actions: ActionTree<IFlitsState, IState> = {
         alert(error);
         console.log(error)   
     }
-  }
+  },
+  async updateLimit({ commit, dispatch }, limit: number): Promise<void> {
+    try {
+      commit("setLimit", limit);
+      await dispatch("getFlits");
+    } catch (err) {
+      console.error(err);
+    }
+  },
+  async updateSkip({ commit, dispatch }, offset: number): Promise<void> {
+    try {
+      commit("setOffset", offset);
+      await dispatch("getFlits");
+    } catch (err) {
+      console.error(err);
+    }
+  },
 };
 
 export default actions;

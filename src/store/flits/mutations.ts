@@ -14,6 +14,12 @@ const mutations: MutationTree<IFlitsState> = {
   setSelectedFlit(state: IFlitsState, flit: Flit) {
     state.selectedFlit = flit;
   },
+  setLimit(state: IFlitsState, limit: number) {
+    state.limit = limit;
+  },
+  setSkip(state: IFlitsState, skip: number) {
+    state.skip = skip;
+  },
   
 };
 
