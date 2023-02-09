@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    
     <div v-if="isLoading">Cargando...</div>
     <div class="flit-list" v-else>
       <FlitComponent
@@ -10,6 +11,7 @@
         :image="flit.image"
         :kudos="flit.kudos"
         :flit="flit"
+
       />
     </div>
     <div class="search">
@@ -50,7 +52,7 @@ export default defineComponent({
   setup() {
     const { flits, isLoading, getFlits } = useFlits();
     const router = useRouter();
-
+    let user = undefined;
     getFlits();
     return {
       user,
