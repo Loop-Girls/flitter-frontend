@@ -90,9 +90,9 @@ const actions: ActionTree<IFlitsState, IState> = {
       console.error(err);
     }
   },
-  async updateSkip({ commit, dispatch }, offset: number): Promise<void> {
+  async updateSkip({ commit, dispatch }, skip: number): Promise<void> {
     try {
-      commit("setOffset", offset);
+      commit("setSkip", skip);
       await dispatch("getFlits");
     } catch (err) {
       console.error(err);
