@@ -2,27 +2,17 @@
   <div class="home">
     <div v-if="isLoading">Cargando...</div>
     <div class="flit-list" v-else>
-      <FlitComponent
-        v-for="flit in flits"
-        :key="flit._id"
-        :author="flit.author"
-        :message="flit.message"
-        :image="flit.image"
-        :kudos="flit.kudos"
-        :flit="flit"
-      />
+      <FlitComponent v-for="flit in flits" :key="flit._id" :flit="flit" :user="user" />
     </div>
-    <div class="search">
-      <SearchbarComponent
-      />
-    </div>
+    <!-- <div class="search">
+      <SearchbarComponent />
+    </div> -->
     <div>
       <CreateFlitButton></CreateFlitButton>
     </div>
-    <div class="pagination">
-      <PaginationComponent
-      />
-    </div>
+    <!-- <div class="pagination">
+      <PaginationComponent />
+    </div> -->
     <!-- <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/> -->
   </div>
 </template>
@@ -44,27 +34,38 @@ export default defineComponent({
     /*HelloWorld,*/
     CreateFlitButton,
     FlitComponent,
-    PaginationComponent,
-    SearchbarComponent,
-},
+    // PaginationComponent,
+    // SearchbarComponent,
+  },
   setup() {
     const { flits, isLoading, getFlits } = useFlits();
     const router = useRouter();
 
     getFlits();
+    let user = {
+      "_id": "fakeid",
+      "email": "firstUser2@fakemail.com",
+      "password": "123456",
+      "username": "FlitterFan",
+      "role": "user",
+      "avatar": "",
+      "following": [],
+      "followers:":[]
+
+    }
     return {
       user,
       flits,
       isLoading,
-     /* goDetail: (user: User) =>
-        router.push({ name: "detail", params: { id: user.id } }),*/
+      /* goDetail: (user: User) =>
+         router.push({ name: "detail", params: { id: user.id } }),*/
     };
   },
 });
 </script>
 
 <style scoped>
-  .flit-list {
+.flit-list {
   display: flex;
   flex-flow: row wrap;
   width: 100%;

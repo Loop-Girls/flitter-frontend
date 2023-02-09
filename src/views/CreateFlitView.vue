@@ -1,15 +1,14 @@
 <template>
     <div>
-        <button @click="sendFlit()">Flit</button>
+        <button @click="sendFlit(message)">Flit</button>
     </div>
     <div>
-        <textarea v-model="message">
-
-        </textarea>
+        <input v-model="message"/>
     </div>
     <div>
         <input type="file" @change="selectImage"/>
-        <button @click="scheduleFlit">Schedule</button>
+        <label>Schedule</label>
+        <input type="date" v-model="date"/>
     </div>
 </template>
 
@@ -22,12 +21,22 @@ import flitterApi from '@/api/flitterApi';
 export default defineComponent({
     name: 'CreateFlitView',
     setup() {
-        let message = "";
-        let date =<Date>{};
+        
+        let message = ref<string>('');
+        let date =new Date();
         let image = "";
         let selectedImage: File | null;
+        let user ={
+            "_id": "fakeif01",
+            "email": "firstUser2@fakemail.com",
+            "password": "123456",
+            "username": "FlitterFan",
+            "role": "user",
+            "avatar":""
+        };
         const {createFlit} = useFlits();
         return {
+            user,
             message,
             date,
             image,
@@ -42,28 +51,21 @@ export default defineComponent({
                 } catch (error) {
                     console.log(error);
                 }
-      
-                
-            },
-            scheduleFlit: () => {
-
             },
             uploadImage:async (selectedImage)=>{
                 const url = '../flipper-backend/src/public/images';
                 //TODO
                 console.log('Not implemented yet')
             },
-            sendFlit: () => {
-                let flit =  {
-                    id: "0",
-                    author: 'theBest',
-                    image: selectedImage.name,
-                    message: message,
-                    date: date,
-                    kudos: [], //list of users that gave a kudo to this flit
-                    comments: []
-                }
-                createFlit(flit);
+            sendFlit: (message: string) => {
+                alert('msg : '+message);
+                let formData = new FormData();
+                formData.append("imagen",selectedImage);
+                formData.append("author", user._id);
+                formData.append("date", date.toString());
+                formData.append("message", message);
+                
+                createFlit(formData);
             }
         }
 
