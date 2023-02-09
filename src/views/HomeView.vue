@@ -50,7 +50,7 @@ export default defineComponent({
       "role": "user",
       "avatar": "",
       "following": [],
-      "followers:":[]
+      "followers":[],
 
     }
     return {
