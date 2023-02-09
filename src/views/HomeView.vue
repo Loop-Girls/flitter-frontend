@@ -6,25 +6,14 @@
       <FlitComponent
         v-for="flit in flits"
         :key="flit._id"
-        :author="flit.author"
-        :message="flit.message"
-        :image="flit.image"
-        :kudos="flit.kudos"
         :flit="flit"
-
-      />
-    </div>
-    <div class="search">
-      <SearchbarComponent
+      :user="user"
       />
     </div>
     <div>
       <CreateFlitButton></CreateFlitButton>
     </div>
-    <div class="pagination">
-      <PaginationComponent
-      />
-    </div>
+
     <!-- <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/> -->
   </div>
 </template>
@@ -46,13 +35,24 @@ export default defineComponent({
     /*HelloWorld,*/
     CreateFlitButton,
     FlitComponent,
-    PaginationComponent,
-    SearchbarComponent,
+    // PaginationComponent,
+    // SearchbarComponent,
 },
   setup() {
     const { flits, isLoading, getFlits } = useFlits();
     const router = useRouter();
-    let user = undefined;
+    //TODO: 
+    let user = {
+            "_id": "fakeid",
+            "email": "firstUser@fakemail.com",
+            "password": "123456",
+            "username": "kyl",
+            "role": "user",
+            "avatar":"",
+            "followers": [],
+            "following": [],
+            "flits": [],
+    };
     getFlits();
     return {
       user,

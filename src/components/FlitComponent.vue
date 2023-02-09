@@ -80,6 +80,7 @@ export default defineComponent({
     border-color: rgb(217, 115, 195);
     border-radius: 10px;
     margin-bottom: 1px;
+    width: 100%;
     
 }
 .card:hover {
@@ -94,6 +95,7 @@ export default defineComponent({
     align-items: center;
 }
 img{
+    height: auto;
     max-width:100%;
 }
 .username{

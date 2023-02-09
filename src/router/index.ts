@@ -21,6 +21,11 @@ const routes: Array<RouteRecordRaw> = [
     name: 'create',
     component: CreateFlitView
   },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: HomeView //TODO: change to ProfileView
+  },
 ]
 
 const router = createRouter({
