@@ -6,15 +6,19 @@
             </p>
             <p class="date">
                 <!-- //TODO: change to nice date format -->
-                {{flit.date}}
+                {{ flit.date }}
             </p>
             <!-- //TODO: implement bottons, change v-if in case following[] type changed to User -->
-            <button class="follow_btn" @click="$emit('unfollow', flit.author)" v-if="user.following.includes(flit.author) ">
-                Unfollow
-            </button>
-            <button class="follow_btn"   v-else @click="follow(flit.author)">
-                Follow
-            </button>
+            <div v-if="userIsLogged">
+                <button class="follow_btn" @click="$emit('unfollow', flit.author)"
+                    v-if="user.following.includes(flit.author)">
+                    Unfollow
+                </button>
+                <button class="follow_btn" v-else @click="follow(flit.author)">
+                    Follow
+                </button>
+            </div>
+
         </div>
         <div class="message" v-if="flit.message">
             <p>{{ flit.message }}</p>
@@ -23,14 +27,12 @@
             <img :src="flit.image" />
         </div>
         <!-- //TODO:check if it works -->
-        <div class="footer" v-if="flit.kudos.includes(user)">
-            <button class="kudo_img" @click="$emit('giveKudo', flit)">Kudo</button>
-            <p class="kudo_int">{{ flit.kudos.length }}</p>
+        <div id="kudo_btn" class="footer" v-if="userIsLogged">
+            <button class="kudo_img" @click="$emit('giveKudo', flit)" v-if="flit.kudos.includes(user._id)">Kudo</button>
+            <button class="kudo_img" @click="$emit('removeKudo', flit)" v-else>Kudo</button>
+
         </div>
-        <div class="footer" v-else>
-            <p class="kudo_int">{{ flit.kudos.length }}</p>
-            <button class="kudo_img" @click="$emit('removeKudo', flit)">Kudo</button>
-        </div>
+        <p class="kudo_int">{{ flit.kudos.length }}</p>
     </div>
 
 </template>
@@ -53,11 +55,15 @@ export default defineComponent({
             type: Object as PropType<User>,
             required: true,
         },
+        userIsLogged: {
+            type: Boolean,
+            required: true,
+        }
     },
     setup(props) {
         // const {fetchUserByUsername, followUser} = useUsers();
         return {
-            follow:async (username: string)=>{
+            follow: async (username: string) => {
                 //TODO: waiting for useUsers composable implemented.
                 // console.log(username);
                 // await fetchUserByUsername(username).then(
@@ -78,27 +84,30 @@ export default defineComponent({
     border-style: solid;
     padding: 20px;
     border-color: rgb(217, 115, 195);
-    border-radius: 10px;
+    border-radius: 0px;
     border-width: 2px;
-    margin-bottom: 1px;
     margin-left: auto;
     margin-right: auto;
 }
+
 .card:hover {
     border-color: gray;
- 
-    
+
+
 }
 
-.header, footer{
+.header,
+footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-img{
-    max-width:100%;
+
+img {
+    max-width: 100%;
 }
-.username{
+
+.username {
     font-style: oblique;
     font-weight: 700;
 }

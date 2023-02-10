@@ -2,7 +2,7 @@
   <div class="home">
     <div v-if="isLoading">Cargando...</div>
     <div class="flit-list" v-else>
-      <FlitComponent2 v-for="flit in flits" :key="flit._id" :flit="flit" :user="user" />
+      <FlitComponent v-for="flit in flits" :key="flit._id" :flit="flit" :user="user" :userIsLogged="userIsLogged" />
     </div>
     <!-- <div class="search">
       <SearchbarComponent />
@@ -21,7 +21,7 @@
 import { defineComponent } from 'vue';
 /*import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src*/
 import CreateFlitButton from '@/components/CreateFlitButton.vue';
-import FlitComponent2 from '@/components/FlitComponent2.vue';
+import FlitComponent from '@/components/FlitComponent.vue';
 import PaginationComponent from '@/components/PaginationComponent.vue';
 import SearchbarComponent from '@/components/SearchbarComponent.vue';
 import useFlits from '@/composables/useFlits';
@@ -33,7 +33,7 @@ export default defineComponent({
   components: {
     /*HelloWorld,*/
     CreateFlitButton,
-    FlitComponent2,
+    FlitComponent,
     // PaginationComponent,
     // SearchbarComponent,
   },
@@ -53,7 +53,9 @@ export default defineComponent({
       "followers":[],
 
     }
+    let userIsLogged = true;
     return {
+      userIsLogged,
       user,
       flits,
       isLoading,

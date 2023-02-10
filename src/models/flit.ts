@@ -8,7 +8,7 @@ export interface Flit {
     image:    string;
     message:  string;
     date: Date;
-    kudos:    User[]; //list of users that gave a kudo to this flit
+    kudos:    String[]; //list of users that gave a kudo to this flit
     comments: Comment[];
 }
 
@@ -16,5 +16,5 @@ export interface Comment {
     author:  string;
     message: string;
     date: Date;
-    kudos: User[];
+    kudos: String[];
 }
