@@ -90,11 +90,48 @@ const actions: ActionTree<IFlitsState, IState> = {
         "comments": [],
       });
       router.push("/");
-    } catch (error) {
-      alert(error);
+    }catch (error) {
+      //  alert(error);
       console.log(error)
     }
+  },
+  async searchByAuthor({ commit }, author: string) {
+    commit("setIsLoading", true);
 
+    const { data } = await flitterApi.get<Flit, AxiosResponse<Flit>>(
+      `/flits/?${author}`
+    );
+
+    commit("setSelectedFlit", data);
+
+    commit("setIsLoading", false);
+  },
+  async searchByMessage({ commit }, message: string) {
+    commit("setIsLoading", true);
+
+    const { data } = await flitterApi.get<Flit, AxiosResponse<Flit>>(
+      `/flits/?${message}`
+    );
+
+    commit("setSelectedFlit", data);
+
+    commit("setIsLoading", false);
+  },
+  async updateLimit({ commit, dispatch }, limit: number): Promise<void> {
+    try {
+      commit("setLimit", limit);
+      await dispatch("getFlits");
+    } catch (err) {
+      console.error(err);
+    }
+  },
+  async updateSkip({ commit, dispatch }, skip: number): Promise<void> {
+    try {
+      commit("setSkip", skip);
+      await dispatch("getFlits");
+    } catch (err) {
+      console.error(err);
+    }
   },
 };
 

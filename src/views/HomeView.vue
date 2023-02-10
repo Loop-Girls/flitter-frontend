@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    
     <div v-if="isLoading">Cargando...</div>
     <div class="flit-list" v-else>
       <FlitComponent v-for="flit in flits" :key="flit._id" :flit="flit" :user="user" :userIsLogged="userIsLogged" />
@@ -40,7 +41,6 @@ export default defineComponent({
   setup() {
     const { flits, isLoading, getFlits } = useFlits();
     const router = useRouter();
-
     getFlits();
     let user = {
       "_id": "63e59ab4cc3789e79a97a73e",
