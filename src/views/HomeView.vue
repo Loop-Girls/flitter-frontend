@@ -3,17 +3,17 @@
     
     <div v-if="isLoading">Cargando...</div>
     <div class="flit-list" v-else>
-      <FlitComponent
-        v-for="flit in flits"
-        :key="flit._id"
-        :flit="flit"
-      :user="user"
-      />
+      <FlitComponent v-for="flit in flits" :key="flit._id" :flit="flit" :user="user" :userIsLogged="userIsLogged" />
+    </div>
+    <div class="search">
+      <SearchbarComponent />
     </div>
     <div>
       <CreateFlitButton></CreateFlitButton>
     </div>
-
+    <div class="pagination">
+      <PaginationComponent />
+    </div>
     <!-- <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/> -->
   </div>
 </template>
@@ -35,41 +35,37 @@ export default defineComponent({
     /*HelloWorld,*/
     CreateFlitButton,
     FlitComponent,
-    // PaginationComponent,
-    // SearchbarComponent,
-},
+    PaginationComponent,
+    SearchbarComponent,
+  },
   setup() {
     const { flits, isLoading, getFlits } = useFlits();
     const router = useRouter();
-    //TODO: 
-    let user = {
-            "_id": "fakeid",
-            "email": "firstUser@fakemail.com",
-            "password": "123456",
-            "username": "kyl",
-            "role": "user",
-            "avatar":"",
-            "followers": [],
-            "following": [],
-            "flits": [],
-    };
     getFlits();
+    let user = {
+      "_id": "63e59ab4cc3789e79a97a73e",
+      "username": "kyl",
+      "email": "firstuser@fakemail.com",
+      "password": "123456",
+      "avatar": "",
+      "followers": [],
+      "following": [],
+
+
+    }
+    let userIsLogged = true;
     return {
+      userIsLogged,
       user,
       flits,
       isLoading,
-     /* goDetail: (user: User) =>
-        router.push({ name: "detail", params: { id: user.id } }),*/
+      /* goDetail: (user: User) =>
+         router.push({ name: "detail", params: { id: user.id } }),*/
     };
   },
 });
 </script>
 
 <style scoped>
-  .flit-list {
-  display: flex;
-  flex-flow: row wrap;
-  width: 100%;
-  gap: 1rem 1rem;
-}
+
 </style>
