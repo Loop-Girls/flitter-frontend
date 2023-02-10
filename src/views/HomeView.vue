@@ -4,15 +4,15 @@
     <div class="flit-list" v-else>
       <FlitComponent v-for="flit in flits" :key="flit._id" :flit="flit" :user="user" :userIsLogged="userIsLogged" />
     </div>
-    <!-- <div class="search">
+    <div class="search">
       <SearchbarComponent />
-    </div> -->
+    </div>
     <div>
       <CreateFlitButton></CreateFlitButton>
     </div>
-    <!-- <div class="pagination">
+    <div class="pagination">
       <PaginationComponent />
-    </div> -->
+    </div>
     <!-- <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/> -->
   </div>
 </template>
@@ -34,8 +34,8 @@ export default defineComponent({
     /*HelloWorld,*/
     CreateFlitButton,
     FlitComponent,
-    // PaginationComponent,
-    // SearchbarComponent,
+    PaginationComponent,
+    SearchbarComponent,
   },
   setup() {
     const { flits, isLoading, getFlits } = useFlits();
@@ -43,14 +43,14 @@ export default defineComponent({
 
     getFlits();
     let user = {
-      "_id": "fakeid",
-      "email": "firstUser2@fakemail.com",
+      "_id": "63e59ab4cc3789e79a97a73e",
+      "username": "kyl",
+      "email": "firstuser@fakemail.com",
       "password": "123456",
-      "username": "FlitterFan",
-      "role": "user",
       "avatar": "",
+      "followers": [],
       "following": [],
-      "followers":[],
+
 
     }
     let userIsLogged = true;
