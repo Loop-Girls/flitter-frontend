@@ -3,12 +3,12 @@
 import { User } from "./user";
 
 export interface Flit {
-    _id:       number;
+    _id:       string;
     author:   string;
     image:    string;
     message:  string;
     date: Date;
-    kudos:    User[]; //list of users that gave a kudo to this flit
+    kudos:    string[]; //list of users that gave a kudo to this flit
     comments: Comment[];
 }
 
@@ -16,5 +16,5 @@ export interface Comment {
     author:  string;
     message: string;
     date: Date;
-    kudos: User[];
+    kudos: string[];
 }

@@ -2,6 +2,12 @@
   <div class="home">
     
     <div v-if="isLoading">Cargando...</div>
+    <div class="flit-list" v-else>
+      <FlitComponent v-for="flit in flits" :key="flit._id" :flit="flit" :user="user" :loggedUser="loggedUser" />
+    </div>
+    <div class="search">
+      <SearchbarComponent />
+    </div>
       <div class="flit-list" v-else>
         <FlitComponent
           v-for="flit in flits"
@@ -17,8 +23,12 @@
     <div>
       <CreateFlitButton></CreateFlitButton>
     </div>
-  </div>  
-   
+    <div class="pagination">
+      <PaginationComponent
+      />
+    </div>
+    <!-- <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/> -->
+  </div>
 </template>
 
 <script lang="ts">
@@ -26,7 +36,7 @@ import { defineComponent } from 'vue';
 import CreateFlitButton from '@/components/CreateFlitButton.vue';
 import FlitComponent from '@/components/FlitComponent.vue';
 import useFlits from '@/composables/useFlits';
-/*import { useRouter } from 'vue-router';*/
+import { useRouter } from 'vue-router';
 
 
 export default defineComponent({
@@ -34,28 +44,34 @@ export default defineComponent({
   components: {
     CreateFlitButton,
     FlitComponent,
-    
-  },
+    PaginationComponent,
+    SearchbarComponent,
+},
   setup() {
     const { flits, isLoading, getFlits } = useFlits();
-    
-    let user = {
-      "_id":"fakeid",
-      "email":"firstUser@fakemail.com",
-      "password":"123456",
-      "username":"kyl",
-      "role":"user",
-      "avatar":"",
-      "followers":[],
-      "following":[]
-    };
+    const router = useRouter();
+    let user = undefined;
     getFlits();
+    let user = {
+      "_id": "63e59ab4cc3789e79a97a73e",
+      "username": "kyl",
+      "email": "firstuser@fakemail.com",
+      "password": "123456",
+      "avatar": "",
+      "followers": [],
+      "following": [],
+      "flits": [],
+
+
+    }
+
     return {
+      loggedUser,
       user,
       flits,
       isLoading,
-     /* goDetail: (user: User) =>
-        router.push({ name: "detail", params: { id: user.id } }),*/
+      /* goDetail: (user: User) =>
+         router.push({ name: "detail", params: { id: user.id } }),*/
     };
   },
 });
@@ -63,10 +79,7 @@ export default defineComponent({
 
 <style scoped>
   .flit-list {
-  margin-left: 2em;
-  margin-right: 4em;
-  margin-top: 5em;
-  padding-right: 5em;
+  display: flex;
   flex-flow: row wrap;
   width: 100%;
   gap: 1rem 1rem;

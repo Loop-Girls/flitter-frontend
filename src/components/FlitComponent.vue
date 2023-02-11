@@ -6,15 +6,19 @@
             </p>
             <p class="date">
                 <!-- //TODO: change to nice date format -->
-                {{flit.date}}
+                {{ flit.date }}
             </p>
             <!-- //TODO: implement bottons, change v-if in case following[] type changed to User -->
-            <button class="follow_btn" @click="$emit('unfollow', flit.author)" v-if="user.following.includes(flit.author) ">
-                Unfollow
-            </button>
-            <button class="follow_btn"   v-else @click="follow(flit.author)">
-                Follow
-            </button>
+            <div v-if="loggedUser">
+                <button class="follow_btn" @click="unfollow(flit.author)"
+                    v-if="user.following.includes(flit.author)">
+                    Unfollow
+                </button>
+                <button class="follow_btn" v-else @click=follow(flit.author)>
+                    Follow
+                </button>
+            </div>
+
         </div>
         <div class="message" v-if="flit.message">
             <p>{{ flit.message }}</p>
@@ -23,14 +27,12 @@
             <img :src="flit.image" />
         </div>
         <!-- //TODO:check if it works -->
-        <div class="footer" v-if="flit.kudos.includes(user)">
-            <button class="kudo_img" @click="$emit('giveKudo', flit)">Kudo</button>
-            <p class="kudo_int">{{ flit.kudos.length }}</p>
+        <div id="kudo_btn" class="footer" v-if="loggedUser">
+            <button class="kudo_img" @click="removeKudo(flit)" v-if="flit.kudos.includes(user._id)">Remove
+                Kudo</button>
+            <button class="kudo_img" @click="giveKudo(flit)" v-else>Give Kudo</button>
         </div>
-        <div class="footer" v-else>
-            <p class="kudo_int">{{ flit.kudos.length }}</p>
-            <button class="kudo_img" @click="$emit('removeKudo', flit)">Kudo</button>
-        </div>
+        <p class="kudo_int">{{ flit.kudos.length }}</p>
     </div>
 
 </template>
@@ -53,11 +55,15 @@ export default defineComponent({
             type: Object as PropType<User>,
             required: true,
         },
+        loggedUser: {
+            type: Object as PropType<User>,
+            required: true,
+        },
     },
     setup(props) {
-        // const {fetchUserByUsername, followUser} = useUsers();
+        // const {fetchUserByUsername, followUser, unfollowUser} = useUsers();
         return {
-            follow:async (username: string)=>{
+            follow: async (username: string) => {
                 //TODO: waiting for useUsers composable implemented.
                 // console.log(username);
                 // await fetchUserByUsername(username).then(
@@ -68,7 +74,47 @@ export default defineComponent({
                 //         console.log(error);
                 //     }
                 // );
-            }
+                alert("Not implemented yet. You want to follow " + username)
+            },
+            unfollow: async (username: string) => {
+                //TODO: waiting for useUsers composable implemented.
+                // console.log(username);
+                // await fetchUserByUsername(username).then(
+                //     (resp)=>{
+                //         unfollowUser(resp);
+                //     },
+                //     (error) =>{
+                //         console.log(error);
+                //     }
+                // );
+                alert("Not implemented yet. You want to unfollow " + username);
+            },
+            removeKudo: (flit: Flit) => {
+                //TODO: waiting for useUsers composable implemented.
+                // console.log(flit.author);
+                // await fetchUserByUsername(flit.author).then(
+                //     (resp)=>{
+                //         unfollowUser(resp);
+                //     },
+                //     (error) =>{
+                //         console.log(error);
+                //     }
+                // );
+                alert('Implementing: Kudo -1 ' + flit.message);
+            },
+            giveKudo: (flit: Flit) => {
+                //TODO: waiting for useUsers composable implemented.
+                // console.log(username);
+                // await fetchUserByUsername(username).then(
+                //     (resp)=>{
+                //         unfollowUser(resp);
+                //     },
+                //     (error) =>{
+                //         console.log(error);
+                //     }
+                // );
+                alert('Implementing:  Kudo +1' + flit.message);
+            },
         };
     },
 });
@@ -78,25 +124,30 @@ export default defineComponent({
     border-style: solid;
     padding: 20px;
     border-color: rgb(217, 115, 195);
-    border-radius: 10px;
-    margin-bottom: 1px;
-    
-}
-.card:hover {
-    border-color: aqua;
- 
-    
+    border-radius: 0px;
+    border-width: 2px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.header, footer{
+.card:hover {
+    border-color: gray;
+
+
+}
+
+.header,
+footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-img{
-    max-width:100%;
+
+img {
+    max-width: 100%;
 }
-.username{
+
+.username {
     font-style: oblique;
     font-weight: 700;
 }

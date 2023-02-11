@@ -1,4 +1,5 @@
 import { createStore } from "vuex";
+import authModule from "./auth";
 import flitsModule from "./flits";
 
 
@@ -7,5 +8,6 @@ export interface IState {}
 export default createStore({
   modules: {
     flits: flitsModule,
+    auth: authModule
   },
 });

@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import SignupView from '../views/SignupView.vue'
 import CreateFlitView from '../views/CreateFlitView.vue'
 
 const routes: Array<RouteRecordRaw> = [
@@ -20,6 +21,16 @@ const routes: Array<RouteRecordRaw> = [
     path: '/createFlit',
     name: 'create',
     component: CreateFlitView
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: HomeView //TODO: change to ProfileView
+  },
+  {
+    path: '/signup',
+    name: 'signup',
+    component: SignupView
   },
 ]
 
