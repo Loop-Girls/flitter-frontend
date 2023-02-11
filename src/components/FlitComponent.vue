@@ -11,7 +11,7 @@
             <!-- //TODO: implement bottons, change v-if in case following[] type changed to User -->
             <div v-if="loggedUser">
                 <button class="follow_btn" @click="unfollow(flit.author)"
-                    v-if="user.following.includes(flit.author)">
+                    v-if="loggedUser.following.includes(flit.author)">
                     Unfollow
                 </button>
                 <button class="follow_btn" v-else @click=follow(flit.author)>
@@ -28,7 +28,7 @@
         </div>
         <!-- //TODO:check if it works -->
         <div id="kudo_btn" class="footer" v-if="loggedUser">
-            <button class="kudo_img" @click="removeKudo(flit)" v-if="flit.kudos.includes(user._id)">Remove
+            <button class="kudo_img" @click="removeKudo(flit)" v-if="flit.kudos.includes(loggedUser.username)">Remove
                 Kudo</button>
             <button class="kudo_img" @click="giveKudo(flit)" v-else>Give Kudo</button>
         </div>

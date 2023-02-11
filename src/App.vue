@@ -1,25 +1,12 @@
 
 <template>
-  
-  
     <nav>
     <router-link to="/">Home</router-link> |
     <router-link to="/profile">Profile</router-link> |
     <router-link to="/signup">Signup</router-link>
-
-
-
     </nav><router-view />
    
-  
-
 </template>
-
-<script lang="ts">
-
-
-
-</script>
 
 <style>
 #app {
