@@ -51,10 +51,6 @@ export default defineComponent({
             type: Object as PropType<Flit>,
             required: true,
         },
-        user: {
-            type: Object as PropType<User>,
-            required: true,
-        },
         loggedUser: {
             type: Object as PropType<User>,
             required: true,
