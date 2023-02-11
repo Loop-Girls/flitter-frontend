@@ -19,7 +19,15 @@ const useFlits = () => {
     createFlit: (formData:FormData) =>
       store.dispatch('flits/createFlit', formData),
     updateFlit: (flit_id: string)=>
-      store.dispatch("flits/updateFlit", flit_id)
+      store.dispatch("flits/updateFlit", flit_id),
+    searchByAuthor: (author: string)=>
+      store.dispatch("flits/searchbyAuthor", author),
+    searchByMessage: (message: string) =>
+      store.dispatch("flits/SearhByMessage", message),
+    updateLimit: (limit: number) =>
+      store.dispatch("flits/updateLimit", limit),
+    updateSkip: (skip: number) =>
+      store.dispatch("flits/UpdateSkip", skip),
   };
 };
 

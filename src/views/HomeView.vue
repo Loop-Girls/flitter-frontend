@@ -8,6 +8,18 @@
     <div class="search">
       <SearchbarComponent />
     </div>
+      <div class="flit-list" v-else>
+        <FlitComponent
+          v-for="flit in flits"
+          :key="flit._id"
+          :author="flit.author"
+          :message="flit.message"
+          :image="flit.image"
+          :kudos="flit.kudos"
+          :flit="flit"
+          :user="user"
+        />
+    </div> 
     <div>
       <CreateFlitButton></CreateFlitButton>
     </div>
@@ -20,11 +32,8 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-/*import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src*/
 import CreateFlitButton from '@/components/CreateFlitButton.vue';
 import FlitComponent from '@/components/FlitComponent.vue';
-import PaginationComponent from '@/components/PaginationComponent.vue';
-import SearchbarComponent from '@/components/SearchbarComponent.vue';
 import useFlits from '@/composables/useFlits';
 import { useRouter } from 'vue-router';
 import useAuth from '@/composables/useAuth';
@@ -33,7 +42,6 @@ import useAuth from '@/composables/useAuth';
 export default defineComponent({
   name: 'HomeView',
   components: {
-    /*HelloWorld,*/
     CreateFlitButton,
     FlitComponent,
     PaginationComponent,
