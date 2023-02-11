@@ -1,13 +1,25 @@
 
 <template>
-  <nav>
+  
+  
+    <nav>
     <router-link to="/">Home</router-link> |
     <router-link to="/profile">Profile</router-link> |
     <router-link to="/createFlit">Post</router-link>
+    
 
 
-  </nav>  <router-view/>
+    </nav><router-view />
+   
+  
+
 </template>
+
+<script lang="ts">
+
+
+
+</script>
 
 <style>
 #app {

@@ -21,7 +21,7 @@ const actions: ActionTree<IFlitsState, IState> = {
     commit("setIsLoading", false);
 
     // usamos la mutación para volcar los datos obtenidos en la variable del state users
-    commit("setFlit", data);
+    commit("setFlits", data);
   },
 
   async getFlitById({ commit }, id: string) {
