@@ -9,7 +9,7 @@
                 {{ flit.date }}
             </p>
             <!-- //TODO: implement bottons, change v-if in case following[] type changed to User -->
-            <div v-if="userIsLogged">
+            <div v-if="loggedUser">
                 <button class="follow_btn" @click="unfollow(flit.author)"
                     v-if="user.following.includes(flit.author)">
                     Unfollow
@@ -27,7 +27,7 @@
             <img :src="flit.image" />
         </div>
         <!-- //TODO:check if it works -->
-        <div id="kudo_btn" class="footer" v-if="userIsLogged">
+        <div id="kudo_btn" class="footer" v-if="loggedUser">
             <button class="kudo_img" @click="removeKudo(flit)" v-if="flit.kudos.includes(user._id)">Remove
                 Kudo</button>
             <button class="kudo_img" @click="giveKudo(flit)" v-else>Give Kudo</button>
@@ -55,8 +55,8 @@ export default defineComponent({
             type: Object as PropType<User>,
             required: true,
         },
-        userIsLogged: {
-            type: Boolean,
+        loggedUser: {
+            type: Object as PropType<User>,
             required: true,
         },
     },

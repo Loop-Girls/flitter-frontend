@@ -3,7 +3,7 @@
     
     <div v-if="isLoading">Cargando...</div>
     <div class="flit-list" v-else>
-      <FlitComponent v-for="flit in flits" :key="flit._id" :flit="flit" :user="user" :userIsLogged="userIsLogged" />
+      <FlitComponent v-for="flit in flits" :key="flit._id" :flit="flit" :user="user" :loggedUser="loggedUser" />
     </div>
     <div class="search">
       <SearchbarComponent />
@@ -27,6 +27,7 @@ import PaginationComponent from '@/components/PaginationComponent.vue';
 import SearchbarComponent from '@/components/SearchbarComponent.vue';
 import useFlits from '@/composables/useFlits';
 import { useRouter } from 'vue-router';
+import useAuth from '@/composables/useAuth';
 
 
 export default defineComponent({
@@ -40,6 +41,7 @@ export default defineComponent({
   },
   setup() {
     const { flits, isLoading, getFlits } = useFlits();
+    const {loggedUser} = useAuth();
     const router = useRouter();
     getFlits();
     let user = {
@@ -50,12 +52,13 @@ export default defineComponent({
       "avatar": "",
       "followers": [],
       "following": [],
+      "flits": [],
 
 
     }
-    let userIsLogged = true;
+
     return {
-      userIsLogged,
+      loggedUser,
       user,
       flits,
       isLoading,
