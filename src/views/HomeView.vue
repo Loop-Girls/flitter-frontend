@@ -3,7 +3,7 @@
     
     <div v-if="isLoading">Cargando...</div>
     <div class="flit-list" v-else>
-      <FlitComponent v-for="flit in flits" :key="flit._id" :flit="flit" :user="user" :loggedUser="loggedUser" />
+      <FlitComponent v-for="flit in flits" :key="flit._id" :flit="flit" :user="loggedUser" :loggedUser="loggedUser" />
     </div>
     <div class="search">
       <SearchbarComponent />
@@ -44,22 +44,8 @@ export default defineComponent({
     const {loggedUser} = useAuth();
     const router = useRouter();
     getFlits();
-    let user = {
-      "_id": "63e59ab4cc3789e79a97a73e",
-      "username": "kyl",
-      "email": "firstuser@fakemail.com",
-      "password": "123456",
-      "avatar": "",
-      "followers": [],
-      "following": [],
-      "flits": [],
-
-
-    }
-
     return {
       loggedUser,
-      user,
       flits,
       isLoading,
       /* goDetail: (user: User) =>

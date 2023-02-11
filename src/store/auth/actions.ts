@@ -25,7 +25,19 @@ const actions: ActionTree<IAuthState, IState> = {
   },
 
   async login({ commit }, credentials: Credentials) {
-    //TODO
+    commit("setIsLoading", true);
+
+    const { data } = await flitterApi.post<
+      Token,
+      AxiosResponse<Token>,
+      Credentials
+    >("/auth/login", credentials);
+
+    // commit("setToken", data);
+    // localStorage.setItem("token", JSON.stringify(data));
+
+    commit("setIsLoading", false);
+    commit("setLoggedUser", data);
   },
 
   async signup({ commit }, user: URLSearchParams) {
