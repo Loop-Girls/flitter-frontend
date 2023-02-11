@@ -23,7 +23,34 @@ const actions: ActionTree<IFlitsState, IState> = {
     commit("setIsLoading", false);
 
     // usamos la mutación para volcar los datos obtenidos en la variable del state users
-    commit("setFlit", data);
+    commit("setFlits", data);
+  },
+  async getPrivateZoneFlits({ commit }, followingUsers: User[] | null) {
+    // usamos la mutación para poner isLoading = true
+    commit("setIsLoading", true);
+    let privateFlits: AxiosResponse<Flit[]>[];
+
+    const chronoFilter = 'date=-'
+    // obtenemos los datos de manera asíncrona y vemos si hay que filtrar
+
+    //loop usernames to get their flits
+    followingUsers?.forEach(async (user: User) => {
+      const url = `/flits${followingUsers ? "/?" + chronoFilter + "&exactAuthor=" + user.username : ""}`;
+      await flitterApi.get<Flit[], AxiosResponse<Flit[]>>(
+        url
+      ).then(
+        (resp) => {
+          privateFlits.push(resp);
+          // usamos la mutación para volcar los datos obtenidos en la variable del state users
+          commit("setFlits", privateFlits);
+        },
+        (error) => console.log(error)
+      );
+
+    });
+
+    // usamos la mutación para poner isLoading = false
+    commit("setIsLoading", false);
   },
 
   async getFlitById({ commit }, id: string) {

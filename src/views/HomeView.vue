@@ -24,8 +24,7 @@
       <CreateFlitButton></CreateFlitButton>
     </div>
     <div class="pagination">
-      <PaginationComponent
-      />
+      <PaginationComponent />
     </div>
     <!-- <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/> -->
   </div>
@@ -37,6 +36,7 @@ import CreateFlitButton from '@/components/CreateFlitButton.vue';
 import FlitComponent from '@/components/FlitComponent.vue';
 import useFlits from '@/composables/useFlits';
 import { useRouter } from 'vue-router';
+import useAuth from '@/composables/useAuth';
 
 
 export default defineComponent({
@@ -46,11 +46,11 @@ export default defineComponent({
     FlitComponent,
     PaginationComponent,
     SearchbarComponent,
-},
+  },
   setup() {
     const { flits, isLoading, getFlits } = useFlits();
+    const {loggedUser} = useAuth();
     const router = useRouter();
-    let user = undefined;
     getFlits();
     let user = {
       "_id": "63e59ab4cc3789e79a97a73e",
@@ -78,10 +78,5 @@ export default defineComponent({
 </script>
 
 <style scoped>
-  .flit-list {
-  display: flex;
-  flex-flow: row wrap;
-  width: 100%;
-  gap: 1rem 1rem;
-}
+
 </style>
