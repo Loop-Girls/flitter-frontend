@@ -28,9 +28,9 @@
         </div>
         <!-- //TODO:check if it works -->
         <div id="kudo_btn" class="footer" v-if="loggedUser&&flit.author!=loggedUser.username">
-            <button class="kudo_img" @click="removeKudo(flit)" v-if="flit.kudos.includes(loggedUser.username)">Remove
+            <button class="kudo_img" @click="removeKudoFromFlit(flit)" v-if="flit.kudos.includes(loggedUser.username)">Remove
                 Kudo</button>
-            <button class="kudo_img" @click="giveKudo(flit)" v-else>Give Kudo</button>
+            <button class="kudo_img" @click="giveKudoFromFlit(flit)" v-else>Give Kudo</button>
         </div>
         <p class="kudo_int">{{ flit.kudos.length }}</p>
     </div>
@@ -44,6 +44,7 @@ import { defineComponent, PropType } from 'vue';
 import { Flit } from '../models/flit';
 import useUsers from '../composables/useUsers'
 import useAuth from '@/composables/useAuth';
+import useFlits from '@/composables/useFlits';
 
 
 export default defineComponent({
@@ -65,6 +66,7 @@ export default defineComponent({
     setup(props) {
         const { getUserById, follow, unfollow } = useUsers();
         const { loggedUser , getUpdatedLoggedUser} = useAuth();
+        const {giveKudo, removeKudo} = useFlits();
         return {
             loggedUser,
             followUser: async (username: string) => {
@@ -84,38 +86,30 @@ export default defineComponent({
                 body.append("following", username)
                 console.log(body);
                 let data = {
-                    "id": loggedUser.value._id,
+                    "id": loggedUser.value._id, //TODO:change to id at some point
                     "body": body
                 }
                  unfollow(data);
 
                 // alert("Not implemented yet. You want to unfollow " + username);
             },
-            removeKudo: (flit: Flit) => {
-                //TODO: waiting for useUsers composable implemented.
-                // console.log(flit.author);
-                // await fetchUserByUsername(flit.author).then(
-                //     (resp)=>{
-                //         unfollowUser(resp);
-                //     },
-                //     (error) =>{
-                //         console.log(error);
-                //     }
-                // );
-                alert('Implementing: Kudo -1 ' + flit.message);
+            removeKudoFromFlit: (flit: Flit) => {
+                let body = new URLSearchParams();
+                body.append("kudos", loggedUser.value.username )//TODO:change to id at some point
+                let info = {
+                    "_id": flit._id,
+                    "body": body
+                }
+                removeKudo(info);
             },
-            giveKudo: (flit: Flit) => {
-                //TODO: waiting for useUsers composable implemented.
-                // console.log(username);
-                // await fetchUserByUsername(username).then(
-                //     (resp)=>{
-                //         unfollowUser(resp);
-                //     },
-                //     (error) =>{
-                //         console.log(error);
-                //     }
-                // );
-                alert('Implementing:  Kudo +1' + flit.message);
+            giveKudoFromFlit: (flit: Flit) => {
+                let body = new URLSearchParams();
+                body.append("kudos", loggedUser.value.username )//TODO:change to id at some point
+                let info = {
+                    "_id": flit._id,
+                    "body": body
+                }
+                giveKudo(info);
             },
         };
     },

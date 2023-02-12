@@ -37,14 +37,11 @@ const actions: ActionTree<IUsersState, IState> = {
     commit("setIsLoading", false);
   },
   async unfollow({commit},info) {
-    console.log('unfollow');
-    console.log('Body received ' + info);
     let id = info.id;
     console.log(id)
     let body = info.body;
     try {
       const {data} =await flitterApi.put(`/users/unfollow/id/${id}`, body);
-      console.log(data);
       //update loggeduser
       window.location.reload();
       // router.push("/");
@@ -55,8 +52,6 @@ const actions: ActionTree<IUsersState, IState> = {
    
   },
   async follow({commit},info) {
-    console.log('follow');
-    console.log('Body received ' + info);
     let id = info.id;
     console.log(id)
     let body = info.body;
@@ -72,45 +67,7 @@ const actions: ActionTree<IUsersState, IState> = {
     }
    
   },
-
-  async searchByAuthor({ commit }, author: string) {
-    commit("setIsLoading", true);
-
-    const { data } = await flitterApi.get<Flit, AxiosResponse<Flit>>(
-      `/flits/?${author}`
-    );
-
-    commit("setSelectedFlit", data);
-
-    commit("setIsLoading", false);
-  },
-  async searchByMessage({ commit }, message: string) {
-    commit("setIsLoading", true);
-
-    const { data } = await flitterApi.get<Flit, AxiosResponse<Flit>>(
-      `/flits/?${message}`
-    );
-
-    commit("setSelectedFlit", data);
-
-    commit("setIsLoading", false);
-  },
-  async updateLimit({ commit, dispatch }, limit: number): Promise<void> {
-    try {
-      commit("setLimit", limit);
-      await dispatch("getFlits");
-    } catch (err) {
-      console.error(err);
-    }
-  },
-  async updateSkip({ commit, dispatch }, skip: number): Promise<void> {
-    try {
-      commit("setSkip", skip);
-      await dispatch("getFlits");
-    } catch (err) {
-      console.error(err);
-    }
-  },
+  
 };
 
 export default actions;

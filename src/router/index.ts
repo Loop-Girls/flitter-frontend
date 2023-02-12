@@ -4,6 +4,7 @@ import SignupView from '../views/SignupView.vue'
 import CreateFlitView from '../views/CreateFlitView.vue'
 import LoginView from '../views/LoginView.vue'
 
+
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',

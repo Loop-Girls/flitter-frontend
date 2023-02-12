@@ -28,7 +28,8 @@ const actions: ActionTree<IFlitsState, IState> = {
   async getPrivateZoneFlits({ commit }, followingUsers: User[] | null) {
     // usamos la mutación para poner isLoading = true
     commit("setIsLoading", true);
-    let privateFlits: AxiosResponse<Flit[]>[];
+    let privateFlits:Flit[];
+    privateFlits = [];
 
     const chronoFilter = 'date=-'
     // obtenemos los datos de manera asíncrona y vemos si hay que filtrar
@@ -36,19 +37,27 @@ const actions: ActionTree<IFlitsState, IState> = {
     //loop usernames to get their flits
     followingUsers?.forEach(async (user: User) => {
       const url = `/flits${followingUsers ? "/?" + chronoFilter + "&exactAuthor=" + user.username : ""}`;
-      await flitterApi.get<Flit[], AxiosResponse<Flit[]>>(
+      await flitterApi.get(
         url
       ).then(
         (resp) => {
-          privateFlits.push(resp);
-          // usamos la mutación para volcar los datos obtenidos en la variable del state users
-          commit("setFlits", privateFlits);
+          privateFlits.push(resp.data);
+          
         },
         (error) => console.log(error)
       );
 
     });
-
+    privateFlits.sort(
+      //TODO:
+      // function(a,b){
+      // Turn your strings into dates, and then subtract them
+      // to get a value that is either negative, positive, or zero.
+      // return new Date(b.date) - new Date(a.date);
+    // }
+    );
+    // usamos la mutación para volcar los datos obtenidos en la variable del state users
+    commit("setFlits", privateFlits);
     // usamos la mutación para poner isLoading = false
     commit("setIsLoading", false);
   },
@@ -115,6 +124,38 @@ const actions: ActionTree<IFlitsState, IState> = {
       await dispatch("getFlits");
     } catch (err) {
       console.error(err);
+    }
+  },
+  async giveKudo({commit}, info){
+    console.log('remove kudo');
+    let id = info._id;
+    console.log(id)
+    let body = info.body;
+    try {
+      const {data} =await flitterApi.put(`/flits/kudos/give/id/${id}`, body);
+      console.log(data);
+       window.location.reload();
+      //router.push("/");
+    }catch (error) {
+      //  alert(error);
+      console.log(error)
+    }
+
+  },
+  async removeKudo({commit}, info){
+    console.log('remove kudo');
+    let id = info._id;
+    console.log(id)
+    let body = info.body;
+    try {
+      const {data} =await flitterApi.put(`/flits/kudos/remove/id/${id}`, body);
+      console.log(data);
+      //update loggeduser
+       window.location.reload();
+      //router.push("/");
+    }catch (error) {
+      //  alert(error);
+      console.log(error)
     }
   },
 };

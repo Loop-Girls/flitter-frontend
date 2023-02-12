@@ -1,6 +1,7 @@
 import { Flit } from "../models/flit";
 import { computed } from "vue";
 import { useStore } from "vuex";
+import { User } from "@/models/user";
 
 const useFlits = () => {
   const store = useStore();
@@ -19,7 +20,13 @@ const useFlits = () => {
     createFlit: (formData:FormData) =>
       store.dispatch('flits/createFlit', formData),
     updateFlit: (flit_id: string, body: URLSearchParams)=>
-      store.dispatch("flits/updateFlit", flit_id)
+      store.dispatch("flits/updateFlit", flit_id),
+    getPrivateZoneFlits:(following: User[])=>
+      store.dispatch("flits/getPrivateZoneFlits", following),
+    giveKudo: (body: any)=>
+      store.dispatch("flits/giveKudo", body),
+    removeKudo: (body: any) =>
+      store.dispatch("flits/removeKudo", body)
   };
 };
 

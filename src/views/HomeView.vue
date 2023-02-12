@@ -40,7 +40,7 @@ export default defineComponent({
     SearchbarComponent,
   },
   setup() {
-    const { flits, isLoading, getFlits } = useFlits();
+    const { flits, isLoading, getFlits} = useFlits();
     const { loggedUser } = useAuth();
     const router = useRouter();
     const { getUpdatedLoggedUser } = useAuth();
@@ -49,7 +49,6 @@ export default defineComponent({
     if (user_id != '') {
       getUpdatedLoggedUser(user_id);
     }
-
     getFlits();
     return {
       loggedUser,
