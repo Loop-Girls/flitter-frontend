@@ -3,7 +3,7 @@
 
     <div v-if="isLoading">Cargando...</div>
     <div class="flit-list" v-else>
-      <FlitComponent v-for="flit in flits" :key="flit._id" :flit="flit" :user="loggedUser" :loggedUser="loggedUser" />
+      <FlitComponent v-for="flit in flits" :key="flit._id" :flit="flit" :loggedUser="loggedUser" />
     </div>
     <div class="search">
       <SearchbarComponent />
@@ -20,20 +20,17 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-/*import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src*/
 import CreateFlitButton from '@/components/CreateFlitButton.vue';
 import FlitComponent from '@/components/FlitComponent.vue';
-import PaginationComponent from '@/components/PaginationComponent.vue';
-import SearchbarComponent from '@/components/SearchbarComponent.vue';
 import useFlits from '@/composables/useFlits';
 import { useRouter } from 'vue-router';
 import useAuth from '@/composables/useAuth';
-
+import PaginationComponent from '@/components/PaginationComponent.vue';
+import SearchbarComponent from '@/components/SearchbarComponent.vue';
 
 export default defineComponent({
   name: 'HomeView',
   components: {
-    /*HelloWorld,*/
     CreateFlitButton,
     FlitComponent,
     PaginationComponent,
