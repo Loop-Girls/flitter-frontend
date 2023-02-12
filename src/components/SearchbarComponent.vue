@@ -1,7 +1,7 @@
 <template>
     <div>
-        <li v-for="flit in flits" :key="flit.author"></li>
-        <li v-for="flit in flits" :key="flit.message"></li>
+        <!-- <li v-for="flit in flits" :key="flit.author"></li>
+        <li v-for="flit in flits" :key="flit.message"></li> -->
         <input
             type="text"
             placeholder="Search in Flitter"
@@ -13,17 +13,19 @@
 </template>
 
 
-<script>
+<script lang="ts">
 
-import { defineComponent } from "module";
-import {useFlits}from '../composables'
+import useFlits from "@/composables/useFlits";
+import flits from "@/store/flits";
+import { defineComponent } from "vue";
+// import {useFlits}from '../composables'
 
 export default defineComponent({
  setup() {
   const {searchByAuthor,searchByMessage} = useFlits() 
   return{
-    searchByAuthor,
-    searchByMessage
+    // searchByAuthor,
+    // searchByMessage
   }
  } 
 })

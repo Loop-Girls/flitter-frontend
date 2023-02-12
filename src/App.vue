@@ -8,20 +8,8 @@ import SearchbarComponent from './components/SearchbarComponent.vue';
     <router-link to="/profile">Profile</router-link> |
     <router-link to="/signup">Signup</router-link>|
     <router-link to="/login">Login</router-link>
-    <SearchbarComponent><button type="submit" class="btn btn success">Search</button></SearchbarComponent>
   </nav>  <router-view/>
 </template>
-<script lang="ts">
-import { defineComponent } from 'vue';
-import SearchbarComponent from './components/SearchbarComponent.vue';
-export default defineComponent({
-  components: {
-    SearchbarComponent,
-  },
-  }
-
-  );
-</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

@@ -1,13 +1,14 @@
 <template>
+      <div class="search">
+      <SearchbarComponent />
+    </div>
   <div class="home">
-
+  
     <div v-if="isLoading">Cargando...</div>
     <div class="flit-list" v-else>
       <FlitComponent v-for="flit in flits" :key="flit._id" :flit="flit" :loggedUser="loggedUser" />
     </div>
-    <div class="search">
-      <SearchbarComponent />
-    </div>
+
     <div>
       <CreateFlitButton></CreateFlitButton>
     </div>
@@ -62,5 +63,4 @@ export default defineComponent({
 </script>
 
 <style scoped>
-
 </style>
