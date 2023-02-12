@@ -8,7 +8,7 @@ import SearchbarComponent from './components/SearchbarComponent.vue';
     <router-link to="/profile">Profile</router-link> |
     <router-link to="/signup">Signup</router-link>|
     <router-link to="/login">Login</router-link>
-    <SearchbarComponent></SearchbarComponent>
+    <SearchbarComponent><button type="submit" class="btn btn success">Search</button></SearchbarComponent>
   </nav>  <router-view/>
 </template>
 <script lang="ts">
