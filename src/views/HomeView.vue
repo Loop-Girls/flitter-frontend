@@ -41,11 +41,7 @@ export default defineComponent({
     const { loggedUser } = useAuth();
     const router = useRouter();
     const { getUpdatedLoggedUser } = useAuth();
-    let user_id = localStorage.getItem('user_id') ?? '';
-    console.log(user_id);
-    if (user_id != '') {
-      getUpdatedLoggedUser(user_id);
-    }
+    //TODO: getPrivateFlits if user is logged
     getFlits();
     return {
       loggedUser,

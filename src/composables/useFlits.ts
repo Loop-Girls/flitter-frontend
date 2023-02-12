@@ -21,7 +21,7 @@ const useFlits = () => {
       store.dispatch('flits/createFlit', formData),
     updateFlit: (flit_id: string, body: URLSearchParams)=>
       store.dispatch("flits/updateFlit", flit_id),
-    getPrivateZoneFlits:(following: User[])=>
+    getPrivateZoneFlits:(following: string[])=>
       store.dispatch("flits/getPrivateZoneFlits", following),
     giveKudo: (body: any)=>
       store.dispatch("flits/giveKudo", body),

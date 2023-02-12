@@ -37,9 +37,9 @@ const actions: ActionTree<IUsersState, IState> = {
     commit("setIsLoading", false);
   },
   async unfollow({commit},info) {
-    let id = info.id;
+    const id = info.id;
     console.log(id)
-    let body = info.body;
+    const body = info.body;
     try {
       const {data} =await flitterApi.put(`/users/unfollow/id/${id}`, body);
       //update loggeduser
@@ -52,9 +52,9 @@ const actions: ActionTree<IUsersState, IState> = {
    
   },
   async follow({commit},info) {
-    let id = info.id;
+    const id = info.id;
     console.log(id)
-    let body = info.body;
+    const body = info.body;
     try {
       const {data} =await flitterApi.put(`/users/follow/id/${id}`, body);
       console.log(data);
@@ -65,9 +65,7 @@ const actions: ActionTree<IUsersState, IState> = {
       //  alert(error);
       console.log(error)
     }
-   
   },
-  
 };
 
 export default actions;

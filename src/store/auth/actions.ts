@@ -43,7 +43,7 @@ const actions: ActionTree<IAuthState, IState> = {
     commit("setIsLoading", true);
 
     const { data } = await flitterApi.post("/auth/login", credentials);
-
+    console.log('login' + data);
     // commit("setToken", data);
     localStorage.setItem("token", data.token);
     localStorage.setItem("user_id", data.user._id);

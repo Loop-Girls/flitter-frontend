@@ -61,7 +61,6 @@ export default defineComponent({
     },
     setup(props) {
         const { getUserById, follow, unfollow } = useUsers();
-
         const {giveKudo, removeKudo} = useFlits();
         return {
             followUser: async (username: string, loggedUser:any) => {
@@ -70,7 +69,7 @@ export default defineComponent({
                 body.append("following", username)
                 console.log(body);
                 let data = {
-                    "id": loggedUser.value._id,
+                    "id": loggedUser._id,
                     "body": body
                 }
                 follow(data)
@@ -81,7 +80,7 @@ export default defineComponent({
                 body.append("following", username)
                 console.log(body);
                 let data = {
-                    "id": loggedUser.value._id, //TODO:change to id at some point
+                    "id": loggedUser._id, //TODO:change to id at some point
                     "body": body
                 }
                  unfollow(data);
@@ -90,7 +89,7 @@ export default defineComponent({
             },
             removeKudoFromFlit: (flit: Flit,loggedUser:any) => {
                 let body = new URLSearchParams();
-                body.append("kudos", loggedUser.value.username )//TODO:change to id at some point
+                body.append("kudos", loggedUser.username )//TODO:change to id at some point
                 let info = {
                     "_id": flit._id,
                     "body": body
@@ -99,7 +98,7 @@ export default defineComponent({
             },
             giveKudoFromFlit: (flit: Flit,loggedUser:any) => {
                 let body = new URLSearchParams();
-                body.append("kudos", loggedUser.value.username )//TODO:change to id at some point
+                body.append("kudos", loggedUser.username )//TODO:change to id at some point
                 let info = {
                     "_id": flit._id,
                     "body": body

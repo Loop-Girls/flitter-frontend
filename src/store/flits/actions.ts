@@ -25,41 +25,35 @@ const actions: ActionTree<IFlitsState, IState> = {
     // usamos la mutación para volcar los datos obtenidos en la variable del state users
     commit("setFlits", data);
   },
-  async getPrivateZoneFlits({ commit }, followingUsers: User[] | null) {
-    // usamos la mutación para poner isLoading = true
-    // commit("setIsLoading", true);
-    // let privateFlits:Flit[];
-    // privateFlits = [];
+  async getPrivateZoneFlits({ commit }, followingUsers: string[] | []) {
+    //usamos la mutación para poner isLoading = true
+    commit("setIsLoading", true);
+    let url = '';
+    //create string of following users to pass as a query param
+    if(followingUsers?.length>0){
+      let filter = '';
+      followingUsers?.forEach((following:string)=>{
+        filter+= following+','
+      });
+      console.log(filter);
+      // const ultimateFilter = filter.slice(',',-1);
+      // console.log(ultimateFilter);
+       url = `/flits/private/?author=${followingUsers.toString()}`;
+    }else{
+      url = "/flits";
+    }
+    
+    try {
+      const {data} =await flitterApi.get(
+        url
+         );
+      commit("setFlits", data);
+     // usamos la mutación para poner isLoading = false
+     commit("setIsLoading", false);
+    } catch (error) {
+      console.log(error);
+    }
 
-    // const chronoFilter = 'date=-'
-    // obtenemos los datos de manera asíncrona y vemos si hay que filtrar
-
-    //loop usernames to get their flits
-    // followingUsers?.forEach(async (user: User) => {
-    //   const url = `/flits${followingUsers ? "/?" + chronoFilter + "&exactAuthor=" + user.username : ""}`;
-    //   await flitterApi.get(
-    //     url
-    //   ).then(
-    //     (resp) => {
-    //       privateFlits.push(resp.data);
-          
-    //     },
-    //     (error) => console.log(error)
-    //   );
-
-    // });
-    // privateFlits.sort(
-      //TODO:
-      // function(a,b){
-      // Turn your strings into dates, and then subtract them
-      // to get a value that is either negative, positive, or zero.
-      // return new Date(b.date) - new Date(a.date);
-    // }
-    // );
-    // usamos la mutación para volcar los datos obtenidos en la variable del state users
-    // commit("setFlits", privateFlits);
-    // usamos la mutación para poner isLoading = false
-    // commit("setIsLoading", false);
   },
 
   async getFlitById({ commit }, id: string) {
@@ -128,9 +122,9 @@ const actions: ActionTree<IFlitsState, IState> = {
   },
   async giveKudo({commit}, info){
     console.log('remove kudo');
-    let id = info._id;
+    const id = info._id;
     console.log(id)
-    let body = info.body;
+    const body = info.body;
     try {
       const {data} =await flitterApi.put(`/flits/kudos/give/id/${id}`, body);
       console.log(data);
@@ -144,9 +138,9 @@ const actions: ActionTree<IFlitsState, IState> = {
   },
   async removeKudo({commit}, info){
     console.log('remove kudo');
-    let id = info._id;
+    const id = info._id;
     console.log(id)
-    let body = info.body;
+    const body = info.body;
     try {
       const {data} =await flitterApi.put(`/flits/kudos/remove/id/${id}`, body);
       console.log(data);
