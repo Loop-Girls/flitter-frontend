@@ -55,9 +55,6 @@ export default defineComponent({
          router.push({ name: "detail", params: { id: user.id } }),*/
     };
   },
-  onBeforeMount: () => {
-
-  }
 });
 </script>
 

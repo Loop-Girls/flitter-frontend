@@ -10,11 +10,11 @@
             </p>
             <!-- //TODO: implement bottons, change v-if in case following[] type changed to User -->
             <div v-if="loggedUser&&flit.author!=loggedUser.username">
-                <button class="follow_btn" @click="unfollowUser(flit.author)"
+                <button class="follow_btn" @click="unfollowUser(flit.author,loggedUser)"
                     v-if="loggedUser.following.includes(flit.author)">
                     Unfollow
                 </button>
-                <button class="follow_btn" v-else @click=followUser(flit.author)>
+                <button class="follow_btn" v-else @click=followUser(flit.author,loggedUser)>
                     Follow
                 </button>
             </div>
@@ -28,9 +28,9 @@
         </div>
         <!-- //TODO:check if it works -->
         <div id="kudo_btn" class="footer" v-if="loggedUser&&flit.author!=loggedUser.username">
-            <button class="kudo_img" @click="removeKudoFromFlit(flit)" v-if="flit.kudos.includes(loggedUser.username)">Remove
+            <button class="kudo_img" @click="removeKudoFromFlit(flit,loggedUser)" v-if="flit.kudos.includes(loggedUser.username)">Remove
                 Kudo</button>
-            <button class="kudo_img" @click="giveKudoFromFlit(flit)" v-else>Give Kudo</button>
+            <button class="kudo_img" @click="giveKudoFromFlit(flit,loggedUser)" v-else>Give Kudo</button>
         </div>
         <p class="kudo_int">{{ flit.kudos.length }}</p>
     </div>
@@ -61,11 +61,10 @@ export default defineComponent({
     },
     setup(props) {
         const { getUserById, follow, unfollow } = useUsers();
-        const { loggedUser , getUpdatedLoggedUser} = useAuth();
+
         const {giveKudo, removeKudo} = useFlits();
         return {
-            loggedUser,
-            followUser: async (username: string) => {
+            followUser: async (username: string, loggedUser:any) => {
                 console.log('follow' +username);
                 let body = new URLSearchParams();
                 body.append("following", username)
@@ -76,7 +75,7 @@ export default defineComponent({
                 }
                 follow(data)
             },
-            unfollowUser:  (username: string) => {
+            unfollowUser:  (username: string,loggedUser:any) => {
                 console.log('unfollow' +username);
                 let body = new URLSearchParams();
                 body.append("following", username)
@@ -89,7 +88,7 @@ export default defineComponent({
 
                 // alert("Not implemented yet. You want to unfollow " + username);
             },
-            removeKudoFromFlit: (flit: Flit) => {
+            removeKudoFromFlit: (flit: Flit,loggedUser:any) => {
                 let body = new URLSearchParams();
                 body.append("kudos", loggedUser.value.username )//TODO:change to id at some point
                 let info = {
@@ -98,7 +97,7 @@ export default defineComponent({
                 }
                 removeKudo(info);
             },
-            giveKudoFromFlit: (flit: Flit) => {
+            giveKudoFromFlit: (flit: Flit,loggedUser:any) => {
                 let body = new URLSearchParams();
                 body.append("kudos", loggedUser.value.username )//TODO:change to id at some point
                 let info = {

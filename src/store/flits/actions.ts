@@ -27,39 +27,39 @@ const actions: ActionTree<IFlitsState, IState> = {
   },
   async getPrivateZoneFlits({ commit }, followingUsers: User[] | null) {
     // usamos la mutación para poner isLoading = true
-    commit("setIsLoading", true);
-    let privateFlits:Flit[];
-    privateFlits = [];
+    // commit("setIsLoading", true);
+    // let privateFlits:Flit[];
+    // privateFlits = [];
 
-    const chronoFilter = 'date=-'
+    // const chronoFilter = 'date=-'
     // obtenemos los datos de manera asíncrona y vemos si hay que filtrar
 
     //loop usernames to get their flits
-    followingUsers?.forEach(async (user: User) => {
-      const url = `/flits${followingUsers ? "/?" + chronoFilter + "&exactAuthor=" + user.username : ""}`;
-      await flitterApi.get(
-        url
-      ).then(
-        (resp) => {
-          privateFlits.push(resp.data);
+    // followingUsers?.forEach(async (user: User) => {
+    //   const url = `/flits${followingUsers ? "/?" + chronoFilter + "&exactAuthor=" + user.username : ""}`;
+    //   await flitterApi.get(
+    //     url
+    //   ).then(
+    //     (resp) => {
+    //       privateFlits.push(resp.data);
           
-        },
-        (error) => console.log(error)
-      );
+    //     },
+    //     (error) => console.log(error)
+    //   );
 
-    });
-    privateFlits.sort(
+    // });
+    // privateFlits.sort(
       //TODO:
       // function(a,b){
       // Turn your strings into dates, and then subtract them
       // to get a value that is either negative, positive, or zero.
       // return new Date(b.date) - new Date(a.date);
     // }
-    );
+    // );
     // usamos la mutación para volcar los datos obtenidos en la variable del state users
-    commit("setFlits", privateFlits);
+    // commit("setFlits", privateFlits);
     // usamos la mutación para poner isLoading = false
-    commit("setIsLoading", false);
+    // commit("setIsLoading", false);
   },
 
   async getFlitById({ commit }, id: string) {
