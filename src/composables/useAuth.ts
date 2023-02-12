@@ -12,6 +12,9 @@ const useAuth = () => {
     isAuthenticated: computed(() => {
       return store.getters["auth/isAuthenticated"];
     }),
+    loggedUser: computed<User>(() => {
+      return store.getters["auth/getUser"]
+    }),
     logOut: () => {
       localStorage.removeItem("token");
       store.commit("auth/setToken", null);
@@ -24,16 +27,16 @@ const useAuth = () => {
 
       router.push({ name: "home" });
     },
-    loggedUser: computed<User>(() => store.getters["auth/getUser"]),
-    getProfile: (userId:string) => {
+
+    getProfile: (userId: string) => {
       store.dispatch("auth/getProfile", userId);
     },
-    getUpdatedLoggedUser: (userId:string) => {
-      store.dispatch("auth/getUpdatedLoggedUser", userId);
+    getUser: (userId: string) => {
+      store.dispatch("auth/getUser", userId);
     },
-    signup: async(user:URLSearchParams)=>{
-        await store.dispatch("auth/signup", user);
-        router.push({name: "home"});
+    signup: async (user: URLSearchParams) => {
+      await store.dispatch("auth/signup", user);
+      router.push({ name: "home" });
     }
   };
 };

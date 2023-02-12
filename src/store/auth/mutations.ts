@@ -3,8 +3,8 @@ import { MutationTree } from "vuex";
 import { IAuthState } from "./state";
 
 const mutations: MutationTree<IAuthState> = {
-  setLoggedUser(state: IAuthState, user: User) {
-    state.loggedUser = user;
+  setUser(state: IAuthState, loggedUser: User) {
+    state.loggedUser = loggedUser;
   },
 
   setIsLoading(state: IAuthState, isLoading: boolean) {

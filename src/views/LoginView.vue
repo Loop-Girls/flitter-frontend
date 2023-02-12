@@ -28,7 +28,7 @@ export default defineComponent({
     setup() {
         const { login, loggedUser} = useAuth();
         console.log(loggedUser);
-        if(loggedUser.value!==null){
+        if(localStorage.getItem("user_id")){
             router.push('/');
         }
         let email = ref<string>('');

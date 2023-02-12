@@ -10,7 +10,7 @@
             </p>
             <!-- //TODO: implement bottons, change v-if in case following[] type changed to User -->
             <div v-if="loggedUser&&flit.author!=loggedUser.username">
-                <button class="follow_btn" @click="unfollowUser(flit.author,loggedUser)"
+                <button  class="follow_btn" @click="unfollowUser(flit.author,loggedUser)"
                     v-if="loggedUser.following.includes(flit.author)">
                     Unfollow
                 </button>

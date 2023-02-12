@@ -27,7 +27,6 @@ import { useRouter } from 'vue-router';
 import useAuth from '@/composables/useAuth';
 import PaginationComponent from '@/components/PaginationComponent.vue';
 import SearchbarComponent from '@/components/SearchbarComponent.vue';
-
 export default defineComponent({
   name: 'HomeView',
   components: {
@@ -37,12 +36,20 @@ export default defineComponent({
     SearchbarComponent,
   },
   setup() {
-    const { flits, isLoading, getFlits} = useFlits();
-    const { loggedUser } = useAuth();
+    const { flits, isLoading, getFlits, getPrivateZoneFlits } = useFlits();
+    const { loggedUser, getUser } = useAuth();
     const router = useRouter();
-    const { getUpdatedLoggedUser } = useAuth();
-    //TODO: getPrivateFlits if user is logged
-    getFlits();
+    //TODO: get private flits if user logged.
+    console.log('loggedUser?' +loggedUser.value);
+    try {
+      getUser(localStorage.getItem("user_id") ?? '');
+      getPrivateZoneFlits(loggedUser.value.following);
+    } catch (error) {
+      getFlits();
+      console.log(error)
+    }
+
+  
     return {
       loggedUser,
       flits,

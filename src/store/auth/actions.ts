@@ -23,7 +23,7 @@ const actions: ActionTree<IAuthState, IState> = {
     // usamos la mutación para volcar los datos obtenidos en la variable del state users
     commit("setLoggedUser", data);
   },
-  async getUpdatedLoggedUser({ commit }, id) {
+  async getUser({ commit }, id) {
     console.log('getUpdatedLoggedUser ' + id)
     // usamos la mutación para poner isLoading = true
     commit("setIsLoading", true);
@@ -37,7 +37,9 @@ const actions: ActionTree<IAuthState, IState> = {
     commit("setIsLoading", false);
 
     // usamos la mutación para volcar los datos obtenidos en la variable del state users
-    commit("setLoggedUser", data);
+    console.log('commit updated user ' + JSON.stringify(data));
+    commit("setUser", data);
+
   },
   async login({ commit }, credentials: Credentials) {
     commit("setIsLoading", true);
