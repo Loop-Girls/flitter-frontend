@@ -18,7 +18,7 @@ const useFlits = () => {
       store.dispatch("flits/getFlitById", id),
     createFlit: (formData:FormData) =>
       store.dispatch('flits/createFlit', formData),
-    updateFlit: (flit_id: string)=>
+    updateFlit: (flit_id: string, body: URLSearchParams)=>
       store.dispatch("flits/updateFlit", flit_id)
   };
 };

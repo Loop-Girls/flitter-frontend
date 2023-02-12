@@ -23,37 +23,45 @@ const actions: ActionTree<IAuthState, IState> = {
     // usamos la mutación para volcar los datos obtenidos en la variable del state users
     commit("setLoggedUser", data);
   },
+  async getUpdatedLoggedUser({ commit }, id) {
+    console.log('getUpdatedLoggedUser ' + id)
+    // usamos la mutación para poner isLoading = true
+    commit("setIsLoading", true);
 
+    // obtenemos los datos de manera asíncrona
+    const { data } = await flitterApi.get<User, AxiosResponse<User>>(
+      `/auth/profile/${id}`
+    );
+
+    // usamos la mutación para poner isLoading = false
+    commit("setIsLoading", false);
+
+    // usamos la mutación para volcar los datos obtenidos en la variable del state users
+    commit("setLoggedUser", data);
+  },
   async login({ commit }, credentials: Credentials) {
     commit("setIsLoading", true);
 
-    const { data } = await flitterApi.post<
-      Token,
-      AxiosResponse<Token>,
-      Credentials
-    >("/auth/login", credentials);
+    const { data } = await flitterApi.post("/auth/login", credentials);
 
     // commit("setToken", data);
-    // localStorage.setItem("token", JSON.stringify(data));
-
+    localStorage.setItem("token", data.token);
+    localStorage.setItem("user_id", data.user._id);
     commit("setIsLoading", false);
-    commit("setLoggedUser", data);
+    commit("setLoggedUser", data.user);
   },
 
   async signup({ commit }, user: URLSearchParams) {
     commit("setIsLoading", true);
 
-    const { data } = await flitterApi.post<
-      Token,
-      AxiosResponse<Token>,
-      URLSearchParams
-    >("/auth/signup", user);
+    const { data } = await flitterApi.post("/auth/signup", user);
 
     // commit("setToken", data);
-    // localStorage.setItem("token", JSON.stringify(data));
+    localStorage.setItem("token", data.token);
+    localStorage.setItem("user_id", data.savedUser._id);
 
     commit("setIsLoading", false);
-    commit("setLoggedUser", data);
+    commit("setLoggedUser", data.savedUser);
   },
 };
 

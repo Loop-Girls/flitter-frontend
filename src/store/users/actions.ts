@@ -1,0 +1,116 @@
+import flitterApi from "@/api/flitterApi";
+import { Flit } from "@/models/flit";
+import router from "@/router";
+import { AxiosResponse } from "axios";
+import { ActionTree } from "vuex";
+import { IState } from "..";
+import { IUsersState } from "./state";
+import { User } from "@/models/user"
+import { IAuthState } from "../auth/state";
+
+const actions: ActionTree<IUsersState, IState> = {
+  async getUsers({ commit }, filter: string | null) {
+    // usamos la mutación para poner isLoading = true
+    commit("setIsLoading", true);
+    //TODO: change sort dates
+    // obtenemos los datos de manera asíncrona y vemos si hay que filtrar
+    const url = `/users${filter ? "/?" + filter + "=" + filter : ""}`;
+    const { data } = await flitterApi.get<User[], AxiosResponse<User[]>>(
+      url
+    );
+
+    // usamos la mutación para poner isLoading = false
+    commit("setIsLoading", false);
+
+    // usamos la mutación para volcar los datos obtenidos en la variable del state users
+    commit("setUsers", data);
+  },
+ 
+  async getUserById({ commit }, id: string) {
+    commit("setIsLoading", true);
+
+    const { data } = await flitterApi.get<User, AxiosResponse<User>>(
+      `/users/${id}`
+    );
+
+    commit("setSelectedUser", data);
+    commit("setIsLoading", false);
+  },
+  async unfollow({commit},info) {
+    console.log('unfollow');
+    console.log('Body received ' + info);
+    let id = info.id;
+    console.log(id)
+    let body = info.body;
+    try {
+      const {data} =await flitterApi.put(`/users/unfollow/id/${id}`, body);
+      console.log(data);
+      //update loggeduser
+      window.location.reload();
+      // router.push("/");
+    }catch (error) {
+      //  alert(error);
+      console.log(error)
+    }
+   
+  },
+  async follow({commit},info) {
+    console.log('follow');
+    console.log('Body received ' + info);
+    let id = info.id;
+    console.log(id)
+    let body = info.body;
+    try {
+      const {data} =await flitterApi.put(`/users/follow/id/${id}`, body);
+      console.log(data);
+      //update loggeduser
+       window.location.reload();
+      //router.push("/");
+    }catch (error) {
+      //  alert(error);
+      console.log(error)
+    }
+   
+  },
+
+  async searchByAuthor({ commit }, author: string) {
+    commit("setIsLoading", true);
+
+    const { data } = await flitterApi.get<Flit, AxiosResponse<Flit>>(
+      `/flits/?${author}`
+    );
+
+    commit("setSelectedFlit", data);
+
+    commit("setIsLoading", false);
+  },
+  async searchByMessage({ commit }, message: string) {
+    commit("setIsLoading", true);
+
+    const { data } = await flitterApi.get<Flit, AxiosResponse<Flit>>(
+      `/flits/?${message}`
+    );
+
+    commit("setSelectedFlit", data);
+
+    commit("setIsLoading", false);
+  },
+  async updateLimit({ commit, dispatch }, limit: number): Promise<void> {
+    try {
+      commit("setLimit", limit);
+      await dispatch("getFlits");
+    } catch (err) {
+      console.error(err);
+    }
+  },
+  async updateSkip({ commit, dispatch }, skip: number): Promise<void> {
+    try {
+      commit("setSkip", skip);
+      await dispatch("getFlits");
+    } catch (err) {
+      console.error(err);
+    }
+  },
+};
+
+export default actions;

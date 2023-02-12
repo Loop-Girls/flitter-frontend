@@ -79,22 +79,6 @@ const actions: ActionTree<IFlitsState, IState> = {
    
       commit("setIsLoading", false);
   },
-  async updateFlit({ commit }, body: Flit) {
-    console.log('Body received' + body);
-    try {
-      const { data } = await flitterApi.put("/flits", {
-        author: "vue",
-        message: "flit from vue",
-        "date": "2023-02-04T00:00:00.000Z",
-        "kudos": [],
-        "comments": [],
-      });
-      router.push("/");
-    }catch (error) {
-      //  alert(error);
-      console.log(error)
-    }
-  },
   async searchByAuthor({ commit }, author: string) {
     commit("setIsLoading", true);
 

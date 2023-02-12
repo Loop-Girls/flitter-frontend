@@ -25,8 +25,11 @@ const useAuth = () => {
       router.push({ name: "home" });
     },
     loggedUser: computed<User>(() => store.getters["auth/getUser"]),
-    getProfile: () => {
-      store.dispatch("auth/getProfile");
+    getProfile: (userId:string) => {
+      store.dispatch("auth/getProfile", userId);
+    },
+    getUpdatedLoggedUser: (userId:string) => {
+      store.dispatch("auth/getUpdatedLoggedUser", userId);
     },
     signup: async(user:URLSearchParams)=>{
         await store.dispatch("auth/signup", user);

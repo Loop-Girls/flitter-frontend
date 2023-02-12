@@ -9,12 +9,12 @@
                 {{ flit.date }}
             </p>
             <!-- //TODO: implement bottons, change v-if in case following[] type changed to User -->
-            <div v-if="loggedUser">
-                <button class="follow_btn" @click="unfollow(flit.author)"
-                    v-if="user.following.includes(flit.author)">
+            <div v-if="loggedUser&&flit.author!=loggedUser.username">
+                <button class="follow_btn" @click="unfollowUser(flit.author)"
+                    v-if="loggedUser.following.includes(flit.author)">
                     Unfollow
                 </button>
-                <button class="follow_btn" v-else @click=follow(flit.author)>
+                <button class="follow_btn" v-else @click=followUser(flit.author)>
                     Follow
                 </button>
             </div>
@@ -27,8 +27,8 @@
             <img :src="flit.image" />
         </div>
         <!-- //TODO:check if it works -->
-        <div id="kudo_btn" class="footer" v-if="loggedUser">
-            <button class="kudo_img" @click="removeKudo(flit)" v-if="flit.kudos.includes(user._id)">Remove
+        <div id="kudo_btn" class="footer" v-if="loggedUser&&flit.author!=loggedUser.username">
+            <button class="kudo_img" @click="removeKudo(flit)" v-if="flit.kudos.includes(loggedUser.username)">Remove
                 Kudo</button>
             <button class="kudo_img" @click="giveKudo(flit)" v-else>Give Kudo</button>
         </div>
@@ -42,6 +42,8 @@
 import { User } from '@/models/user';
 import { defineComponent, PropType } from 'vue';
 import { Flit } from '../models/flit';
+import useUsers from '../composables/useUsers'
+import useAuth from '@/composables/useAuth';
 
 
 export default defineComponent({
@@ -61,33 +63,33 @@ export default defineComponent({
         },
     },
     setup(props) {
-        // const {fetchUserByUsername, followUser, unfollowUser} = useUsers();
+        const { getUserById, follow, unfollow } = useUsers();
+        const { loggedUser , getUpdatedLoggedUser} = useAuth();
         return {
-            follow: async (username: string) => {
-                //TODO: waiting for useUsers composable implemented.
-                // console.log(username);
-                // await fetchUserByUsername(username).then(
-                //     (resp)=>{
-                //         followUser(resp);
-                //     },
-                //     (error) =>{
-                //         console.log(error);
-                //     }
-                // );
-                alert("Not implemented yet. You want to follow " + username)
+            loggedUser,
+            followUser: async (username: string) => {
+                console.log('follow' +username);
+                let body = new URLSearchParams();
+                body.append("following", username)
+                console.log(body);
+                let data = {
+                    "id": loggedUser.value._id,
+                    "body": body
+                }
+                follow(data)
             },
-            unfollow: async (username: string) => {
-                //TODO: waiting for useUsers composable implemented.
-                // console.log(username);
-                // await fetchUserByUsername(username).then(
-                //     (resp)=>{
-                //         unfollowUser(resp);
-                //     },
-                //     (error) =>{
-                //         console.log(error);
-                //     }
-                // );
-                alert("Not implemented yet. You want to unfollow " + username);
+            unfollowUser:  (username: string) => {
+                console.log('unfollow' +username);
+                let body = new URLSearchParams();
+                body.append("following", username)
+                console.log(body);
+                let data = {
+                    "id": loggedUser.value._id,
+                    "body": body
+                }
+                 unfollow(data);
+
+                // alert("Not implemented yet. You want to unfollow " + username);
             },
             removeKudo: (flit: Flit) => {
                 //TODO: waiting for useUsers composable implemented.

@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    
+
     <div v-if="isLoading">Cargando...</div>
     <div class="flit-list" v-else>
       <FlitComponent v-for="flit in flits" :key="flit._id" :flit="flit" :user="loggedUser" :loggedUser="loggedUser" />
@@ -41,8 +41,15 @@ export default defineComponent({
   },
   setup() {
     const { flits, isLoading, getFlits } = useFlits();
-    const {loggedUser} = useAuth();
+    const { loggedUser } = useAuth();
     const router = useRouter();
+    const { getUpdatedLoggedUser } = useAuth();
+    let user_id = localStorage.getItem('user_id') ?? '';
+    console.log(user_id);
+    if (user_id != '') {
+      getUpdatedLoggedUser(user_id);
+    }
+
     getFlits();
     return {
       loggedUser,
@@ -52,6 +59,9 @@ export default defineComponent({
          router.push({ name: "detail", params: { id: user.id } }),*/
     };
   },
+  onBeforeMount: () => {
+
+  }
 });
 </script>
 

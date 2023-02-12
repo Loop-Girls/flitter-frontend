@@ -1,13 +1,27 @@
 
+import SearchbarComponent from './components/SearchbarComponent.vue';
+
+
 <template>
   <nav>
     <router-link to="/">Home</router-link> |
     <router-link to="/profile">Profile</router-link> |
     <router-link to="/signup">Signup</router-link>|
     <router-link to="/login">Login</router-link>
+    <SearchbarComponent></SearchbarComponent>
   </nav>  <router-view/>
 </template>
+<script lang="ts">
+import { defineComponent } from 'vue';
+import SearchbarComponent from './components/SearchbarComponent.vue';
+export default defineComponent({
+  components: {
+    SearchbarComponent,
+  },
+  }
 
+  );
+</script>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
