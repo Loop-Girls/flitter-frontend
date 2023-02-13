@@ -23,5 +23,6 @@ const getters: GetterTree<IAuthState, IState> = {
     
     return !!token;
   },
+
 };
 export default getters;

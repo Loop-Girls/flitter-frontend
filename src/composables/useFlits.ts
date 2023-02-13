@@ -11,26 +11,28 @@ const useFlits = () => {
     isLoading: computed(() => store.getters["flits/getIsLoading"]),
     selectedFlit: computed<Flit>(() => store.getters['flits/getSelectedFlit']),
     flit: computed(() => store.getters["flits/getFlit"]),
-
+    limitReached: computed(() => store.getters["flits/getLimitReached"]),
 
     getFlits: (filter?: string) =>
       store.dispatch("flits/getFlits", filter),
     getFlitById: (id: string) =>
       store.dispatch("flits/getFlitById", id),
-    createFlit: (formData:FormData) =>
+    createFlit: (formData: FormData) =>
       store.dispatch('flits/createFlit', formData),
-    updateFlit: (flit_id: string, body: URLSearchParams)=>
+    updateFlit: (flit_id: string, body: URLSearchParams) =>
       store.dispatch("flits/updateFlit", flit_id),
     searchByAuthor: (author: string) =>
       store.dispatch("flits/searchByAuthor", author),
     searchByMessage: (message: string) =>
       store.dispatch("flits/searchByMessage", message),
-    getPrivateZoneFlits:(following: string[])=>
+    getPrivateZoneFlits: (following: string[]) =>
       store.dispatch("flits/getPrivateZoneFlits", following),
-    giveKudo: (body: any)=>
+    giveKudo: (body: any) =>
       store.dispatch("flits/giveKudo", body),
     removeKudo: (body: any) =>
-      store.dispatch("flits/removeKudo", body)
+      store.dispatch("flits/removeKudo", body),
+    fetchFlitsPage: (data:any) =>
+      store.dispatch("flits/fetchFlitsPage", data),
   };
 };
 

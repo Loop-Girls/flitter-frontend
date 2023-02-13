@@ -4,8 +4,7 @@ export interface IFlitsState {
   flits: Flit[];
   isLoading: boolean;
   selectedFlit: Flit | null;
-  limit: number;
-  skip: number;
+  limitReached: boolean | null;
 }
 
 function state(): IFlitsState {
@@ -13,8 +12,7 @@ function state(): IFlitsState {
     isLoading: false,
     flits: [],
     selectedFlit: null,
-    limit: 6,
-    skip: 0,
+    limitReached: false,
   };
 }
 export default state;

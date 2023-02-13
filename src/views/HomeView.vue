@@ -2,8 +2,6 @@
       <div class="search">
       <SearchbarComponent/>
     </div>
-  <div class="home">
-  
     <div v-if="isLoading">Cargando...</div>
     <div class="flit-list" v-else>
       <FlitComponent v-for="flit in flits" :key="flit._id" :flit="flit" :loggedUser="loggedUser" />
@@ -12,11 +10,8 @@
     <div>
       <CreateFlitButton></CreateFlitButton>
     </div>
-    <div class="pagination">
-      <PaginationComponent />
-    </div>
+
     <!-- <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/> -->
-  </div>
 </template>
 
 <script lang="ts">
@@ -33,8 +28,8 @@ export default defineComponent({
   components: {
     CreateFlitButton,
     FlitComponent,
-    PaginationComponent,
     SearchbarComponent,
+
   },
   setup() {
     const { flits, isLoading, getFlits, getPrivateZoneFlits } = useFlits();

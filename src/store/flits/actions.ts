@@ -22,8 +22,11 @@ const actions: ActionTree<IFlitsState, IState> = {
     // usamos la mutación para poner isLoading = false
     commit("setIsLoading", false);
 
-    // usamos la mutación para volcar los datos obtenidos en la variable del state users
-    commit("setFlits", data);
+
+      commit("setFlits", data);
+     
+  
+
   },
   async getPrivateZoneFlits({ commit }, followingUsers: string[] | []) {
     //usamos la mutación para poner isLoading = true
@@ -151,6 +154,41 @@ const actions: ActionTree<IFlitsState, IState> = {
       //  alert(error);
       console.log(error)
     }
+  },
+  async fetchFlitsPage({ commit }, filter: any) {
+
+    // usamos la mutación para poner isLoading = true
+    commit("setIsLoading", true);
+    let message = filter.message;
+    let previous_limit = filter.offset;
+    console.log('message'+ message)
+    // obtenemos los datos de manera asíncrona ?skip=1&limit=1
+    let url = '';
+    if(message!=undefined){
+      url =  `/flits?message=${message}&skip=${previous_limit}&limit=5`;
+    }else{
+      url =  `/flits?skip=${previous_limit}&limit=5`;
+    }
+  
+    const { data } = await flitterApi.get<unknown, AxiosResponse<Flit[]>>(
+      url
+    );
+
+    // usamos la mutación para poner isLoading = false
+    commit("setIsLoading", false);
+
+    // usamos la mutación para volcar los datos obtenidos en la variable del state products
+    if(data.length>0){
+      commit("setFlits", data);
+      commit("setLimitReached", false);
+    }
+    if(data.length<5){
+      commit("setLimitReached", true);
+    }
+    if(data.length==0&&message!=undefined){
+      commit("setFlits", data);
+    }
+
   },
 };
 

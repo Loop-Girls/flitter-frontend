@@ -12,11 +12,8 @@ const getters: GetterTree<IFlitsState, IState> = {
   getSelectedFlit(state) {
     return state.selectedFlit;
   },
-  getLimit(state) {
-    return state.limit;
-  },
-  getSkip(state) {
-    return state.skip;
-  },
+  getLimitReached(state){
+    return state.limitReached;
+  }
 };
 export default getters;
