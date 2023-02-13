@@ -1,47 +1,41 @@
 <template>
-    <div>
-        <!-- <li v-for="flit in flits" :key="flit.author"></li>
-        <li v-for="flit in flits" :key="flit.message"></li> -->
-        <input
-            type="text"
-            placeholder="Search in Flitter"
-            class="search-input"
-            required
+  <div class="card">
+    <div class="input-group">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Búsqueda por título"
+        v-model="title"
       />
-      
+      <button
+        class="btn btn-outline-secondary"
+        type="button"
+        id="button-addon2"
+        @click="onSearch()"
+      >
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
     </div>
+  </div>
 </template>
 
-
 <script lang="ts">
-
 import useFlits from "@/composables/useFlits";
-import flits from "@/store/flits";
-import { defineComponent } from "vue";
-// import {useFlits}from '../composables'
-
-export default defineComponent({
- setup() {
-  const {searchByAuthor,searchByMessage} = useFlits() 
-  return{
-    // searchByAuthor,
-    // searchByMessage
-  }
- } 
-})
- 
+import { ref } from "@vue/reactivity";
+export default {
+  setup(_, ctx) {
+    const {getFlits} = useFlits();
+    const title = ref<string>("");
+    return {
+      title,
+      onSearch: () => {
+        console.log(title);
+          getFlits(title.value);
+      },
+    };
+  },
+};
 </script>
 
-
-<style scoped>
-.search-input{
-  position: fixed;
-  top: 0;
-  right: 70px;
-  padding: 8px;
-  border: 2px solid;
-  background-color: transparent;
-  cursor: pointer;
-}
-
+<style>
 </style>

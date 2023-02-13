@@ -1,6 +1,6 @@
 <template>
       <div class="search">
-      <SearchbarComponent />
+      <SearchbarComponent/>
     </div>
   <div class="home">
   
@@ -49,12 +49,11 @@ export default defineComponent({
       getFlits();
       console.log(error)
     }
-
-  
     return {
       loggedUser,
       flits,
       isLoading,
+   
       /* goDetail: (user: User) =>
          router.push({ name: "detail", params: { id: user.id } }),*/
     };
