@@ -42,7 +42,11 @@ export default {
       title,
       onSearch: () => {
         console.log(title);
-        getFlits(title.value);
+        let filter = {
+            "message": title,
+            "offset": offset
+          }
+        fetchFlitsPage(filter);
       },
       inSearchProduct,
       btn_next,

@@ -14,7 +14,7 @@ const actions: ActionTree<IFlitsState, IState> = {
     //TODO: change sort dates
     const chronoFilter = 'date=-'
     // obtenemos los datos de manera asíncrona y vemos si hay que filtrar
-    const url = `/flits${filter ? "/?message=" + filter : ""}`;
+    const url = `/flits${filter ? "/?message=" + filter+'&skip=${0}&limit=5' : "/?skip=0&limit=5"}`;
     const { data } = await flitterApi.get<Flit[], AxiosResponse<Flit[]>>(
       url
     );
