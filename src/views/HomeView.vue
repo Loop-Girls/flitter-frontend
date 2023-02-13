@@ -28,8 +28,8 @@
     </div>
 
     <!-- Login Form -->
-    <form v-on: submit.prevent = "login">
-      <input type="text" id="login" class="fadeIn second" name="login" placeholder="usuario" v-model = "usuario">
+    <form>
+      <input type="text" id="login" class="fadeIn second" name="login" placeholder="email" v-model = "email">
       <input type="text" id="password" class="fadeIn third" name="login" placeholder="password" v-model = "password">
       <input type="submit" class="fadeIn fourth" value="Log In">
     </form>
@@ -98,7 +98,7 @@ export default defineComponent({
 
 
   }
-  setup() {
+  ,setup() {
     const { flits, isLoading, getFlits, getPrivateZoneFlits } = useFlits();
     const { loggedUser, getUser } = useAuth();
     const router = useRouter();

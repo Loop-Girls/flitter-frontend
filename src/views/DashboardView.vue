@@ -5,12 +5,13 @@
 
 </template>
 
-<script>
+<script lang ="ts"> 
 import NavBar from '@/components/NavBar.vue'
 export default{
     name: "Dashboard",
-    data()
-    component:{
+    data(){
+    }
+    ,component:{
         NavBar,
     },
   
