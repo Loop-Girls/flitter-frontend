@@ -29,7 +29,7 @@
 
     <!-- Login Form -->
     <form v-on: submit.prevent = "login">
-      <input type="text" id="login" class="fadeIn second" name="login" placeholder="usuario" v-model = "Usuario">
+      <input type="text" id="login" class="fadeIn second" name="login" placeholder="usuario" v-model = "usuario">
       <input type="text" id="password" class="fadeIn third" name="login" placeholder="password" v-model = "password">
       <input type="submit" class="fadeIn fourth" value="Log In">
     </form>
@@ -78,17 +78,17 @@ export default defineComponent({
   methods:{
     login(){
       let json={
-        "email" = this.email,
-        "password"= this.password
+        "email": this.email,
+        "password":this.password
       };
-      axios.post('', jason)
+      axios.post('', json)
       .then(data =>{
         if(data.data.status == "ok"){
           console.log("Todo correcto")
           
         }else{
           this.error = true;
-          this.error_msg = data.dataresult.error_msg;
+          this.error_msg = data.data.result.error_msg;
 
 
         }
