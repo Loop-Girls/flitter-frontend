@@ -9,7 +9,20 @@ import SearchbarComponent from './components/SearchbarComponent.vue';
     <router-link to="/signup">Signup</router-link>|
     <router-link to="/login">Login</router-link>
   </nav>  <router-view/>
+  <FooterBar>Karen Andrea Cristina Esthefani Beatriz</FooterBar>
 </template>
+
+<script lang="ts">
+import FooterBar from './components/FooterBar.vue';
+import { defineComponent } from 'vue';
+export default defineComponent({
+  name: "App",
+  components: {
+    FooterBar,
+  }
+})
+</script>
+
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
