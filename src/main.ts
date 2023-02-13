@@ -8,10 +8,9 @@ import VueAxios from 'vue-axios'
 
 
 
-use.config.productionTip = false
 use(BootstrapVue)
 use(IconsPlugin)
-use(VueAxios, axios)n
+use(VueAxios)
 
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/boostrap-vue-css'
