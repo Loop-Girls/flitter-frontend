@@ -7,7 +7,7 @@
         <FlitComponent v-for="flit in flits" :key="flit._id" :flit="flit" :loggedUser="loggedUser" />
     </div>
 
-    <div>
+    <div v-if="loggedUser">
         <CreateFlitButton></CreateFlitButton>
     </div>
 
