@@ -48,6 +48,18 @@ const routes: Array<RouteRecordRaw> = [
     beforeEnter: [haveAuthGuard],
     component: PrivateHomeView
   },
+  // {
+  //   path: "/users/:id",
+  //   name: "user-detail",
+  //   component: () =>
+  //     import(
+  //       /* webpackChunkName: "product-detail" */ "../views/ProfileDetailView.vue"
+  //     ),
+  //   props: (route) => {
+  //     const id = route.params.id;
+  //     return { id };
+  //   },
+  // }
 ]
 
 const router = createRouter({

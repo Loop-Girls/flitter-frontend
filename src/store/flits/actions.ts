@@ -10,6 +10,7 @@ import { User } from "@/models/user"
 const actions: ActionTree<IFlitsState, IState> = {
   async getFlits({ commit }, filter: string | null) {
     // usamos la mutación para poner isLoading = true
+    commit("setLimitReached", false);
     commit("setIsLoading", true);
     //TODO: change sort dates
     const chronoFilter = 'date=-'
@@ -23,13 +24,23 @@ const actions: ActionTree<IFlitsState, IState> = {
     commit("setIsLoading", false);
 
 
-    commit("setFlits", data);
+    if(data.length>0){
+      commit("setFlits", data);
+      commit("setLimitReached", false);
+    }
+    if(data.length<5){
+      commit("setLimitReached", true);
+    }
+    if(data.length==0&&filter!=undefined){
+      commit("setFlits", data);
+    }
      
   
 
   },
   async getPrivateZoneFlits({ commit }, followingUsers: string[] | []) {
     //usamos la mutación para poner isLoading = true
+    commit("setLimitReached", false);
     commit("setIsLoading", true);
     let url = '';
     //create string of following users to pass as a query param
@@ -41,7 +52,7 @@ const actions: ActionTree<IFlitsState, IState> = {
       console.log('getprivate' +filter);
       // const ultimateFilter = filter.slice(',',-1);
       // console.log(ultimateFilter);
-       url = `/flits/private/?author=${followingUsers.toString()}`;
+       url = `/flits/private/?author=${followingUsers.toString()}&skip=0&limit=5`;
     }else{
       url = "/flits/?skip=0&limit=5";
     }
@@ -50,7 +61,12 @@ const actions: ActionTree<IFlitsState, IState> = {
       const {data} =await flitterApi.get(
         url
          );
-      commit("setFlits", data);
+         if(data.length>0){
+          commit("setFlits", data);
+         }else{
+          commit("setLimitReached", true);
+         }
+   
      // usamos la mutación para poner isLoading = false
      commit("setIsLoading", false);
     } catch (error) {
@@ -160,6 +176,7 @@ const actions: ActionTree<IFlitsState, IState> = {
   async fetchFlitsPage({ commit }, filter: any) {
 
     // usamos la mutación para poner isLoading = true
+    commit("setLimitReached", false);
     commit("setIsLoading", true);
     const message = filter.message;
     const previous_limit = filter.offset;
@@ -195,9 +212,9 @@ const actions: ActionTree<IFlitsState, IState> = {
     if(data.length<5){
       commit("setLimitReached", true);
     }
-    if(data.length==0&&message!=undefined){
-      commit("setFlits", data);
-    }
+    // if(data.length==0&&message!=undefined){
+    //   commit("setFlits", data);
+    // }
 
   },
 };

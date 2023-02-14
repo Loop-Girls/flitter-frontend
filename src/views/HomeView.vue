@@ -4,10 +4,11 @@
   </div>
   <div v-if="isLoading">Cargando...</div>
   <div class="flit-list" v-else>
-    <FlitComponent v-for="flit in flits" :key="flit._id" :flit="flit" :loggedUser="loggedUser" />
+    <FlitComponent v-for="flit in flits" :key="flit._id" :flit="flit" :loggedUser="loggedUser"
+       />
   </div>
 
-  <div>
+  <div v-if="loggedUser">
     <CreateFlitButton></CreateFlitButton>
   </div>
 
@@ -30,7 +31,7 @@ export default defineComponent({
     CreateFlitButton,
     FlitComponent,
     SearchbarComponent,
-    
+
 
   },
   setup() {
@@ -43,7 +44,11 @@ export default defineComponent({
     console.log('gettingFlits')
     getProfile();
     getFlits();
+    let today_date = new Date(new Date());
+    console.log(today_date);
+ 
     return {
+      today_date,
       loggedUser,
       flits,
       isLoading,

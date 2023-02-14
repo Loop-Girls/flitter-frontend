@@ -1,9 +1,9 @@
 <template>
-    <div class="card">
+    <div class="card" >
         <div class="header">
-            <p class="username">
+            <a class="username" href="/http://localhost:8080/#/">
                 {{ flit.author }}
-            </p>
+            </a>
             <p class="date">
                 <!-- //TODO: change to nice date format -->
                 {{new Date(flit.date).toLocaleString()}}
@@ -56,7 +56,7 @@ export default defineComponent({
         },
         loggedUser: {
             type: Object as PropType<User>,
-        },
+        }
     },
     setup(props) {
         const { getUserById, follow, unfollow } = useUsers();
@@ -74,7 +74,7 @@ export default defineComponent({
                 }
                 await follow(data).then(
                     (resp)=> {
-                        getPrivateZoneFlits(loggedUser.following),
+                        // window.location.reload();
                         getProfile();
                     },
                     (error)=> alert('Oops, error.')
@@ -91,7 +91,8 @@ export default defineComponent({
                 }
                  await unfollow(data).then(
                     (resp)=>  {
-                        getPrivateZoneFlits(loggedUser.following),
+                        // window.location.reload();
+                        // getPrivateZoneFlits(loggedUser.following),
                         getProfile();
                     },
                     (error)=> alert('Oops, error.')
@@ -107,7 +108,8 @@ export default defineComponent({
                     "body": body
                 }
                 await removeKudo(info).then(
-                    (resp)=> getPrivateZoneFlits(loggedUser.following),
+                    // (resp)=> getPrivateZoneFlits(loggedUser.following),
+                    (resp)=> window.location.reload(),
                     (error)=> alert('Oops, error.')
                 );
             },
@@ -119,7 +121,7 @@ export default defineComponent({
                     "body": body
                 }
                 await giveKudo(info).then(
-                    (resp)=> getPrivateZoneFlits(loggedUser.following),
+                    (resp)=> window.location.reload(),
                     (error)=> alert('Oops, error.')
                 );
             },

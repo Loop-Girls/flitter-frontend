@@ -49,6 +49,8 @@ export default {
       title,
       onSearch: () => {
         console.log(title.value);
+        //TODO: look into following users flits
+        
         let url = `/flits/?message=${title.value}&skip=${offset}&limit=5`
         let filter = {
             "message": url,

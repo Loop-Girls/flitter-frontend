@@ -7,6 +7,7 @@ const getters: GetterTree<IFlitsState, IState> = {
     return state.isLoading;
   },
   getFlits(state) {
+    // return state.flits.filter((flit)=>new Date(flit.date)<=new Date(new Date()));
     return state.flits;
   },
   getSelectedFlit(state) {

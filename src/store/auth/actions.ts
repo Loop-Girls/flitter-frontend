@@ -2,6 +2,7 @@ import flitterApi from "@/api/flitterApi";
 import { Credentials } from "@/models/credentials";
 import { Token } from "@/models/token";
 import { User } from "@/models/user";
+import router from "@/router";
 import { AxiosResponse } from "axios";
 import { ActionTree } from "vuex";
 import { IState } from "..";
@@ -51,6 +52,8 @@ const actions: ActionTree<IAuthState, IState> = {
     localStorage.setItem("user_id", data.user._id);
     commit("setIsLoading", false);
     commit("setUser", data.user);
+     window.location.reload();
+     router.push('/private');
   },
 
   async signup({ commit }, user: URLSearchParams) {
@@ -64,6 +67,9 @@ const actions: ActionTree<IAuthState, IState> = {
 
     commit("setIsLoading", false);
     commit("setUser", data.savedUser);
+  
+     window.location.reload();
+     router.push('/private');
   },
 };
 

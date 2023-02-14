@@ -22,7 +22,7 @@ export default defineComponent({
     const { isAuthenticated } = useAuth();
     return {
       links: computed(() => {
-        if (isAuthenticated) {
+        if (isAuthenticated.value) {
           return [
             { label: "Hello World", link: { name: "home" } },
             { label: "My world", link: { name: "private" } },
@@ -35,7 +35,6 @@ export default defineComponent({
             { label: "Login", link: { name: "login" } },
           ];
         }
-        return [];
       }),
     };
   }
