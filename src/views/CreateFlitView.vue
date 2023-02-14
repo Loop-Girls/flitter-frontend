@@ -1,8 +1,11 @@
 <template>
-    <div class="card">
+    <body>
+        <div class="responsive"></div>
+    <div class="container">
 
-        <div>
-            <label for="message">What are you thinking?</label>
+        <div class="margin">
+            <label class="enunciado" for="message">¿Qué está pasando?</label>
+            
             <input class="message" v-model="message" maxlength="150" />
         </div>
         <div class="buttons">
@@ -10,15 +13,16 @@
                 <input id="file" type="file" @change="selectImage" />
                 <!-- TODO: improve -->
                 <!-- <button @click="removeSelectedFile">X</button> -->
-                <label class="button">Schedule</label>
-                <input type="date" v-model="date" :min="today_date" />
+                <label class="button"></label>
+                <input class="date"  type="date" v-model="date" :min="today_date" />
             </div>
-            <div>
-                <button @click="sendFlit(message, date)">Post Flit</button>
+            <div class="post">
+                <button class="btn" @click="sendFlit(message, date)">Post Flit</button>
             </div>
         </div>
 
     </div>
+</body>
 </template>
 
 <script lang="ts">import { defineComponent, ref, watch } from 'vue';
@@ -98,48 +102,87 @@ export default defineComponent({
 });
 </script>
 <style scoped>
-.card {
-    margin-left: auto;
-    margin-right: auto;
-    border-style: groove;
-    border-width: 3px;
-    padding: 2rem;
+.container{
+    background-color:white;
+    width: 1000px;
+    height: 600px;
+    float:left;
+    margin: 10% 35%;
+    padding: 30px;
+    border-radius: 30px;
+    box-shadow: 50px 50px  rgb(251, 216, 238);
+    border-color: inherit;
+}
+.margin{
+    margin-right: 500px;
+}
+.enunciado{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+   color: rgb(31, 30, 31);;
+    font-size: 40px;
+    position:relative;
+    display:block;
+    margin-left: 250px;
+    border-color: inherit;
+    font-style:oblique;
+
+}
+.message:hover{
+    border-color:rgb(248, 198, 230);
+}
+.message{
+    background-color: rgb(249, 249, 249);
+    width: 600px;
+    height: 200px;
+    border-radius: 20px;
+    margin-top: 20px;
+    margin-bottom:20px;
+margin-right: 100px;
+    position:absolute;
+    display:block;
+    display:inline-block ;
+
+    border-color: transparent;
+ 
+   
 }
 
-div {
-    margin: 1rem;
+.date{
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: 10px 10px rgb(251, 216, 238);
+    border-color: transparent;
 }
 
-button {
-    border-radius: 3px;
-    background-color:#ffb000;
-    margin-right: auto;
-    margin-left: auto;
+.btn{
+    width: 70px;
+    height: 50px;
+    border-radius: 50px;
+ 
+color:rgb(27, 26, 26);
+font-size: 10px;
+text-align: center;
+background-color: rgb(252, 252, 252);
+box-shadow: 10px 10px rgb(251, 216, 238);
+border-color: transparent;
 }
 
-.message {
-    height: 100px;
+.buttons{
+ margin-top: 250px;
+display: flex;
+justify-content: center;
+position:relative;
+display:block;
+margin-left:200px;
+
 }
 
-label {
-    display: block;
-}
+.post{
+    position:absolute;
+    display:block;
+    display:inline-block ;
+    margin-left:200px;
+    margin-top: 30px;
 
-input {
-    margin-bottom: 20px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
-    .card {
-        margin-left: auto;
-        margin-right: auto;
-        border-style: groove;
-        border-width: 3px;
-        width: 50%;
-
-    }
 }
 </style>
