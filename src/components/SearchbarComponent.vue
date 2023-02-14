@@ -2,7 +2,7 @@
   <div>
     <div class="card">
     <div class="input-group">
-      <input type="text" class="form-control" placeholder="Búsqueda por título" v-model="title" />
+      <input type="text" class="form-control" placeholder="Encuentra tu flit" v-model="title" />
       <button class="btn btn-outline-secondary" type="button" id="button-addon2" @click="onSearch()">
         <i class="fa-solid fa-magnifying-glass"></i>
       </button>
@@ -130,6 +130,15 @@ export default {
 </script>
 
 <style scoped>
+.card{
+  width: 20%;
+  height: 50%;
+   margin-top: 3%;
+   margin-bottom: 3%;
+  margin-right: auto;
+    margin-left: auto;
+
+}
 .div-btn{
     margin-top: 10px;
     margin-bottom: 10px;
@@ -139,7 +148,9 @@ export default {
     margin-right: auto;
     height: 30px;
 }
-p{
-    margin: 3px;
+.form-control{
+  font-size: 30px;
+  margin-left: auto;
+    margin-right: auto;
 }
 </style>

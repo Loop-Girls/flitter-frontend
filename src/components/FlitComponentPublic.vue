@@ -1,39 +1,40 @@
 <template>
-    <div class="card" >
-        <div class="header">
-            <a class="username" href="/http://localhost:8080/#/">
+       <div class="container">
+        <div class="product-details">
+            <h2 class="author" href="/http://localhost:8080/#/">
                 {{ flit.author }}
-            </a>
+            </h2>
             <p class="date">
                 <!-- //TODO: change to nice date format -->
-                {{new Date(flit.date).toLocaleString()}}
+                {{ new Date(flit.date).toLocaleString() }}
             </p>
+            <div class="info">
+                <p>{{ flit.message }}</p>
+            </div>
+
+            <div class="product-imgage" v-if="flit.image">
+                <img :src="flit.image" />
+            </div>
             <!-- //TODO: implement bottons, change v-if in case following[] type changed to User -->
-            <div class="footer" v-if="loggedUser&&flit.author!=loggedUser.username">
-                <button  class="follow_btn" @click="unfollowUser(flit.author,loggedUser)"
+            <div class="control" v-if="loggedUser && flit.author != loggedUser.username">
+                <button class="unfollow" @click="unfollowUser(flit.author, loggedUser)"
                     v-if="loggedUser.following.includes(flit.author)">
                     Unfollow
                 </button>
-                <button class="follow_btn" v-else @click=followUser(flit.author,loggedUser)>
+                <button class="follow" v-else @click=followUser(flit.author,loggedUser)>
                     Follow
                 </button>
+
+                <div class="footer" v-if="loggedUser && flit.author != loggedUser.username">
+                    <button class="nogive" @click="removeKudoFromFlit(flit, loggedUser)"
+                        v-if="flit.kudos.includes(loggedUser.username)"> &#128534;</button>
+                    <button class="give" @click="giveKudoFromFlit(flit, loggedUser)" v-else> &#128525;</button>
+                    <p class="lenght-kudos"> &#128525; {{ flit.kudos.length }}</p>
+                </div>
             </div>
 
-        </div>
-        <div class="message" v-if="flit.message">
-            <p>{{ flit.message }}</p>
-        </div>
-        <div class="img" v-if="flit.image">
-            <img :src="flit.image" />
-        </div>
-        <!-- //TODO:check if it works -->
-        <div id="kudo_btn" class="footer" v-if="loggedUser&&flit.author!=loggedUser.username">
-            <button class="kudo_img" @click="removeKudoFromFlit(flit,loggedUser)" v-if="flit.kudos.includes(loggedUser.username)">Remove
-                Kudo</button>
-            <button class="kudo_img" @click="giveKudoFromFlit(flit,loggedUser)" v-else>Give Kudo</button>
-        </div>
-        <p class="kudo_int">{{ flit.kudos.length }}</p>
-    </div>
+</div>
+</div>
 
 </template>
 
@@ -132,43 +133,107 @@ export default defineComponent({
 <style scoped>
 
     
-.card {
-    font-family: 'Courier New', Courier, monospace;
-    border-style: solid;
-    padding: 20px;
-    border-color: rgb(37, 207, 215);
-    border-radius: 0px;
-    border-width: 2px;
-    margin-left: auto;
+.date {
+    margin-left: 10%;
+    font-size: 30px;
+    color: rgb(36, 157, 255);
+}
+
+.container {
+    background-color: rgb(255, 255, 255);
+    padding: 30px;
+    border-radius: 70px;
     margin-right: auto;
-}
-
-.card:hover {
-    border-color: #ffb000;
-
+    margin-left: auto;
+    margin-top: 50px;
 
 }
 
-.header,
-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
+.info {
+    font-size: 30px;
+    margin-right: 10%;
+    margin-left: 10%;
 }
 
-img {
-    max-width: 100%;
+.author {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 50px;
 }
 
-.username {
-    font-style: oblique;
-    font-weight: 700;
+.product-image {
+    margin-left: 30%;
 }
-button{
-    background-color: #ffb000;
-    color:rgb(47, 55, 55);
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    border-color: #ffb000;
-    border-radius: 5px;
+
+.puppy {
+    width: auto;
+    height: auto;
+    border-radius: 15px;
+
+}
+
+.control {
+    margin-bottom: 10%;
+    margin-top: 5%;
+
+}
+
+
+.follow {
+    background-color: rgb(36, 157, 255);
+    width: 10%;
+    height: 50px;
+    font-size: 20px;
+    color: white;
+    border-radius: 10px;
+    float: right;
+
+}
+
+.unfollow {
+    background-color: rgb(36, 157, 255);
+    width: 10%;
+    height: 50px;
+    font-size: 20px;
+    color: white;
+    border-radius: 10px;
+    float: right;
+    margin-right: 10px;
+
+}
+
+.give {
+    font-size: 30px;
+    padding: 10px;
+    border-radius: 50px;
+    background-color: white;
+    border: transparent;
+    float: right;
+    margin-right: 10px;
+    
+}
+
+.nogive {
+    font-size: 30px;
+    padding: 10px;
+    border-radius: 50px;
+    background-color: white;
+    border: transparent;
+    float: right;
+    margin-right: 10px;
+}
+
+.lenght-kudos {
+    float: left;
+    margin-left: 20px;
+    font-size: 20px;
+    background-color:white(255, 252, 252);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+@media screen and (min-width: 768px) {
+    .projects {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 </style>

@@ -1,8 +1,8 @@
 <template>
     <div class = "nav">
-        <a href = "#"> Home</a>
-        <a href = "#">Login</a>
-        <a href = "#">Logout</a>
+        <a class="name" href = "#"> Home</a>
+        <a class="name" href = "#">Login</a>
+        <a class="name" href = "#">Logout</a>
         <a v-on:click=" logout" href="#">Logout</a>
     </div>
 </template>
@@ -18,5 +18,11 @@ export default{
 }
 
 
-
 </script>
+
+<style scoped>
+.name{
+    font-size: 30px;
+}
+</style>
+

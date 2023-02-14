@@ -104,7 +104,7 @@ export default defineComponent({
 <style scoped>
 .container{
     background-color:white;
-    width: 1000px;
+    width:100%;
     height: 600px;
     float:left;
     margin: 10% 35%;
