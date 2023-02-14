@@ -60,7 +60,7 @@ export default defineComponent({
     },
     setup(props) {
         const { getUserById, follow, unfollow } = useUsers();
-        const {giveKudo, removeKudo, getPrivateZoneFlits} = useFlits();
+        const {giveKudo, removeKudo, getPrivateZoneFlits,getFlits} = useFlits();
         const{getProfile} = useAuth();
         return {
             followUser: async (username: string, loggedUser:any) => {
@@ -108,7 +108,7 @@ export default defineComponent({
                     "body": body
                 }
                 await removeKudo(info).then(
-                     (resp)=> getPrivateZoneFlits(loggedUser.following),
+                     (resp)=> getFlits(),
                     // (resp)=> alert('unliked'),
                     (error)=> alert('Oops, error.')
                 );
@@ -121,7 +121,7 @@ export default defineComponent({
                     "body": body
                 }
                 await giveKudo(info).then(
-                    (resp)=> getPrivateZoneFlits(loggedUser.following),
+                    (resp)=> getFlits(),
                     (error)=> alert('Oops, error.')
                 );
             },

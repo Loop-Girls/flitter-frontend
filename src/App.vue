@@ -5,11 +5,11 @@
     <router-view/>
   <FooterBar>
   <div class="link">
-    <A HREf="https://github.com/Andreapf13" style="color:aliceblue"> Andrea </A>
-    <A HREf="https://github.com/CristinaMercedesNunez" style="color:aliceblue"> Cristina </A>
-    <A HREf="https://github.com/Esthefani5" style="color:aliceblue"> Esteff </A>
-    <A HREf="https://github.com/kyl03" style="color:aliceblue"> Karen </A>
-    <A HREf="https://github.com/BeatrizMontero" style="color:aliceblue"> Beatriz </A>
+    <A HREf="https://github.com/Andreapf13" target='_blank' style="color:aliceblue"> Andrea </A>
+    <A HREf="https://github.com/CristinaMercedesNunez" target='_blank' style="color:aliceblue"> Cristina </A>
+    <A HREf="https://github.com/Esthefani5" target='_blank' style="color:aliceblue"> Esteff </A>
+    <A HREf="https://github.com/kyl03" target='_blank' style="color:aliceblue"> Karen </A>
+    <A HREf="https://github.com/BeatrizMontero" target='_blank' style="color:aliceblue"> Beatriz </A>
   </div>
   </FooterBar>
 </template>

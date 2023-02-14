@@ -4,7 +4,7 @@
   </div>
   <div v-if="isLoading">Cargando...</div>
   <div class="flit-list" v-else>
-    <FlitComponent v-for="flit in flits" :key="flit._id" :flit="flit" :loggedUser="loggedUser"
+    <FlitComponentPublic v-for="flit in flits" :key="flit._id" :flit="flit" :loggedUser="loggedUser"
        />
   </div>
 
@@ -18,7 +18,7 @@
 <script lang="ts">
 import { defineComponent, watch } from 'vue';
 import CreateFlitButton from '@/components/CreateFlitButton.vue';
-import FlitComponent from '@/components/FlitComponent.vue';
+import FlitComponentPublic from '@/components/FlitComponentPublic.vue';
 import useFlits from '@/composables/useFlits';
 import { useRouter } from 'vue-router';
 import useAuth from '@/composables/useAuth';
@@ -29,7 +29,7 @@ export default defineComponent({
   name: 'HomeView',
   components: {
     CreateFlitButton,
-    FlitComponent,
+    FlitComponentPublic,
     SearchbarComponent,
 
 

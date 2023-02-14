@@ -44,7 +44,7 @@ const actions: ActionTree<IUsersState, IState> = {
       const {data} =await flitterApi.put(`/users/unfollow/id/${id}`, body);
       //update loggeduser
      
-      // router.push("/");
+ 
     }catch (error) {
       //  alert(error);
       console.log(error)
@@ -60,7 +60,7 @@ const actions: ActionTree<IUsersState, IState> = {
       console.log(data);
       //update loggeduser
       
-      //router.push("/");
+   
     }catch (error) {
       //  alert(error);
       console.log(error)
