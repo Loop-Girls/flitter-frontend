@@ -43,7 +43,7 @@ const actions: ActionTree<IUsersState, IState> = {
     try {
       const {data} =await flitterApi.put(`/users/unfollow/id/${id}`, body);
       //update loggeduser
-      window.location.reload();
+     
       // router.push("/");
     }catch (error) {
       //  alert(error);
@@ -59,7 +59,7 @@ const actions: ActionTree<IUsersState, IState> = {
       const {data} =await flitterApi.put(`/users/follow/id/${id}`, body);
       console.log(data);
       //update loggeduser
-       window.location.reload();
+      
       //router.push("/");
     }catch (error) {
       //  alert(error);

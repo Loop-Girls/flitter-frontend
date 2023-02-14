@@ -66,4 +66,7 @@ export default defineComponent({
 p{
     margin: 3px;
 }
+button{
+    background-color:rgb(37, 207, 215)
+}
 </style>

@@ -23,7 +23,7 @@ const actions: ActionTree<IFlitsState, IState> = {
     commit("setIsLoading", false);
 
 
-      commit("setFlits", data);
+    commit("setFlits", data);
      
   
 

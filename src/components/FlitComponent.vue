@@ -9,7 +9,7 @@
                 {{new Date(flit.date).toLocaleString()}}
             </p>
             <!-- //TODO: implement bottons, change v-if in case following[] type changed to User -->
-            <div v-if="loggedUser&&flit.author!=loggedUser.username">
+            <div class="footer" v-if="loggedUser&&flit.author!=loggedUser.username">
                 <button  class="follow_btn" @click="unfollowUser(flit.author,loggedUser)"
                     v-if="loggedUser.following.includes(flit.author)">
                     Unfollow
@@ -61,6 +61,7 @@ export default defineComponent({
     setup(props) {
         const { getUserById, follow, unfollow } = useUsers();
         const {giveKudo, removeKudo, getPrivateZoneFlits} = useFlits();
+        const{getProfile} = useAuth();
         return {
             followUser: async (username: string, loggedUser:any) => {
                 console.log('follow' +username);
@@ -71,9 +72,15 @@ export default defineComponent({
                     "id": loggedUser._id,
                     "body": body
                 }
-                follow(data)
+                await follow(data).then(
+                    (resp)=> {
+                        getPrivateZoneFlits(loggedUser.following),
+                        getProfile();
+                    },
+                    (error)=> alert('Oops, error.')
+                );
             },
-            unfollowUser:  (username: string,loggedUser:any) => {
+            unfollowUser: async (username: string,loggedUser:any) => {
                 console.log('unfollow' +username);
                 let body = new URLSearchParams();
                 body.append("following", username)
@@ -82,7 +89,13 @@ export default defineComponent({
                     "id": loggedUser._id, //TODO:change to id at some point
                     "body": body
                 }
-                 unfollow(data);
+                 await unfollow(data).then(
+                    (resp)=>  {
+                        getPrivateZoneFlits(loggedUser.following),
+                        getProfile();
+                    },
+                    (error)=> alert('Oops, error.')
+                );
 
                 // alert("Not implemented yet. You want to unfollow " + username);
             },
@@ -115,10 +128,13 @@ export default defineComponent({
 });
 </script>
 <style scoped>
+
+    
 .card {
+    font-family: 'Courier New', Courier, monospace;
     border-style: solid;
     padding: 20px;
-    border-color: rgb(217, 115, 195);
+    border-color: rgb(37, 207, 215);
     border-radius: 0px;
     border-width: 2px;
     margin-left: auto;
@@ -126,7 +142,7 @@ export default defineComponent({
 }
 
 .card:hover {
-    border-color: gray;
+    border-color: #ffb000;
 
 
 }
@@ -135,7 +151,7 @@ export default defineComponent({
 footer {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: baseline;
 }
 
 img {
@@ -145,5 +161,12 @@ img {
 .username {
     font-style: oblique;
     font-weight: 700;
+}
+button{
+    background-color: #ffb000;
+    color:rgb(47, 55, 55);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-color: #ffb000;
+    border-radius: 5px;
 }
 </style>

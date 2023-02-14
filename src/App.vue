@@ -1,22 +1,43 @@
 
 <template>
-    <nav>
-    <router-link to="/">Hello World</router-link> |
-    <router-link to="/private">My World</router-link> |
-    <router-link to="/profile">Profile</router-link> |
-    <router-link to="/signup">Signup</router-link>|
-    <router-link to="/login">Login</router-link>
-  </nav>  <router-view/>
+    
+      <NavBarLinks :links="links"/>
+    <router-view/>
   <FooterBar>Karen Andrea Cristina Esthefani Beatriz</FooterBar>
 </template>
 
 <script lang="ts">
 import FooterBar from './components/FooterBar.vue';
-import { defineComponent } from 'vue';
+import NavBarLinks from './components/NavBarLinks.vue';
+import { computed, defineComponent } from 'vue';
+import { RouterLink, RouterView } from 'vue-router';
+import useAuth from './composables/useAuth';
 export default defineComponent({
   name: "App",
   components: {
     FooterBar,
+    NavBarLinks,
+  },
+  setup(){
+    const { isAuthenticated } = useAuth();
+    return {
+      links: computed(() => {
+        if (isAuthenticated) {
+          return [
+            { label: "Hello World", link: { name: "home" } },
+            { label: "My world", link: { name: "private" } },
+            { label: "Profile", link: { name: "profile" } },
+          ];
+        }else{
+          return [
+            { label: "Hello World", link: { name: "home" } },
+            { label: "Signup", link: { name: "signup" } },
+            { label: "Login", link: { name: "login" } },
+          ];
+        }
+        return [];
+      }),
+    };
   }
 })
 </script>

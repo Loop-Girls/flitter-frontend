@@ -43,10 +43,6 @@ export default defineComponent({
     console.log('gettingFlits')
     getProfile();
     getFlits();
-
-    watch(loggedUser, () => {
-  
-    });
     return {
       loggedUser,
       flits,

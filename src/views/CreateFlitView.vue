@@ -112,7 +112,7 @@ div {
 
 button {
     border-radius: 3px;
-    background-color: thistle;
+    background-color:#ffb000;
     margin-right: auto;
     margin-left: auto;
 }
