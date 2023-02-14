@@ -24,7 +24,7 @@ export default defineComponent({
 	position:fixed;
 	width:60px;
 	height:60px;
-	bottom:40px;
+	bottom:60px;
 	right:40px;
 	background-color:#0C9;
 	color:#FFF;
