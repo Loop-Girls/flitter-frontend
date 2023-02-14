@@ -14,7 +14,7 @@ const actions: ActionTree<IFlitsState, IState> = {
     //TODO: change sort dates
     const chronoFilter = 'date=-'
     // obtenemos los datos de manera asíncrona y vemos si hay que filtrar
-    const url = `/flits${filter ? "/?message=" + filter+'&skip=${0}&limit=5' : "/?skip=0&limit=5"}`;
+    const url = `/flits${filter ? "/?message=" + filter+'&skip=0&limit=5' : "/?skip=0&limit=5"}`;
     const { data } = await flitterApi.get<Flit[], AxiosResponse<Flit[]>>(
       url
     );
@@ -38,12 +38,12 @@ const actions: ActionTree<IFlitsState, IState> = {
       followingUsers?.forEach((following:string)=>{
         filter+= following+','
       });
-      console.log(filter);
+      console.log('getprivate' +filter);
       // const ultimateFilter = filter.slice(',',-1);
       // console.log(ultimateFilter);
        url = `/flits/private/?author=${followingUsers.toString()}`;
     }else{
-      url = "/flits";
+      url = "/flits/?skip=0&limit=5";
     }
     
     try {
@@ -77,13 +77,15 @@ const actions: ActionTree<IFlitsState, IState> = {
       try {
         const { data } = await flitterApi.post('/flits/post', formData);
         router.push('/');
+        commit("setIsLoading", false);
         return data;
       } catch (error) {
         //  alert(error);
         console.log(error)
       }
    
-      commit("setIsLoading", false);
+
+    
   },
   async searchByAuthor({ commit }, author: string) {
     commit("setIsLoading", true);
@@ -131,7 +133,7 @@ const actions: ActionTree<IFlitsState, IState> = {
     try {
       const {data} =await flitterApi.put(`/flits/kudos/give/id/${id}`, body);
       console.log(data);
-       window.location.reload();
+      //  window.location.reload();
       //router.push("/");
     }catch (error) {
       //  alert(error);
@@ -148,7 +150,7 @@ const actions: ActionTree<IFlitsState, IState> = {
       const {data} =await flitterApi.put(`/flits/kudos/remove/id/${id}`, body);
       console.log(data);
       //update loggeduser
-       window.location.reload();
+      //  window.location.reload();
       //router.push("/");
     }catch (error) {
       //  alert(error);
@@ -159,16 +161,24 @@ const actions: ActionTree<IFlitsState, IState> = {
 
     // usamos la mutación para poner isLoading = true
     commit("setIsLoading", true);
-    let message = filter.message;
-    let previous_limit = filter.offset;
+    const message = filter.message;
+    const previous_limit = filter.offset;
     console.log('message'+ message)
     // obtenemos los datos de manera asíncrona ?skip=1&limit=1
     let url = '';
-    if(message!=undefined){
-      url =  `/flits?message=${message}&skip=${previous_limit}&limit=5`;
+    const user_id = localStorage.getItem('user_id')??'';
+    if(user_id){
+      if(message!=undefined){
+        url =  message;
+      }
     }else{
-      url =  `/flits?skip=${previous_limit}&limit=5`;
+      if(message!=undefined){
+        url =  message;
+      }else{
+        url =  message;
+      }
     }
+   
   
     const { data } = await flitterApi.get<unknown, AxiosResponse<Flit[]>>(
       url

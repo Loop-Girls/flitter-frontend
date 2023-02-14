@@ -6,7 +6,7 @@
             </p>
             <p class="date">
                 <!-- //TODO: change to nice date format -->
-                {{ flit.date }}
+                {{new Date(flit.date).toLocaleString()}}
             </p>
             <!-- //TODO: implement bottons, change v-if in case following[] type changed to User -->
             <div v-if="loggedUser&&flit.author!=loggedUser.username">
@@ -56,12 +56,11 @@ export default defineComponent({
         },
         loggedUser: {
             type: Object as PropType<User>,
-            required: true,
         },
     },
     setup(props) {
         const { getUserById, follow, unfollow } = useUsers();
-        const {giveKudo, removeKudo} = useFlits();
+        const {giveKudo, removeKudo, getPrivateZoneFlits} = useFlits();
         return {
             followUser: async (username: string, loggedUser:any) => {
                 console.log('follow' +username);
@@ -87,23 +86,29 @@ export default defineComponent({
 
                 // alert("Not implemented yet. You want to unfollow " + username);
             },
-            removeKudoFromFlit: (flit: Flit,loggedUser:any) => {
+            removeKudoFromFlit: async (flit: Flit,loggedUser:any) => {
                 let body = new URLSearchParams();
                 body.append("kudos", loggedUser.username )//TODO:change to id at some point
                 let info = {
                     "_id": flit._id,
                     "body": body
                 }
-                removeKudo(info);
+                await removeKudo(info).then(
+                    (resp)=> getPrivateZoneFlits(loggedUser.following),
+                    (error)=> alert('Oops, error.')
+                );
             },
-            giveKudoFromFlit: (flit: Flit,loggedUser:any) => {
+            giveKudoFromFlit: async (flit: Flit,loggedUser:any) => {
                 let body = new URLSearchParams();
                 body.append("kudos", loggedUser.username )//TODO:change to id at some point
                 let info = {
                     "_id": flit._id,
                     "body": body
                 }
-                giveKudo(info);
+                await giveKudo(info).then(
+                    (resp)=> getPrivateZoneFlits(loggedUser.following),
+                    (error)=> alert('Oops, error.')
+                );
             },
         };
     },

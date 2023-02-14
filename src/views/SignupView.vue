@@ -69,7 +69,7 @@ export default defineComponent({
                         alert('Not valid email.')
                     } else {
                         if (password.value.length >= 6) {
-                            console.log(password + '=' + repassword);
+                            console.log(password.value + '=' + repassword.value)
                             if (password.value === repassword.value) {
                                 const params = new URLSearchParams();
                                 params.append('email', email.value);

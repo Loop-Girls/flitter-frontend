@@ -1,21 +1,21 @@
 <template>
-      <div class="search">
-      <SearchbarComponent/>
-    </div>
-    <div v-if="isLoading">Cargando...</div>
-    <div class="flit-list" v-else>
-      <FlitComponent v-for="flit in flits" :key="flit._id" :flit="flit" :loggedUser="loggedUser" />
-    </div>
+  <div class="search">
+    <SearchbarComponent :following="[]" />
+  </div>
+  <div v-if="isLoading">Cargando...</div>
+  <div class="flit-list" v-else>
+    <FlitComponent v-for="flit in flits" :key="flit._id" :flit="flit" :loggedUser="loggedUser" />
+  </div>
 
-    <div>
-      <CreateFlitButton></CreateFlitButton>
-    </div>
+  <div>
+    <CreateFlitButton></CreateFlitButton>
+  </div>
 
-    <!-- <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/> -->
+  <!-- <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/> -->
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, watch } from 'vue';
 import CreateFlitButton from '@/components/CreateFlitButton.vue';
 import FlitComponent from '@/components/FlitComponent.vue';
 import useFlits from '@/composables/useFlits';
@@ -23,6 +23,7 @@ import { useRouter } from 'vue-router';
 import useAuth from '@/composables/useAuth';
 import PaginationComponent from '@/components/PaginationComponent.vue';
 import SearchbarComponent from '@/components/SearchbarComponent.vue';
+import flits from '@/store/flits';
 export default defineComponent({
   name: 'HomeView',
   components: {
@@ -33,22 +34,23 @@ export default defineComponent({
   },
   setup() {
     const { flits, isLoading, getFlits, getPrivateZoneFlits } = useFlits();
-    const { loggedUser, getUser } = useAuth();
+    let { getProfile, loggedUser } = useAuth();
     const router = useRouter();
     //TODO: get private flits if user logged.
-    console.log('loggedUser?' +loggedUser.value);
-    try {
-      getUser(localStorage.getItem("user_id") ?? '');
-      getPrivateZoneFlits(loggedUser.value.following);
-    } catch (error) {
-      getFlits();
-      console.log(error)
-    }
+    // console.log('loggedUser?' + getProfile().value);
+
+    console.log('gettingFlits')
+    getProfile();
+    getFlits();
+
+    watch(loggedUser, () => {
+  
+    });
     return {
       loggedUser,
       flits,
       isLoading,
-   
+
       /* goDetail: (user: User) =>
          router.push({ name: "detail", params: { id: user.id } }),*/
     };
@@ -57,4 +59,5 @@ export default defineComponent({
 </script>
 
 <style scoped>
+
 </style>

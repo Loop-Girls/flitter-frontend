@@ -29,7 +29,7 @@ export default defineComponent({
         const { login, loggedUser} = useAuth();
         console.log(loggedUser);
         if(localStorage.getItem("user_id")){
-            router.push('/');
+            router.push('/private');
         }
         let email = ref<string>('');
         let password = ref<string>('');

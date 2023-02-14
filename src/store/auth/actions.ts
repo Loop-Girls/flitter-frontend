@@ -8,29 +8,29 @@ import { IState } from "..";
 import { IAuthState } from "./state";
 
 const actions: ActionTree<IAuthState, IState> = {
+  // async getProfile({ commit }) {
+  //   // usamos la mutación para poner isLoading = true
+  //   commit("setIsLoading", true);
+
+  //   // obtenemos los datos de manera asíncrona
+  //   const { data } = await flitterApi.get<User, AxiosResponse<User>>(
+  //     "/auth/profile"
+  //   );
+
+  //   // usamos la mutación para poner isLoading = false
+  //   commit("setIsLoading", false);
+
+  //   // usamos la mutación para volcar los datos obtenidos en la variable del state users
+  //   commit("setUser", data);
+  // },
   async getProfile({ commit }) {
+   
     // usamos la mutación para poner isLoading = true
     commit("setIsLoading", true);
 
     // obtenemos los datos de manera asíncrona
     const { data } = await flitterApi.get<User, AxiosResponse<User>>(
-      "/auth/profile"
-    );
-
-    // usamos la mutación para poner isLoading = false
-    commit("setIsLoading", false);
-
-    // usamos la mutación para volcar los datos obtenidos en la variable del state users
-    commit("setLoggedUser", data);
-  },
-  async getUser({ commit }, id) {
-    console.log('getUpdatedLoggedUser ' + id)
-    // usamos la mutación para poner isLoading = true
-    commit("setIsLoading", true);
-
-    // obtenemos los datos de manera asíncrona
-    const { data } = await flitterApi.get<User, AxiosResponse<User>>(
-      `/auth/profile/${id}`
+      `/auth/profile/${localStorage.getItem('user_id')??''}`
     );
 
     // usamos la mutación para poner isLoading = false
@@ -50,7 +50,7 @@ const actions: ActionTree<IAuthState, IState> = {
     localStorage.setItem("token", data.token);
     localStorage.setItem("user_id", data.user._id);
     commit("setIsLoading", false);
-    commit("setLoggedUser", data.user);
+    commit("setUser", data.user);
   },
 
   async signup({ commit }, user: URLSearchParams) {
@@ -63,7 +63,7 @@ const actions: ActionTree<IAuthState, IState> = {
     localStorage.setItem("user_id", data.savedUser._id);
 
     commit("setIsLoading", false);
-    commit("setLoggedUser", data.savedUser);
+    commit("setUser", data.savedUser);
   },
 };
 

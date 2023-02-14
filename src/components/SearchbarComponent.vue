@@ -25,7 +25,13 @@
 import useFlits from "@/composables/useFlits";
 import { ref } from "@vue/reactivity";
 export default {
-  setup(_, ctx) {
+  props: {
+        following: {
+          type: Array,
+            required: true,
+        }
+    },
+  setup(props, ctx) {
     const { getFlits } = useFlits();
     const title = ref<string>("");
     let inSearchProduct = "";
@@ -38,12 +44,14 @@ export default {
     let btn_previous = document.getElementById(
       "btn_previous"
     ) as HTMLButtonElement;
+    
     return {
       title,
       onSearch: () => {
-        console.log(title);
+        console.log(title.value);
+        let url = `/flits/?message=${title.value}&skip=${offset}&limit=5`
         let filter = {
-            "message": title,
+            "message": url,
             "offset": offset
           }
         fetchFlitsPage(filter);
@@ -57,11 +65,26 @@ export default {
         if (!limitReached.value) {
           (offset += 5);
           console.log(offset);
+          let url = '';
+          if(props.following.length>0){
+            if(title!=''){
+              url =`/flits/private/?author=${props.following.toString()}&message=${title}&skip=${offset}&limit=5`;
+            }else{
+              url =`/flits/private/?author=${props.following.toString()}&skip=${offset}&limit=5`;
+            }
+           
+          } else{
+            if(title!=''){
+              url=`/flits/?message=${title}&skip=${offset}&limit=5`;
+            }else{
+              url=`/flits/?skip=${offset}&limit=5`;
+            }
+          }  
           let filter = {
-            "message": title,
+            "message": url,
             "offset": offset
           }
-           fetchFlitsPage(filter);
+          fetchFlitsPage(filter);
         }
 
         //TODO: disable button if no more products are found
@@ -70,9 +93,30 @@ export default {
         if (offset > 0) {
           console.log(offset);
           offset > 0 ? (offset -= 5) : (offset = 0);
-          console.log('offset ' + offset)
+          console.log('offset ' + offset);
+          let url = '';
+          if(props.following!=null){
+            if(props.following.length>0){
+            if(title!=''){
+              url =`/flits/private/?author=${props.following.toString()}&message=${title}&skip=${offset}&limit=5`;
+            }else{
+              url =`/flits/private/?author=${props.following.toString()}&skip=${offset}&limit=5`;
+            }
+           
+          } else{
+            if(title!=''){
+              url=`/flits/?message=${title}&skip=${offset}&limit=5`;
+            }else{
+              url=`/flits/?skip=${offset}&limit=5`;
+            }
+           
+          }   
+          }else{
+            url=`/flits/?skip=${offset}&limit=5`;
+          }
+          ;
           let filter = {
-            "message": title,
+            "message": url,
             "offset": offset
           }
           fetchFlitsPage(filter);
