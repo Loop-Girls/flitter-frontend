@@ -3,7 +3,7 @@
         <button class="btn-page" id="btn_previous" @click="previousPage()">
             &laquo;
         </button>
-        <p>Page</p>
+        <p class="page">Page</p>
         <button class="btn-page" id="btn_next" @click="nextPage()">
             &raquo;
         </button>
@@ -61,12 +61,19 @@ export default defineComponent({
     justify-items:baseline;
     margin-left: auto;
     margin-right: auto;
-    height: 30px;
+    
 }
 p{
     margin: 3px;
+    font-size: 50px;
 }
 button{
     background-color:rgb(37, 207, 215)
+}
+.div-btn{
+    width: 200px;
+}
+.page{
+    font-size: 30px;
 }
 </style>

@@ -2,7 +2,7 @@
   <nav>
     <ul v-if="links">
       <li v-for="(link, index) in links" :key="index">
-        <router-link :to="link.link">{{ link.label }}</router-link>
+        <router-link class="navbarlink" :to="link.link">{{ link.label }}</router-link>
       </li>
     </ul>
   </nav>
@@ -25,6 +25,9 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.navbarlink{
+font-size: 250%;
+}
 nav {
   min-height: 30px;
   background-color: rgb(37, 207, 215);

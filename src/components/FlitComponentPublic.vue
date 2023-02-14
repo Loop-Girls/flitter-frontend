@@ -134,7 +134,7 @@ export default defineComponent({
 
     
 .date {
-    margin-left: 10%;
+
     font-size: 30px;
     color: rgb(36, 157, 255);
 }
@@ -179,7 +179,7 @@ export default defineComponent({
 
 
 .follow {
-    background-color: rgb(36, 157, 255);
+    background-color:rgb(61, 36, 255);
     width: 10%;
     height: 50px;
     font-size: 20px;
@@ -190,7 +190,7 @@ export default defineComponent({
 }
 
 .unfollow {
-    background-color: rgb(36, 157, 255);
+    background-color:rgb(61, 36, 255);
     width: 10%;
     height: 50px;
     font-size: 20px;

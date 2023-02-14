@@ -106,8 +106,8 @@ export default defineComponent({
     background-color:white;
     width:100%;
     height: 600px;
-    float:left;
-    margin: 10% 35%;
+  
+
     padding: 30px;
     border-radius: 30px;
     box-shadow: 50px 50px  rgb(251, 216, 238);
