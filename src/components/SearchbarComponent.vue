@@ -116,7 +116,7 @@ export default {
           }else{
             url=`/flits/?skip=${offset}&limit=5`;
           }
-          ;
+          
           let filter = {
             "message": url,
             "offset": offset

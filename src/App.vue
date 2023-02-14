@@ -3,7 +3,15 @@
     
       <NavBarLinks :links="links"/>
     <router-view/>
-  <FooterBar>Karen Andrea Cristina Esthefani Beatriz</FooterBar>
+  <FooterBar>
+  <div class="link">
+    <A HREf="https://github.com/Andreapf13" style="color:aliceblue"> Andrea </A>
+    <A HREf="https://github.com/CristinaMercedesNunez" style="color:aliceblue"> Cristina </A>
+    <A HREf="https://github.com/Esthefani5" style="color:aliceblue"> Esteff </A>
+    <A HREf="https://github.com/kyl03" style="color:aliceblue"> Karen </A>
+    <A HREf="https://github.com/BeatrizMontero" style="color:aliceblue"> Beatriz </A>
+  </div>
+  </FooterBar>
 </template>
 
 <script lang="ts">
@@ -62,4 +70,6 @@ nav a {
 nav a.router-link-exact-active {
   color: #42b983;
 }
+
+
 </style>
