@@ -2,7 +2,7 @@
   <div>
     <div class="card">
     <div class="input-group">
-      <input type="text" class="form-control" placeholder="Encuentra tu flit" v-model="title" />
+      <input type="text" class="form-control" placeholder=" &#128269;   Encuentra tu flit " v-model="title" />
       <button class="btn btn-outline-secondary" type="button" id="button-addon2" @click="onSearch()">
         <i class="fa-solid fa-magnifying-glass"></i>
       </button>

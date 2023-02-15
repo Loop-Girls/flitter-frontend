@@ -31,7 +31,7 @@ font-size: 300%;
 }
 nav {
   min-height: 30px;
-  background-color: rgb(37, 207, 215);
+  background-color: rgb(0, 0, 0);
 }
 
 ul {

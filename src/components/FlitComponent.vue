@@ -138,10 +138,16 @@ body {
 
 .date {
 
-    font-size: 30px;
-    color: rgb(36, 157, 255);
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(71, 73, 74);
+    margin-left:auto;
+    margin-right: auto;
 }
-
+.message{
+    margin-left: auto;
+    font-weight: bold;
+}
 .container {
     background-color: rgb(255, 255, 255);
     padding: 30px;
@@ -154,13 +160,14 @@ body {
 
 .info {
     font-size: 30px;
-    margin-right: 10%;
-    margin-left: 10%;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .author {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 50px;
+    font-size: 60px;
+    font-weight: bold;
 }
 
 .product-image {

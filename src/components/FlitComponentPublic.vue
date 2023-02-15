@@ -131,14 +131,22 @@ export default defineComponent({
 });
 </script>
 <style scoped>
-
-    
-.date {
-
-    font-size: 30px;
-    color: rgb(36, 157, 255);
+body {
+    background-image: url(https://img.freepik.com/vector-premium/fondo-degradado-triangulo-cuadrado-abstracto-telon-fondo-poligonal-color-hielo-fresco-aplicaciones-moviles-web-bandera-abstracta-geometrica-moda-folleto-concepto-tecnologia-estilo-mosaico_121461-3071.jpg?w=1060g)
 }
 
+.date {
+
+    font-size: 20px;
+    font-weight: bold;
+    color: rgb(71, 73, 74);
+    margin-left:auto;
+    margin-right: auto;
+}
+.message{
+    margin-left: auto;
+    font-weight: bold;
+}
 .container {
     background-color: rgb(255, 255, 255);
     padding: 30px;
@@ -151,13 +159,14 @@ export default defineComponent({
 
 .info {
     font-size: 30px;
-    margin-right: 10%;
-    margin-left: 10%;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .author {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 50px;
+    font-size: 60px;
+    font-weight: bold;
 }
 
 .product-image {
@@ -190,7 +199,7 @@ export default defineComponent({
 }
 
 .unfollow {
-    background-color:rgb(61, 36, 255);
+    background-color: rgb(61, 36, 255);
     width: 10%;
     height: 50px;
     font-size: 20px;
