@@ -164,7 +164,7 @@ body {
 }
 
 .info {
-    font-size: 30px;
+    word-wrap: break-word;
     margin-right: auto;
     margin-left: auto;
 }
@@ -196,31 +196,33 @@ body {
 
 
 .follow {
-    background-color:rgb(61, 36, 255);
-    width: 10%;
-    height: 50px;
-    font-size: 20px;
-    color: white;
-    border-radius: 10px;
-    float: right;
-
-}
-
-.unfollow {
     background-color: rgb(61, 36, 255);
-    width: 10%;
-    height: 50px;
-    font-size: 20px;
+    width: 20%;
+    height: 40px;
+    font-size: 15px;
     color: white;
     border-radius: 10px;
     float: right;
     margin-right: 10px;
+    overflow: hidden;
+}
+
+.unfollow {
+    background-color: rgb(61, 36, 255);
+    width: 20%;
+    height: 40px;
+    font-size: 15px;
+    color: white;
+    border-radius: 10px;
+    float: right;
+    margin-right: 10px;
+    overflow: hidden;
 
 }
 
+
 .give {
     font-size: 30px;
-    padding: 10px;
     border-radius: 50px;
     background-color: white;
     border: transparent;
@@ -231,7 +233,6 @@ body {
 
 .nogive {
     font-size: 30px;
-    padding: 10px;
     border-radius: 50px;
     background-color: white;
     border: transparent;
@@ -242,15 +243,14 @@ body {
 .lenght-kudos {
     float: left;
     margin-left: 20px;
-    font-size: 20px;
+    font-size: 30px;
     background-color:white(255, 252, 252);
-    padding: 10px;
     border-radius: 10px;
 }
 
-@media screen and (min-width: 768px) {
+/* @media screen and (min-width: 768px) {
     .projects {
         grid-template-columns: repeat(3, 1fr);
     }
-}
+} */
 </style>

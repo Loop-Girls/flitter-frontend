@@ -22,8 +22,8 @@ export default defineComponent({
 <style scoped>
 .btn{
 	position:fixed;
-	width:120px;
-	height: 120px;
+	width:100px;
+	height: 100px;
 	bottom:60px;
 	right:40px;
 	background-color:rgb(61, 36, 255);

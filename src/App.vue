@@ -54,6 +54,15 @@ export default defineComponent({
 </script>
 
 <style>
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+section,footer{
+    overflow: hidden;
+    white-space: wrap;
+    word-break: break-word;
+}
 a{
   font-size: 30px;
   margin-right: 10px;

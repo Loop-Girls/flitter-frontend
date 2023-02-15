@@ -62,8 +62,8 @@ a:visited {
 
 .image{
   border-radius: 10px;
-  max-width: 30%;
-  max-height: auto;
+  max-width: 10%;
+  height: auto;
 }
 
 </style>
