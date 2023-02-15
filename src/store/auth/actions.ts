@@ -71,6 +71,17 @@ const actions: ActionTree<IAuthState, IState> = {
      window.location.reload();
      router.push('/private');
   },
+  async forgotPassword({ commit }, email: URLSearchParams) {
+
+     await flitterApi.post("/auth/forgot", email).then(
+      (res)=> {
+        alert(res.data);
+        router.push('/login');
+      },
+      (err)=> console.log(err)
+    );
+     
+  },
 };
 
 export default actions;

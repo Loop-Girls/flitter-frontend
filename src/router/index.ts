@@ -4,6 +4,7 @@ import SignupView from '../views/SignupView.vue'
 import CreateFlitView from '../views/CreateFlitView.vue'
 import LoginView from '../views/LoginView.vue'
 import PrivateHomeView from '../views/PrivateHomeView.vue';
+import ForgotPassword from '../views/ForgotPassword.vue'
 import haveAuthGuard from "./authGuard";
 
 
@@ -47,6 +48,11 @@ const routes: Array<RouteRecordRaw> = [
     name: 'private',
     beforeEnter: [haveAuthGuard],
     component: PrivateHomeView
+  },
+  {
+    path: '/forgot-password',
+    name: 'forgot',
+    component: ForgotPassword
   },
   // {
   //   path: "/users/:id",

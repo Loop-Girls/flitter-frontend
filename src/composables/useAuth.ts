@@ -34,6 +34,12 @@ const useAuth = () => {
     signup: async (user: URLSearchParams) => {
       await store.dispatch("auth/signup", user);
       router.push({ name: "home" });
+    },
+    forgotPassword: async (email: URLSearchParams) => {
+      await store.dispatch("auth/forgotPassword", email);
+    },
+    resetPassword: async (email: string) => {
+      await store.dispatch("auth/resetPassword", email);
     }
   };
 };

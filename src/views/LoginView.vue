@@ -11,6 +11,7 @@
             <label for="psw"><b>Password</b></label>
             <input type="password" placeholder="Enter Password" name="psw" required v-model="password">
             <!-- TODO: select avatar image -->
+            <router-link class="navbarlink" :to="'/forgot-password'">Forgot password?</router-link>
             <div class="clearfix">
                 <button type="button" class="cancelbtn">Cancel</button>
                 <button type="submit" class="loginbtn">Sign in</button>
