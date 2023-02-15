@@ -64,12 +64,14 @@ export default defineComponent({
                 console.log(event);
                 let target: HTMLInputElement | undefined;
                 target = (event.target as HTMLInputElement) ?? null;
-                try {
+                if (target && target.files) {
+                    try {
                     selectedImage = target.files[0];
                     console.log(selectedImage);
                     console.log(selectedImage.name);
-                } catch (error) {
-                    console.log(error);
+                    } catch (error) {
+                        console.log(error);
+                    }
                 }
             },
             sendFlit: (message: string, date: string) => {
@@ -78,7 +80,9 @@ export default defineComponent({
 
                 } else {
                     let formData = new FormData();
-                    formData.append("imagen", selectedImage);
+                    if (selectedImage){
+                        formData.append("imagen", selectedImage);
+                    }
                     formData.append("author", loggedUser.value.username);
                     if (date == null) {
                         let date_now = new Date();
