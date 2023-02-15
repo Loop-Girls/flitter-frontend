@@ -15,6 +15,7 @@ const useAuth = () => {
   
     logOut: () => {
       localStorage.removeItem("token");
+      localStorage.removeItem("user_id");
       store.commit("auth/setToken", null);
       store.commit("auth/setUser", null);
       router.push({ name: "login" });

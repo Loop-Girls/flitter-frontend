@@ -36,7 +36,7 @@ export default defineComponent({
                 if (email.value == '' ) {
                     alert('Missing info')
                 } else {
-                    let regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+                    let regex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
                     if (!email.value.match(regex)) {
                         alert('Not valid email.')
                     } else {
