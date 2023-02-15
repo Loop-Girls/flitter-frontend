@@ -5,6 +5,7 @@ import CreateFlitView from '../views/CreateFlitView.vue'
 import LoginView from '../views/LoginView.vue'
 import PrivateHomeView from '../views/PrivateHomeView.vue';
 import haveAuthGuard from "./authGuard";
+import Profile from "../views/ProfileView.vue"
 
 
 const routes: Array<RouteRecordRaw> = [
@@ -30,7 +31,7 @@ const routes: Array<RouteRecordRaw> = [
     path: '/profile',
     name: 'profile',
     beforeEnter: [haveAuthGuard],
-    component: HomeView //TODO: change to ProfileView
+    component: Profile //TODO: change to ProfileView
   },
   {
     path: '/signup',

@@ -25,13 +25,13 @@ const actions: ActionTree<IAuthState, IState> = {
   //   commit("setUser", data);
   // },
   async getProfile({ commit }) {
-   
+
     // usamos la mutación para poner isLoading = true
     commit("setIsLoading", true);
 
     // obtenemos los datos de manera asíncrona
     const { data } = await flitterApi.get<User, AxiosResponse<User>>(
-      `/auth/profile/${localStorage.getItem('user_id')??''}`
+      `/auth/profile/${localStorage.getItem('user_id') ?? ''}`
     );
 
     // usamos la mutación para poner isLoading = false
@@ -52,8 +52,8 @@ const actions: ActionTree<IAuthState, IState> = {
     localStorage.setItem("user_id", data.user._id);
     commit("setIsLoading", false);
     commit("setUser", data.user);
-     window.location.reload();
-     router.push('/private');
+    window.location.reload();
+    router.push('/private');
   },
 
   async signup({ commit }, user: URLSearchParams) {
@@ -67,10 +67,12 @@ const actions: ActionTree<IAuthState, IState> = {
 
     commit("setIsLoading", false);
     commit("setUser", data.savedUser);
-  
-     window.location.reload();
-     router.push('/private');
+
+    window.location.reload();
+    router.push('/private');
   },
+
+  //Funcion delete data
 };
 
 export default actions;
