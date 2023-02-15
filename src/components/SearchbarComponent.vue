@@ -24,11 +24,13 @@
 <script lang="ts">
 import useFlits from "@/composables/useFlits";
 import { ref } from "@vue/reactivity";
-export default {
+import { defineComponent } from 'vue';
+
+export default defineComponent({
   props: {
         following: {
           type: Array,
-            required: true,
+          required: true,
         }
     },
   setup(props, ctx) {
@@ -126,7 +128,7 @@ export default {
       },
     };
   },
-};
+});
 </script>
 
 <style scoped>

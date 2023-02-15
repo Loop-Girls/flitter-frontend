@@ -8,7 +8,6 @@ const haveAuthGuard = (_to: RouteLocation, _from: RouteLocation, next: any) => {
     // queremos navegar!
     next();
   } else {
-    alert("You must log in");
     next({ name: "login" });
   }
 };

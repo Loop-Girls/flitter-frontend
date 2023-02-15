@@ -15,9 +15,10 @@ const useAuth = () => {
   
     logOut: () => {
       localStorage.removeItem("token");
+      localStorage.removeItem("user_id");
       store.commit("auth/setToken", null);
       store.commit("auth/setUser", null);
-
+      window.location.reload();
       router.push({ name: "login" });
     },
     login: async (credentials: Credentials) => {
@@ -34,6 +35,12 @@ const useAuth = () => {
     signup: async (user: URLSearchParams) => {
       await store.dispatch("auth/signup", user);
       router.push({ name: "home" });
+    },
+    forgotPassword: async (email: URLSearchParams) => {
+      await store.dispatch("auth/forgotPassword", email);
+    },
+    resetPassword: async (email: string) => {
+      await store.dispatch("auth/resetPassword", email);
     }
   };
 };

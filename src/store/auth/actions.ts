@@ -71,8 +71,22 @@ const actions: ActionTree<IAuthState, IState> = {
     window.location.reload();
     router.push('/private');
   },
+<<<<<<< HEAD
 
   //Funcion delete data
+=======
+  async forgotPassword({ commit }, email: URLSearchParams) {
+
+     await flitterApi.post("/auth/forgot", email).then(
+      (res)=> {
+        alert(res.data);
+        router.push('/login');
+      },
+      (err)=> console.log(err)
+    );
+     
+  },
+>>>>>>> ec8174f6e0254f78b21e67b6a77697a355b6dd73
 };
 
 export default actions;

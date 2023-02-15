@@ -35,9 +35,9 @@ import { ComputedRef, defineComponent, ref } from 'vue';
 export default defineComponent({
     name: 'SignupView',
     setup() {
-        const { signup, loggedUser} = useAuth();
+        const { signup, loggedUser } = useAuth();
         console.log(loggedUser);
-        if(localStorage.getItem("user_id")){
+        if (localStorage.getItem("user_id")) {
             router.push('/');
         }
         let email = ref<string>('');
@@ -64,27 +64,31 @@ export default defineComponent({
                 if (username.value == '' || password.value == '' || email.value == '' || repassword.value == '') {
                     alert('Missing info')
                 } else {
-                    let regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-                    if (!email.value.match(regex)) {
-                        alert('Not valid email.')
+                    let username_regex = /^[A-Za-z]+$/;
+                    let regex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
+                    if (!username.value.match(username_regex)) {
+                        alert('Not valid username.')
                     } else {
-                        if (password.value.length >= 6) {
-                            console.log(password.value + '=' + repassword.value)
-                            if (password.value === repassword.value) {
-                                const params = new URLSearchParams();
-                                params.append('email', email.value);
-                                params.append('username', username.value);
-                                params.append('password', password.value);
-                                signup(params);
-                            } else {
-                                alert("Passwords don't match");
-                            }
-
+                        if (!email.value.match(regex)) {
+                            alert('Not valid email.')
                         } else {
-                            alert("Password must be 6 character or more.");
+                            if (password.value.length >= 6) {
+                                console.log(password.value + '=' + repassword.value)
+                                if (password.value === repassword.value) {
+                                    const params = new URLSearchParams();
+                                    params.append('email', email.value);
+                                    params.append('username', username.value);
+                                    params.append('password', password.value);
+                                    signup(params);
+                                } else {
+                                    alert("Passwords don't match");
+                                }
+
+                            } else {
+                                alert("Password must be 6 character or more.");
+                            }
                         }
                     }
-
                 }
 
             },
