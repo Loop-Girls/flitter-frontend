@@ -6,7 +6,8 @@ import LoginView from '../views/LoginView.vue'
 import PrivateHomeView from '../views/PrivateHomeView.vue';
 import ForgotPassword from '../views/ForgotPassword.vue'
 import haveAuthGuard from "./authGuard";
-import ProfileView from '../views/ProfileView.vue'
+import Profile from "../views/ProfileView.vue"
+
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -30,7 +31,8 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/profile',
     name: 'profile',
-    component: HomeView //TODO: change
+    beforeEnter: [haveAuthGuard],
+    component: Profile //TODO: change to ProfileView
   },
   {
     path: '/signup',

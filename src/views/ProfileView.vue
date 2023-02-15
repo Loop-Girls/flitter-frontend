@@ -1,6 +1,15 @@
-<template>
-    <div v-if="!isLoading">
-        <FlitComponent v-for="flit in flits" :key="flit._id" :flit="flit"></FlitComponent>
+<!-- <template>
+    <div class="profile-page">
+        <div class="user-info">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-md-10 offset-md-1">
+                        <button class="btn btn-primary btn-block">UserData</button>
+                        <button @click="delete(users)">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div v-else>Loading...</div>
 </template>
@@ -40,4 +49,5 @@ export default defineComponent({
         };
     },
 });
-</script>
+</script> -->
+
