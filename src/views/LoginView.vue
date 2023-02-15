@@ -52,6 +52,7 @@ export default defineComponent({
                 if (password.value == '' || email.value == '' ) {
                     alert('Missing info')
                 } else {
+                    // eslint-disable-next-line no-useless-escape
                     let regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
                     if (!email.value.match(regex)) {
                         alert('Not valid email.')
