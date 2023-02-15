@@ -17,7 +17,7 @@
                 <input class="date"  type="date" v-model="date" :min="today_date" />
             </div>
             <div class="post">
-                <button class="btn" @click="sendFlit(message, date)">Post Flit</button>
+                <button class="btn" @click="sendFlit(message, date)"> &#x270D;</button>
             </div>
         </div>
 
@@ -103,10 +103,11 @@ export default defineComponent({
 </script>
 <style scoped>
 .container{
+
     background-color:white;
     width:100%;
     height: 600px;
-  
+  margin-top:10%;
 
     padding: 30px;
     border-radius: 30px;
@@ -114,7 +115,8 @@ export default defineComponent({
     border-color: inherit;
 }
 .margin{
-    margin-right: 500px;
+margin-left:auto;
+margin-right: auto;
 }
 .enunciado{
     font-family:Georgia, 'Times New Roman', Times, serif;
@@ -122,9 +124,11 @@ export default defineComponent({
     font-size: 40px;
     position:relative;
     display:block;
-    margin-left: 250px;
+
     border-color: inherit;
     font-style:oblique;
+    margin-left:auto;
+margin-right: auto;
 
 }
 .message:hover{
@@ -132,15 +136,13 @@ export default defineComponent({
 }
 .message{
     background-color: rgb(249, 249, 249);
-    width: 600px;
-    height: 200px;
+    width: 700px;
+    height: 300px;
     border-radius: 20px;
     margin-top: 20px;
-    margin-bottom:20px;
-margin-right: 100px;
-    position:absolute;
-    display:block;
-    display:inline-block ;
+
+    margin-left:auto;
+margin-right: auto;
 
     border-color: transparent;
  
@@ -155,12 +157,12 @@ margin-right: 100px;
 }
 
 .btn{
-    width: 70px;
-    height: 50px;
+    width: 80px;
+    height: px;
     border-radius: 50px;
  
 color:rgb(27, 26, 26);
-font-size: 10px;
+font-size: 30px;
 text-align: center;
 background-color: rgb(252, 252, 252);
 box-shadow: 10px 10px rgb(251, 216, 238);
@@ -168,12 +170,12 @@ border-color: transparent;
 }
 
 .buttons{
- margin-top: 250px;
+ margin-top: 3%;
 display: flex;
 justify-content: center;
 position:relative;
 display:block;
-margin-left:200px;
+
 
 }
 
@@ -181,8 +183,8 @@ margin-left:200px;
     position:absolute;
     display:block;
     display:inline-block ;
-    margin-left:200px;
-    margin-top: 30px;
+    padding:10px;
+    margin-top: 10px;
 
 }
 </style>

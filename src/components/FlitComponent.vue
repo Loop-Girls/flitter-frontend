@@ -2,7 +2,7 @@
     <div class="container">
         <div class="product-details">
             <h2 class="author" href="/http://localhost:8080/#/">
-                {{ flit.author }}
+                &#128044; {{ flit.author }}
             </h2>
             <p class="date">
                 <!-- //TODO: change to nice date format -->

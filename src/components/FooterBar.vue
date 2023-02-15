@@ -10,8 +10,9 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: #ffb000;
+    background-color: #000000;
     text-align: center;
-    padding: 8px;
+    padding: 1%;
+    margin-top: 5%;
   }
   </style>

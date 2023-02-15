@@ -5,11 +5,11 @@
     <router-view/>
   <FooterBar>
   <div class="link">
-    <A HREf="https://github.com/Andreapf13" target='_blank' style="color:aliceblue"> Andrea </A>
+    <A HREf="https://github.com/Andreapf13" target='_blank' style="color:aliceblue">  &#10024; Andrea </A>
     <A HREf="https://github.com/CristinaMercedesNunez" target='_blank' style="color:aliceblue"> Cristina </A>
     <A HREf="https://github.com/Esthefani5" target='_blank' style="color:aliceblue"> Esteff </A>
     <A HREf="https://github.com/kyl03" target='_blank' style="color:aliceblue"> Karen </A>
-    <A HREf="https://github.com/BeatrizMontero" target='_blank' style="color:aliceblue"> Beatriz </A>
+    <A HREf="https://github.com/BeatrizMontero" target='_blank' style="color:aliceblue"> Beatriz  &#10024; </A>
   </div>
   </FooterBar>
 </template>
@@ -50,10 +50,18 @@ export default defineComponent({
 </script>
 
 <style>
+a{
+  font-size: 30px;
+  margin-right: 10px;
+  font-weight: bold;
+  text-decoration: none;
+
+}
  body{
   background-image: url(https://img.freepik.com/vector-premium/fondo-degradado-triangulo-cuadrado-abstracto-telon-fondo-poligonal-color-hielo-fresco-aplicaciones-moviles-web-bandera-abstracta-geometrica-moda-folleto-concepto-tecnologia-estilo-mosaico_121461-3071.jpg?w=1060g);
   margin: 0;
-    padding: 0;}
+    padding: 0;
+  margin-bottom: 10%;}
 
 
   #app {

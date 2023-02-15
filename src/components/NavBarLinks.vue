@@ -1,6 +1,7 @@
 <template>
   <nav>
-    <ul v-if="links">
+    <ul class="margin" v-if="links">
+      <img  class="image" src="@/assets/logo.png" />
       <li v-for="(link, index) in links" :key="index">
         <router-link class="navbarlink" :to="link.link">{{ link.label }}</router-link>
       </li>
@@ -26,7 +27,7 @@ export default defineComponent({
 
 <style scoped>
 .navbarlink{
-font-size: 250%;
+font-size: 300%;
 }
 nav {
   min-height: 30px;
@@ -58,4 +59,11 @@ a {
 a:visited {
   color: white;
 }
+
+.image{
+  border-radius: 10px;
+  height: 10%;
+  width: 5%;
+}
+
 </style>
