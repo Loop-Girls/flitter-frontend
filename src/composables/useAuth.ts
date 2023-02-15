@@ -18,6 +18,7 @@ const useAuth = () => {
       localStorage.removeItem("user_id");
       store.commit("auth/setToken", null);
       store.commit("auth/setUser", null);
+      window.location.reload();
       router.push({ name: "login" });
     },
     login: async (credentials: Credentials) => {
