@@ -106,6 +106,7 @@ img{
     max-height: auto;
   }
   .btn-k{
+    margin: 5px;
     background-color:rgb(61, 36, 255);
     color: white;
     border-radius: 10px;

@@ -7,8 +7,8 @@
 
             <!-- TODO: select avatar image -->
             <div class="clearfix">
-                <button type="button" class="cancelbtn">Cancel</button>
-                <button type="submit" class="loginbtn">Send</button>
+                <button type="button" class="btn-cancel">Cancel</button>
+                <button type="submit" class="btn-k">Send</button>
             </div>
         </div>
     </form>
@@ -54,3 +54,26 @@ export default defineComponent({
 
 );
 </script>
+<style scoped>
+ .container{
+    margin: 20px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px;
+    border-radius: 15px;
+ }
+ .btn-cancel{
+    background-color: white;
+    color: rgb(61, 36, 255);
+    border-radius: 10px;
+ }
+ .btn-cancel:hover{
+    color: white;
+    background-color: rgb(47, 47, 50);
+    border-radius: 10px;
+ }
+ .clearfix{
+    margin: 5px;
+ }
+</style>
