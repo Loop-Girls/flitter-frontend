@@ -1,4 +1,4 @@
-# flipper
+# Flitter
 
 ## Project setup
 ```
