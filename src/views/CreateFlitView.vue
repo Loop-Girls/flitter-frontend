@@ -5,7 +5,7 @@
         <div class="container">
 
             <div class="margin">
-                <label class="enunciado" for="message">¿Qué está pasando?</label>
+                <label class="enunciado" for="message">What are you thinking?</label>
 
                 <input class="message" v-model="message" maxlength="150" />
             </div>

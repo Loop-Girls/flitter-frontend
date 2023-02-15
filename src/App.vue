@@ -105,6 +105,16 @@ img{
     max-width: 20%;
     max-height: auto;
   }
+  .btn-k{
+    background-color:rgb(61, 36, 255);
+    color: white;
+    border-radius: 10px;
+  }
+  .btn-k:hover{
+    background-color:white;
+    color: rgb(61, 36, 255);
+    border-radius: 10px;
+  }
 
 
 </style>

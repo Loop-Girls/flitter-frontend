@@ -4,7 +4,7 @@
         <h4>{{ title }}</h4>
       </div>
       <div class="links" v-if="loggedUser">
-        <button @click="logout()" color="danger">
+        <button class="btn-k" @click="logout()" color="danger">
             <span class="glyphicon glyphicon-log-out"></span> Log out
         </button>
       </div>

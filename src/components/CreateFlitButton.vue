@@ -35,5 +35,23 @@ export default defineComponent({
 	margin-bottom: 3%;
 	font-weight: bold;
 
+
+}
+.btn:hover{
+	position:fixed;
+	width:100px;
+	height: 100px;
+	bottom:60px;
+	right:40px;
+	background-color:white;
+	font-size: 50px;
+	color:rgb(61, 36, 255);
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+	margin-bottom: 3%;
+	font-weight: bold;
+	border-color: black;
+
 }
 </style>
