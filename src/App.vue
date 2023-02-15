@@ -1,6 +1,6 @@
 
 <template>
-    
+    <NavBar :title="'Flitter'" ></NavBar>
       <NavBarLinks :links="links"/>
     <router-view/>
   <FooterBar>
@@ -17,6 +17,7 @@
 <script lang="ts">
 import FooterBar from './components/FooterBar.vue';
 import NavBarLinks from './components/NavBarLinks.vue';
+import NavBar from './components/NavBar.vue'
 import { computed, defineComponent } from 'vue';
 import { RouterLink, RouterView } from 'vue-router';
 import useAuth from './composables/useAuth';
@@ -25,6 +26,7 @@ export default defineComponent({
   components: {
     FooterBar,
     NavBarLinks,
+    NavBar,
   },
   setup(){
     const { isAuthenticated } = useAuth();
