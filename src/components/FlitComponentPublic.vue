@@ -29,9 +29,11 @@
                     <button class="nogive" @click="removeKudoFromFlit(flit, loggedUser)"
                         v-if="flit.kudos.includes(loggedUser.username)"> &#128534;</button>
                     <button class="give" @click="giveKudoFromFlit(flit, loggedUser)" v-else> &#128525;</button>
-                    <p class="lenght-kudos"> &#128525; {{ flit.kudos.length }}</p>
+                    
                 </div>
+               
             </div>
+            <p class="lenght-kudos"> &#128525; {{ flit.kudos.length }}</p>
 
 </div>
 </div>
@@ -239,7 +241,7 @@ body {
 }
 
 .lenght-kudos {
-    float: left;
+
     margin-left: 20px;
     font-size: 30px;
     background-color:white(255, 252, 252);
