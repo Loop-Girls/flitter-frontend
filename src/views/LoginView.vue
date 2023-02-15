@@ -61,7 +61,9 @@ export default defineComponent({
                             "email": email.value,
                             "password": password.value
                         }
-                        login(credential);
+                            login(credential);
+                     
+                        
                     }
 
                 }

@@ -82,6 +82,20 @@ const actions: ActionTree<IAuthState, IState> = {
     );
      
   },
+   //Funcion delete para profile
+   async deleteUserFromDB({ commit }, user_id) {
+    console.log('deleting user');
+
+    //En lugar de pasar user_id, puedes cogerlo directamente del localstorage.getItem('user_id);
+    const {data} = await flitterApi.delete<User[], AxiosResponse<User[]>>(
+      `/users/${user_id}`);
+      console.log(data);
+    localStorage.clear();  
+    commit("setUser", null);
+    window.location.reload();
+    router.push('/login')
+
+  },
 };
 
 export default actions;

@@ -14,10 +14,12 @@ const useUsers = () => {
             store.dispatch("users/getusers", filter),
         getUserById: (id: string) =>
             store.dispatch("users/getUserById", id),
-        follow: (data:any) =>
+        follow: (data: any) =>
             store.dispatch("users/follow", data),
-        unfollow: (data:any) =>
-            store.dispatch("users/unfollow",  data),
+        unfollow: (data: any) =>
+            store.dispatch("users/unfollow", data)
+   
+
     };
 };
 

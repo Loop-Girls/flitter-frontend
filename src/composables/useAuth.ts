@@ -41,7 +41,9 @@ const useAuth = () => {
     },
     resetPassword: async (email: string) => {
       await store.dispatch("auth/resetPassword", email);
-    }
+    },
+    deleteUserFromDB: (user: string) =>
+    store.dispatch("auth/deleteUserFromDB", user)
   };
 };
 
