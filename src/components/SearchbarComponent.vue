@@ -133,7 +133,7 @@ export default defineComponent({
 
 <style scoped>
 .card{
-  width: 20%;
+  width: 90%;
   height: 50%;
    margin-top: 3%;
    margin-bottom: 3%;
@@ -152,7 +152,6 @@ export default defineComponent({
 }
 .form-control{
   font-size: 30px;
-  margin-left: auto;
-    margin-right: auto;
+
 }
 </style>

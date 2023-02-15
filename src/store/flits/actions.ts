@@ -38,6 +38,37 @@ const actions: ActionTree<IFlitsState, IState> = {
   
 
   },
+  async getFlitsByUsername({ commit }, filter: string | null) {
+    // usamos la mutación para poner isLoading = true
+    console.log('user flits')
+    commit("setLimitReached", false);
+    commit("setIsLoading", true);
+    //TODO: change sort dates
+    const chronoFilter = 'date=-'
+    // obtenemos los datos de manera asíncrona y vemos si hay que filtrar
+    const url = `/flits${filter ? "/?author=" + filter+'&skip=0&limit=5' : "/?skip=0&limit=5"}`;
+    const { data } = await flitterApi.get<Flit[], AxiosResponse<Flit[]>>(
+      url
+    );
+
+    // usamos la mutación para poner isLoading = false
+    commit("setIsLoading", false);
+
+
+    if(data.length>0){
+      commit("setFlits", data);
+      commit("setLimitReached", false);
+    }
+    if(data.length<5){
+      commit("setLimitReached", true);
+    }
+    if(data.length==0&&filter!=undefined){
+      commit("setFlits", data);
+    }
+     
+  
+
+  },
   async getPrivateZoneFlits({ commit }, followingUsers: string[] | []) {
     //usamos la mutación para poner isLoading = true
     commit("setLimitReached", false);

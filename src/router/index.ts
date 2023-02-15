@@ -6,7 +6,7 @@ import LoginView from '../views/LoginView.vue'
 import PrivateHomeView from '../views/PrivateHomeView.vue';
 import ForgotPassword from '../views/ForgotPassword.vue'
 import haveAuthGuard from "./authGuard";
-
+import ProfileView from '../views/ProfileView.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -30,8 +30,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/profile',
     name: 'profile',
-    beforeEnter: [haveAuthGuard],
-    component: HomeView //TODO: change to ProfileView
+    component: HomeView //TODO: change
   },
   {
     path: '/signup',
@@ -54,18 +53,18 @@ const routes: Array<RouteRecordRaw> = [
     name: 'forgot',
     component: ForgotPassword
   },
-  // {
-  //   path: "/users/:id",
-  //   name: "user-detail",
-  //   component: () =>
-  //     import(
-  //       /* webpackChunkName: "product-detail" */ "../views/ProfileDetailView.vue"
-  //     ),
-  //   props: (route) => {
-  //     const id = route.params.id;
-  //     return { id };
-  //   },
-  // }
+  {
+    path: "/:username",
+    name: "detail",
+    component: () =>
+      import(
+        /* webpackChunkName: "user-detail" */ "../views/ProfileDetailView.vue"
+      ),
+    props: (route) => {
+      const username = route.params.username;
+      return { username };
+    },
+  }
 ]
 
 const router = createRouter({

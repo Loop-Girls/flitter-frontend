@@ -24,7 +24,7 @@ const useAuth = () => {
     login: async (credentials: Credentials) => {
       await store.dispatch("auth/login", credentials);
 
-      router.push({ name: "home" });
+      router.push({ name: "private" });
     },
 
     loggedUser: computed<User>(() => store.getters["auth/getUser"]),

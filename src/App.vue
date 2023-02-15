@@ -29,8 +29,10 @@ export default defineComponent({
     NavBar,
   },
   setup(){
-    const { isAuthenticated } = useAuth();
+    const { isAuthenticated, getProfile} = useAuth();
+    getProfile();
     return {
+      getProfile,
       links: computed(() => {
         if (isAuthenticated.value) {
           return [
@@ -61,8 +63,8 @@ a{
 }
  body{
   background-image: url(https://img.freepik.com/vector-premium/fondo-degradado-triangulo-cuadrado-abstracto-telon-fondo-poligonal-color-hielo-fresco-aplicaciones-moviles-web-bandera-abstracta-geometrica-moda-folleto-concepto-tecnologia-estilo-mosaico_121461-3071.jpg?w=1060g);
-  margin: 0;
-    padding: 0;
+  margin: 0px;
+    padding: 0px;
   margin-bottom: 10%;}
 
 
@@ -75,7 +77,7 @@ a{
 }
 
 nav {
-  padding: 30px;
+  padding: 10px;
 }
 
 nav a {
@@ -86,6 +88,14 @@ nav a {
 nav a.router-link-exact-active {
   color: #42b983;
 }
+img{
+  max-width: 100%;
+}
+.logo{
+    border-radius: 10px;
+    max-width: 20%;
+    max-height: auto;
+  }
 
 
 </style>

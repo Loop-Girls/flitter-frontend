@@ -33,6 +33,8 @@ const useFlits = () => {
       store.dispatch("flits/removeKudo", body),
     fetchFlitsPage: (data:any) =>
       store.dispatch("flits/fetchFlitsPage", data),
+    getFlitsByUsername: (username: string) =>
+      store.dispatch("flits/getFlitsByUsername", username),
   };
 };
 

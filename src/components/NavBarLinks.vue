@@ -27,7 +27,7 @@ export default defineComponent({
 
 <style scoped>
 .navbarlink{
-font-size: 300%;
+font-size: 150%;
 }
 nav {
   min-height: 30px;
@@ -62,8 +62,8 @@ a:visited {
 
 .image{
   border-radius: 10px;
-  height: 10%;
-  width: 5%;
+  max-width: 30%;
+  max-height: auto;
 }
 
 </style>

@@ -1,28 +1,29 @@
 <template>
+
     <body>
         <div class="responsive"></div>
-    <div class="container">
+        <div class="container">
 
-        <div class="margin">
-            <label class="enunciado" for="message">¿Qué está pasando?</label>
-            
-            <input class="message" v-model="message" maxlength="150" />
-        </div>
-        <div class="buttons">
-            <div>
-                <input id="file" type="file" @change="selectImage" />
-                <!-- TODO: improve -->
-                <!-- <button @click="removeSelectedFile">X</button> -->
-                <label class="button"></label>
-                <input class="date"  type="date" v-model="date" :min="today_date" />
-            </div>
-            <div class="post">
-                <button class="btn" @click="sendFlit(message, date)"> &#x270D;</button>
-            </div>
-        </div>
+            <div class="margin">
+                <label class="enunciado" for="message">¿Qué está pasando?</label>
 
-    </div>
-</body>
+                <input class="message" v-model="message" maxlength="150" />
+            </div>
+            <div class="buttons">
+                <div>
+                    <input id="file" type="file" @change="selectImage" />
+                    <!-- TODO: improve -->
+                    <!-- <button @click="removeSelectedFile">X</button> -->
+                    <label class="button"></label>
+                    <input class="date" type="date" v-model="date" :min="today_date" />
+                </div>
+                <div class="post">
+                    <button class="btn" @click="sendFlit(message, date)"> &#x270D;</button>
+                </div>
+            </div>
+
+        </div>
+    </body>
 </template>
 
 <script lang="ts">import { defineComponent, ref, watch } from 'vue';
@@ -66,9 +67,9 @@ export default defineComponent({
                 target = (event.target as HTMLInputElement) ?? null;
                 if (target && target.files) {
                     try {
-                    selectedImage = target.files[0];
-                    console.log(selectedImage);
-                    console.log(selectedImage.name);
+                        selectedImage = target.files[0];
+                        console.log(selectedImage);
+                        console.log(selectedImage.name);
                     } catch (error) {
                         console.log(error);
                     }
@@ -80,7 +81,7 @@ export default defineComponent({
 
                 } else {
                     let formData = new FormData();
-                    if (selectedImage){
+                    if (selectedImage) {
                         formData.append("imagen", selectedImage);
                     }
                     formData.append("author", loggedUser.value.username);
@@ -90,9 +91,9 @@ export default defineComponent({
                         formData.append("date", today_date);
                     } else {
                         //check if introduced date is past
-                   
-                            formData.append("date", date);
-                    
+
+                        formData.append("date", date);
+
                     }
                     formData.append("message", message);
                     console.log(formData);
@@ -106,88 +107,93 @@ export default defineComponent({
 });
 </script>
 <style scoped>
-.container{
+.container {
 
-    background-color:white;
-    width:100%;
-    height: 600px;
-  margin-top:10%;
-
+    background-color: white;
+    width: 100%;
+    height: 50%;
+    margin-top: 10%;
+    margin-left: auto;
+    margin-right: auto;
     padding: 30px;
     border-radius: 30px;
-    box-shadow: 50px 50px  rgb(251, 216, 238);
+    box-shadow: 50px 50px rgb(251, 216, 238);
     border-color: inherit;
 }
-.margin{
-margin-left:auto;
-margin-right: auto;
+
+.margin {
+    margin-left: auto;
+    margin-right: auto;
 }
-.enunciado{
-    font-family:Georgia, 'Times New Roman', Times, serif;
-   color: rgb(31, 30, 31);;
+
+.enunciado {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: rgb(31, 30, 31);
+    ;
     font-size: 40px;
-    position:relative;
-    display:block;
-
+    position: relative;
+    display: block;
     border-color: inherit;
-    font-style:oblique;
-    margin-left:auto;
-margin-right: auto;
+    font-style: oblique;
+    margin-left: auto;
+    margin-right: auto;
 
 }
-.message:hover{
-    border-color:rgb(248, 198, 230);
+
+.message:hover {
+    border-color: rgb(248, 198, 230);
 }
-.message{
+
+.message {
     background-color: rgb(249, 249, 249);
-    width: 700px;
-    height: 300px;
+    width: 100%;
+    height: 150px;
     border-radius: 20px;
     margin-top: 20px;
 
-    margin-left:auto;
-margin-right: auto;
+    margin-left: auto;
+    margin-right: auto;
 
     border-color: transparent;
- 
-   
+
+
 }
 
-.date{
+.date {
     border-radius: 20px;
     padding: 10px;
     box-shadow: 10px 10px rgb(251, 216, 238);
     border-color: transparent;
 }
 
-.btn{
+.btn {
     width: 80px;
     height: px;
     border-radius: 50px;
- 
-color:rgb(27, 26, 26);
-font-size: 30px;
-text-align: center;
-background-color: rgb(252, 252, 252);
-box-shadow: 10px 10px rgb(251, 216, 238);
-border-color: transparent;
+
+    color: rgb(27, 26, 26);
+    font-size: 30px;
+    text-align: center;
+    background-color: rgb(252, 252, 252);
+    box-shadow: 10px 10px rgb(251, 216, 238);
+    border-color: transparent;
 }
 
-.buttons{
- margin-top: 3%;
-display: flex;
-justify-content: center;
-position:relative;
-display:block;
+.buttons {
+    margin-top: 3%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    display: block;
 
 
 }
 
-.post{
-    position:absolute;
-    display:block;
-    display:inline-block ;
-    padding:10px;
+.post {
+    position: absolute;
+    display: block;
+    display: inline-block;
+    padding: 10px;
     margin-top: 10px;
 
 }

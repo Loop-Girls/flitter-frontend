@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="product-details">
-            <h2 class="author" href="/http://localhost:8080/#/">
+            <h2 class="author" @click="goDetail(flit.author)">
                 &#128044; {{ flit.author }}
             </h2>
             <p class="date">
@@ -12,7 +12,7 @@
                 <p>{{ flit.message }}</p>
             </div>
 
-            <div class="product-imgage" v-if="flit.image">
+            <div class="product-image" v-if="flit.image">
                 <img :src="flit.image" />
             </div>
             <!-- //TODO: implement bottons, change v-if in case following[] type changed to User -->
@@ -47,6 +47,7 @@ import { Flit } from '../models/flit';
 import useUsers from '../composables/useUsers'
 import useAuth from '@/composables/useAuth';
 import useFlits from '@/composables/useFlits';
+import router from '@/router';
 
 
 export default defineComponent({
@@ -127,6 +128,10 @@ export default defineComponent({
                     (error) => alert('Oops, error.')
                 );
             },
+            goDetail: (username:string) =>{
+                router.push({ name: "detail", params: { username: username } })
+            }
+            
         };
     },
 });
@@ -171,7 +176,9 @@ body {
 }
 
 .product-image {
-    margin-left: 30%;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .puppy {

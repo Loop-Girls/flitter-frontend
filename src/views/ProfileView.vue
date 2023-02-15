@@ -1,43 +1,43 @@
 <template>
-    <div class="container">
-      <div class="card" v-if="loggedUser">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img
-              :src="loggedUser.avatar"
-              class="img-fluid rounded-start"
-              :alt="loggedUser.username"
-            />
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">{{ loggedUser.username }}</h5>
-              <p class="card-text">
-                {{ loggedUser.email }}
-              </p>
-              <p class="card-text">
-                <small class="text-muted">{{ loggedUser.role }}</small>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div v-if="!isLoading">
+        <FlitComponent v-for="flit in flits" :key="flit._id" :flit="flit"></FlitComponent>
     </div>
-  </template>
-  
-  <script lang="ts">
-  import useAuth from "@/composables/useAuth";
-  export default {
-    setup() {
-      const { getProfile, loggedUser } = useAuth();
-      
-      getProfile();
-      return {
-        loggedUser,
-      };
+    <div v-else>Loading...</div>
+</template>
+
+<script lang="ts">
+import FlitComponent from "@/components/FlitComponent.vue";
+import useAuth from "@/composables/useAuth";
+import useFlits from "@/composables/useFlits";
+import useUsers from "@/composables/useUsers";
+import flits from "@/store/flits";
+import { defineComponent, watch } from "vue";
+export default defineComponent({
+    components: {
+        FlitComponent,
     },
-  };
-  </script>
-  
-  <style>
-  </style>
+    setup(props) {
+        const { getFlitsByUsername, flits, isLoading } = useFlits();
+        const { loggedUser } = useAuth();
+        // let user = ref<User>();
+        // fakeShopAPI
+        //   .get<unknown, AxiosResponse<User>>(`/users/${props.id}`)
+        //   .then((resp) => (user.value = resp.data));
+        watch(loggedUser, () => {
+            if (loggedUser != null) {
+                try {
+                    console.log('getProfile ok' + loggedUser)
+                    getFlitsByUsername(loggedUser.value.username);
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+        });
+        return {
+            loggedUser,
+            flits,
+            isLoading
+        };
+    },
+});
+</script>
