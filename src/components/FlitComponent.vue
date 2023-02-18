@@ -25,7 +25,7 @@
                     Follow
                 </button>
 
-                <div class="footer" v-if="loggedUser && flit.author != loggedUser.username">
+                <div class="flit-footer" v-if="loggedUser && flit.author != loggedUser.username">
                     <button class="nogive" @click="removeKudoFromFlit(flit, loggedUser)"
                         v-if="flit.kudos.includes(loggedUser.username)"> &#128534;</button>
                     <button class="give" @click="giveKudoFromFlit(flit, loggedUser)" v-else> &#128525;</button>

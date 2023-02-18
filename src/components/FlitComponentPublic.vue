@@ -16,7 +16,7 @@
                 <img :src="flit.image" />
             </div>
             <!-- //TODO: implement bottons, change v-if in case following[] type changed to User -->
-            <div class="control" v-if="loggedUser && flit.author != loggedUser.username">
+            <div class="footer-list" v-if="loggedUser && flit.author != loggedUser.username">
                 <button class="unfollow" @click="unfollowUser(flit.author, loggedUser)"
                     v-if="loggedUser.following.includes(flit.author)">
                     Unfollow
@@ -25,7 +25,7 @@
                     Follow
                 </button>
 
-                <div class="footer" v-if="loggedUser && flit.author != loggedUser.username">
+                <div v-if="loggedUser && flit.author != loggedUser.username">
                     <button class="nogive" @click="removeKudoFromFlit(flit, loggedUser)"
                         v-if="flit.kudos.includes(loggedUser.username)"> &#128534;</button>
                     <button class="give" @click="giveKudoFromFlit(flit, loggedUser)" v-else> &#128525;</button>

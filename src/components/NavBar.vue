@@ -1,6 +1,6 @@
 <template>
-    <nav>
-      <div class="title">
+    <nav >
+      <div class="title-nav" >
         <!-- <img  class="image" src="@/assets/logocircle1.png" /> -->
         <img class="logo" src="@/assets/logocirclewhite.png"/>
 
@@ -47,10 +47,10 @@
   </script>
   
   <style scoped>
-  nav {
+  .title-nav {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
     align-items: center;
     background-color: black;
     color: white;

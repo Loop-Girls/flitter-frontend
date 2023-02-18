@@ -24,7 +24,7 @@ export default defineComponent({
     position: fixed;
     width: 70px;
     height: 70px;
-    bottom: 15px;
+    bottom: 70px;
     right: 15px;
     background-color: rgb(61, 36, 255);
     font-size: 40px;

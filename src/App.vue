@@ -4,13 +4,16 @@
   <NavBarLinks :links="links" />
   <router-view />
   <FooterBar class="footer">
+    <img class="image" src="@/assets/logo.png" />
     <div class="link">
-      <img class="image" src="@/assets/logo.png" />
-      <A HREf="https://github.com/Andreapf13" target='_blank' style="color:aliceblue"> &#10024; Andrea </A>
-      <A HREf="https://github.com/CristinaMercedesNunez" target='_blank' style="color:aliceblue"> Cristina </A>
-      <A HREf="https://github.com/Esthefani5" target='_blank' style="color:aliceblue"> Esteff </A>
-      <A HREf="https://github.com/kyl03" target='_blank' style="color:aliceblue"> Karen </A>
-      <A HREf="https://github.com/BeatrizMontero" target='_blank' style="color:aliceblue"> Beatriz &#10024; </A>
+      <a class="footer-link" HREf="https://github.com/Andreapf13" target='_blank' > &#10024; Andrea
+      </a>
+      <a class="footer-link" HREf="https://github.com/CristinaMercedesNunez" target='_blank' >
+        Cristina </a>
+      <a class="footer-link" HREf="https://github.com/Esthefani5" target='_blank'> Esteff </a>
+      <a class="footer-link" HREf="https://github.com/kyl03" target='_blank'> Karen </a>
+      <a class="footer-link" HREf="https://github.com/BeatrizMontero" target='_blank'> Beatriz
+        &#10024; </a>
     </div>
   </FooterBar>
 </template>
@@ -68,14 +71,6 @@ footer {
   word-break: break-word;
 }
 
-a {
-  font-size: 30px;
-  margin-right: 10px;
-  font-weight: bold;
-  text-decoration: none;
-
-}
-
 body {
   background-image: url(https://img.freepik.com/vector-premium/fondo-degradado-triangulo-cuadrado-abstracto-telon-fondo-poligonal-color-hielo-fresco-aplicaciones-moviles-web-bandera-abstracta-geometrica-moda-folleto-concepto-tecnologia-estilo-mosaico_121461-3071.jpg?w=1060g);
   margin: 0px;
@@ -92,9 +87,9 @@ body {
 }
 
 
-nav a {
+nav {
   font-weight: bold;
-  color: #2c3e50;
+  background-color: black;
 }
 
 nav a.router-link-exact-active {
@@ -126,17 +121,20 @@ img {
   border-radius: 10px;
 }
 
-  .logo {
+.logo {
   width: 400px;
-  height: auto;;
+  height: auto;
+  ;
 }
 
 .logo:hover {
   width: 400px;
-  height: auto;;
+  height: auto;
+  ;
   background: url("@/assets/logocircle1.png");
 }
-.title{
+
+.title {
   display: flex;
   align-items: center;
   padding: 10px;
@@ -145,4 +143,45 @@ img {
 .flit-list {
   padding: 10px;
 }
-</style>
+
+.footer {
+  /* position: fixed; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #000000;
+  text-align: center;
+  padding: 1%;
+  margin-top: 5%;
+}
+
+.image {
+  max-width: 50px;
+  height: auto;
+  border-radius: 15px;
+}
+
+a {
+  margin: 5px;
+  font-size: 12px;
+  margin-right: 10px;
+  font-weight: bold;
+  color: white;
+
+}
+
+.footer-link:hover {
+  color: aqua;
+}
+
+p {
+  margin: 5px;
+}
+
+.link {
+  display: flex;
+  justify-content: space-between;
+}</style>
