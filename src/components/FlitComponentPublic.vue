@@ -228,7 +228,6 @@ body {
     border: transparent;
     float: right;
     margin-right: 10px;
-    
 }
 
 .nogive {
@@ -241,7 +240,6 @@ body {
 }
 
 .lenght-kudos {
-
     margin-left: 20px;
     font-size: 30px;
     background-color:white(255, 252, 252);

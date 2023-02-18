@@ -1,6 +1,9 @@
 <template>
     <nav>
       <div class="title">
+        <!-- <img  class="image" src="@/assets/logocircle1.png" /> -->
+        <img class="logo" src="@/assets/logocirclewhite.png"/>
+
         <h4>{{ title }}</h4>
       </div>
       <div class="links" v-if="loggedUser">
@@ -46,7 +49,6 @@
   <style scoped>
   nav {
     width: 100%;
-    height: 100px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -55,9 +57,11 @@
   }
   h4 {
     color: white;
+    margin-left: 10px;
+    font-size: xx-large;
   }
-  .links,
-  .title {
-    padding: 20px;
-  }
+ a{
+  font-size: medium;
+ }
+
   </style>

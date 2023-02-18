@@ -46,13 +46,6 @@ export default defineComponent({
         let image = "";
         let selectedImage: File | null;
         const { createFlit } = useFlits();
-        watch(date, () => {
-            if (date.value < today_date) {
-                console.log(date.value);
-                console.log(today_date);
-                alert("Can't post in the past");
-            }
-        });
         return {
             message,
             today_date,

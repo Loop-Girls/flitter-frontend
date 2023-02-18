@@ -1,16 +1,17 @@
 
 <template>
-    <NavBar :title="'Flitter'" ></NavBar>
-      <NavBarLinks :links="links"/>
-    <router-view/>
-  <FooterBar>
-  <div class="link">
-    <A HREf="https://github.com/Andreapf13" target='_blank' style="color:aliceblue">  &#10024; Andrea </A>
-    <A HREf="https://github.com/CristinaMercedesNunez" target='_blank' style="color:aliceblue"> Cristina </A>
-    <A HREf="https://github.com/Esthefani5" target='_blank' style="color:aliceblue"> Esteff </A>
-    <A HREf="https://github.com/kyl03" target='_blank' style="color:aliceblue"> Karen </A>
-    <A HREf="https://github.com/BeatrizMontero" target='_blank' style="color:aliceblue"> Beatriz  &#10024; </A>
-  </div>
+  <NavBar class=title :title="'Flipper'"></NavBar>
+  <NavBarLinks :links="links" />
+  <router-view />
+  <FooterBar class="footer">
+    <div class="link">
+      <img class="image" src="@/assets/logo.png" />
+      <A HREf="https://github.com/Andreapf13" target='_blank' style="color:aliceblue"> &#10024; Andrea </A>
+      <A HREf="https://github.com/CristinaMercedesNunez" target='_blank' style="color:aliceblue"> Cristina </A>
+      <A HREf="https://github.com/Esthefani5" target='_blank' style="color:aliceblue"> Esteff </A>
+      <A HREf="https://github.com/kyl03" target='_blank' style="color:aliceblue"> Karen </A>
+      <A HREf="https://github.com/BeatrizMontero" target='_blank' style="color:aliceblue"> Beatriz &#10024; </A>
+    </div>
   </FooterBar>
 </template>
 
@@ -28,8 +29,8 @@ export default defineComponent({
     NavBarLinks,
     NavBar,
   },
-  setup(){
-    const { isAuthenticated, getProfile} = useAuth();
+  setup() {
+    const { isAuthenticated, getProfile } = useAuth();
     getProfile();
     return {
       getProfile,
@@ -40,7 +41,7 @@ export default defineComponent({
             { label: "My world", link: { name: "private" } },
             { label: "Profile", link: { name: "profile" } },
           ];
-        }else{
+        } else {
           return [
             { label: "Hello World", link: { name: "home" } },
             { label: "Signup", link: { name: "signup" } },
@@ -54,30 +55,35 @@ export default defineComponent({
 </script>
 
 <style>
-*{
-    box-sizing: border-box;
-    margin: 0;
+* {
+  box-sizing: border-box;
+  margin: 0;
 }
-section,footer{
-    overflow: hidden;
-    white-space: wrap;
-    word-break: break-word;
+
+
+section,
+footer {
+  overflow: hidden;
+  white-space: wrap;
+  word-break: break-word;
 }
-a{
+
+a {
   font-size: 30px;
   margin-right: 10px;
   font-weight: bold;
   text-decoration: none;
 
 }
- body{
+
+body {
   background-image: url(https://img.freepik.com/vector-premium/fondo-degradado-triangulo-cuadrado-abstracto-telon-fondo-poligonal-color-hielo-fresco-aplicaciones-moviles-web-bandera-abstracta-geometrica-moda-folleto-concepto-tecnologia-estilo-mosaico_121461-3071.jpg?w=1060g);
   margin: 0px;
-    padding: 0px;
-  margin-bottom: 10%;}
+  padding: 0px;
+}
 
 
-  #app {
+#app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -85,9 +91,6 @@ a{
   color: #2c3e50;
 }
 
-nav {
-  padding: 10px;
-}
 
 nav a {
   font-weight: bold;
@@ -97,25 +100,49 @@ nav a {
 nav a.router-link-exact-active {
   color: #42b983;
 }
-img{
+
+img {
   max-width: 100%;
 }
-.logo{
-    border-radius: 10px;
-    max-width: 20%;
-    max-height: auto;
-  }
-  .btn-k{
-    margin: 5px;
-    background-color:rgb(61, 36, 255);
-    color: white;
-    border-radius: 10px;
-  }
-  .btn-k:hover{
-    background-color:white;
-    color: rgb(61, 36, 255);
-    border-radius: 10px;
-  }
 
+.logo {
+  border-radius: 10px;
+  max-width: 20%;
+  max-height: auto;
+}
 
+.btn-k {
+  margin: 5px;
+  background-color: rgb(61, 36, 255);
+  color: white;
+  border-radius: 10px;
+  width: max-content;
+}
+
+.btn-k:hover {
+  width: max-content;
+  background-color: white;
+  color: rgb(61, 36, 255);
+  border-radius: 10px;
+}
+
+  .logo {
+  width: 400px;
+  height: auto;;
+}
+
+.logo:hover {
+  width: 400px;
+  height: auto;;
+  background: url("@/assets/logocircle1.png");
+}
+.title{
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.flit-list {
+  padding: 10px;
+}
 </style>
