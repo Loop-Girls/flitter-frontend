@@ -18,7 +18,7 @@
          <!-- //TODO: implement bottons, change v-if in case following[] type changed to User -->
          <div class="footer-list">
              <div class="likes">
-                 <p  class="lenght-kudos" style="filter: grayscale(100%)"   v-if="!loggedUser"> {{ flit.kudos.length }}&#128525;</p>
+                 <p  class="lenght-kudos" style="filter: grayscale(100%)"   v-if="!loggedUser||flit.author==loggedUser.username"> {{ flit.kudos.length }}&#128525;</p>
                  <p  class="lenght-kudos"  v-else> {{ flit.kudos.length }}</p>
                  <div v-if="loggedUser && flit.author != loggedUser.username">
                  <button class="nogive" @click="removeKudoFromFlit(flit, loggedUser)"
@@ -26,7 +26,7 @@
                  <button style="filter: grayscale(100%)" class="give" @click="giveKudoFromFlit(flit, loggedUser)" v-else>&#128525; </button> 
              </div>
              </div>
-             <div class="follow" v-if="loggedUser">
+             <div class="follow" v-if="loggedUser&& flit.author!=loggedUser.username">
                  <button class="btn-k" @click="unfollowUser(flit.author, loggedUser)"
                  v-if="loggedUser.following.includes(flit.author)">
                  Unfollow

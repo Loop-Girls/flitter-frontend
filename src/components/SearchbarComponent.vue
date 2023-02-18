@@ -162,8 +162,10 @@ export default defineComponent({
 }
 
 .form-example:hover {
-  border-color: pink;
-  color: pink;
+  /* border-color: pink;
+  color: pink; */
+  color: aqua;
+  border-color: aqua;
 }
 
 .form-example::after {

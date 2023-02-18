@@ -114,9 +114,11 @@ img {
 .btn-k:hover {
   width: max-content;
   /* border-color:  rgb(61, 36, 255); */
-  border-color:  pink;
+  /* border-color:  pink; */
   /* color: white; */
-  color: pink;
+  /* color: pink; */
+  color: aqua;
+  border-color: aqua;
   border-radius: 10px;
 }
 
@@ -125,12 +127,6 @@ img {
   max-width: 100px;
   height: auto;
   ;
-}
-
-.logo:hover {
-  height: auto;
-  ;
-  background: url("@/assets/logocircle1.png");
 }
 
 .title {

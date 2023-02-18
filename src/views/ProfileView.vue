@@ -11,7 +11,7 @@
                 <div v-if="isLoading">Cargando...</div>
                 <div class="flit-list" v-else>
                     <SearchbarComponent :following=[]></SearchbarComponent>
-                    <FlitComponentPublic v-for="flit in flits" :key="flit._id" :flit="flit" :loggedUser="loggedUser" />
+                    <FlitComponent v-for="flit in flits" :key="flit._id" :flit="flit" :loggedUser="loggedUser" />
                 </div>
             </div>
         </div>
@@ -22,7 +22,7 @@
 
 <script lang="ts">
 import CreateFlitButton from '@/components/CreateFlitButton.vue';
-import FlitComponentPublic from '@/components/FlitComponentPublic.vue';
+import FlitComponent from '@/components/FlitComponent.vue';
 import SearchbarComponent from '@/components/SearchbarComponent.vue';
 import useAuth from "@/composables/useAuth";
 import useUsers from "@/composables/useUsers"
@@ -35,7 +35,7 @@ export default defineComponent({
     name: 'ProfileView',
     components: {
         CreateFlitButton,
-        FlitComponentPublic,
+        FlitComponent,
         SearchbarComponent,
     },
     setup() {
