@@ -8,7 +8,7 @@
                 <!-- //TODO: change to nice date format -->
                 {{ new Date(flit.date).toLocaleString() }}
             </p>
-            <div class="info">
+            <div class="message">
                 <p>{{ flit.message }}</p>
             </div>
 
@@ -16,25 +16,26 @@
                 <img :src="flit.image" />
             </div>
             <!-- //TODO: implement bottons, change v-if in case following[] type changed to User -->
-            <div class="footer-list" v-if="loggedUser && flit.author != loggedUser.username">
-                <button class="unfollow" @click="unfollowUser(flit.author, loggedUser)"
+            <div class="footer-list">
+                <div class="likes">
+                    <p  class="lenght-kudos" style="filter: grayscale(100%)" v-if="!loggedUser"> {{ flit.kudos.length }}&#128525;</p>
+                    <p  class="lenght-kudos"  v-else> {{ flit.kudos.length }}</p>
+                    <div v-if="loggedUser && flit.author != loggedUser.username">
+                    <button class="nogive" @click="removeKudoFromFlit(flit, loggedUser)"
+                        v-if="flit.kudos.includes(loggedUser.username)"> &#128525;</button>
+                    <button style="filter: grayscale(100%)" class="give" @click="giveKudoFromFlit(flit, loggedUser)" v-else>&#128525; </button> 
+                </div>
+                </div>
+                <div class="follow" v-if="loggedUser">
+                    <button class="btn-k" @click="unfollowUser(flit.author, loggedUser)"
                     v-if="loggedUser.following.includes(flit.author)">
                     Unfollow
-                </button>
-                <button class="follow" v-else @click=followUser(flit.author,loggedUser)>
+                    </button>
+                    <button class="btn-k" v-else @click=followUser(flit.author,loggedUser)>
                     Follow
-                </button>
-
-                <div v-if="loggedUser && flit.author != loggedUser.username">
-                    <button class="nogive" @click="removeKudoFromFlit(flit, loggedUser)"
-                        v-if="flit.kudos.includes(loggedUser.username)"> &#128534;</button>
-                    <button class="give" @click="giveKudoFromFlit(flit, loggedUser)" v-else> &#128525;</button>
-                    
+                    </button>
                 </div>
-               
             </div>
-            <p class="lenght-kudos"> &#128525; {{ flit.kudos.length }}</p>
-
 </div>
 </div>
 
@@ -143,24 +144,35 @@ body {
 
 .date {
 
-    font-size: 20px;
+    font-size: 15px;
     font-weight: bold;
     color: rgb(71, 73, 74);
     margin-left:auto;
     margin-right: auto;
 }
 .message{
-    margin-left: auto;
-    font-weight: bold;
-}
-.container {
-    background-color: rgb(255, 255, 255);
-    padding: 30px;
-    border-radius: 70px;
+    word-wrap: break-word;
     margin-right: auto;
     margin-left: auto;
-    margin-top: 50px;
+    color: white;
+}
+.container {
+    background-color: black;
+    padding: 25px;
+    border-radius: 40px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 20px;
+    width: 100%;
+    height: auto;
+    border-color: white;
+    border-width: 3px;
+    border-style: solid;
+    
 
+}
+.container:hover {
+    border-color: pink;
 }
 
 .info {
@@ -171,8 +183,9 @@ body {
 
 .author {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 60px;
+    font-size: 20x;
     font-weight: bold;
+    color: white;
 }
 
 .product-image {
@@ -194,56 +207,40 @@ body {
 
 }
 
-
-.follow {
-    background-color: rgb(61, 36, 255);
-    width: 20%;
-    height: 40px;
-    font-size: 15px;
-    color: white;
-    border-radius: 10px;
-    float: right;
-    margin-right: 10px;
-    overflow: hidden;
-}
-
-.unfollow {
-    background-color: rgb(61, 36, 255);
-    width: 20%;
-    height: 40px;
-    font-size: 15px;
-    color: white;
-    border-radius: 10px;
-    float: right;
-    margin-right: 10px;
-    overflow: hidden;
-
-}
-
-
 .give {
-    font-size: 30px;
+    font-size: 25px;
     border-radius: 50px;
-    background-color: white;
     border: transparent;
     float: right;
     margin-right: 10px;
+    background-color: transparent;
 }
 
 .nogive {
-    font-size: 30px;
+    font-size: 25px;
     border-radius: 50px;
-    background-color: white;
     border: transparent;
     float: right;
     margin-right: 10px;
+    background-color: transparent;
 }
 
 .lenght-kudos {
     margin-left: 20px;
-    font-size: 30px;
+    font-size: 25px;
     background-color:white(255, 252, 252);
     border-radius: 10px;
+}
+.footer-list{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    
+}
+.likes{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
 }
 
 @media screen and (min-width: 768px) {

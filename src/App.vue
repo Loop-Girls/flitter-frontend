@@ -100,35 +100,34 @@ img {
   max-width: 100%;
 }
 
-.logo {
-  border-radius: 10px;
-  max-width: 20%;
-  max-height: auto;
-}
 
 .btn-k {
   margin: 5px;
-  background-color: rgb(61, 36, 255);
+  border-color: white;
   color: white;
+  background-color: #000000;
   border-radius: 10px;
   width: max-content;
+  padding: 6px;
 }
 
 .btn-k:hover {
   width: max-content;
-  background-color: white;
-  color: rgb(61, 36, 255);
+  /* border-color:  rgb(61, 36, 255); */
+  border-color:  pink;
+  /* color: white; */
+  color: pink;
   border-radius: 10px;
 }
 
 .logo {
-  width: 400px;
+  width: 100px;
+  max-width: 100px;
   height: auto;
   ;
 }
 
 .logo:hover {
-  width: 400px;
   height: auto;
   ;
   background: url("@/assets/logocircle1.png");

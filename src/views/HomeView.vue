@@ -1,7 +1,7 @@
 <template>
-  <div class="search">
+ 
     <SearchbarComponent :following="[]" />
-  </div>
+
   <div v-if="isLoading">Cargando...</div>
   <div class="flit-list" v-else>
     <FlitComponentPublic v-for="flit in flits" :key="flit._id" :flit="flit" :loggedUser="loggedUser"

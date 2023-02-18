@@ -24,9 +24,10 @@ export default defineComponent({
     position: fixed;
     width: 70px;
     height: 70px;
-    bottom: 70px;
+    bottom: 60px;
     right: 15px;
-    background-color: rgb(61, 36, 255);
+    background-color: black;
+	border-color: white;
     font-size: 40px;
     color: #FFF;
     border-radius: 50px;
@@ -38,20 +39,8 @@ export default defineComponent({
 
 }
 .btn:hover{
-	position:fixed;
-	width:100px;
-	height: 100px;
-	bottom:60px;
-	right:40px;
-	background-color:white;
-	font-size: 50px;
-	color:rgb(61, 36, 255);
-	border-radius:50px;
-	text-align:center;
-	box-shadow: 2px 2px 3px #999;
-	margin-bottom: 3%;
-	font-weight: bold;
-	border-color: black;
+	color:pink;
+	border-color: pink;
 
 }
 </style>
