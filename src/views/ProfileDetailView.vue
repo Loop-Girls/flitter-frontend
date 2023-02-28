@@ -1,9 +1,11 @@
 <template>
-  <div v-if="!isLoading">
-     <SearchbarComponent :following="[]"></SearchbarComponent>
-    <FlitComponent v-for="flit in flits" :key="flit._id" :flit="flit" :loggedUser="loggedUser"></FlitComponent>
+  <div class="view">
+    <div v-if="!isLoading">
+      <SearchbarComponent :following="[]"></SearchbarComponent>
+      <FlitComponent v-for="flit in flits" :key="flit._id" :flit="flit" :loggedUser="loggedUser"></FlitComponent>
+    </div>
+    <div v-else>Loading...</div>
   </div>
-  <div v-else>Loading...</div>
 </template>
 
 <script lang="ts">
@@ -20,13 +22,13 @@ export default defineComponent({
       required: true,
     },
   },
-  components:{
+  components: {
     FlitComponent,
     SearchbarComponent,
   },
   setup(props) {
-    const { getFlitsByUsername, flits, isLoading} = useFlits();
-    const {loggedUser} = useAuth();
+    const { getFlitsByUsername, flits, isLoading } = useFlits();
+    const { loggedUser } = useAuth();
     // let user = ref<User>();
     // fakeShopAPI
     //   .get<unknown, AxiosResponse<User>>(`/users/${props.id}`)
@@ -40,3 +42,5 @@ export default defineComponent({
   },
 });
 </script>
+<style scoped>
+</style>

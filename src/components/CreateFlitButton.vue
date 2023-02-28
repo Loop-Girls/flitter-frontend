@@ -39,8 +39,9 @@ export default defineComponent({
 
 }
 .btn:hover{
-	color:pink;
-	border-color: pink;
-
+	/* color:pink;
+	border-color: pink; */
+	color:rgb(251 216 238);;
+	border-color: rgb(251 216 238);;
 }
 </style>

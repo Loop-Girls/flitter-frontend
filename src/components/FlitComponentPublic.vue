@@ -1,9 +1,20 @@
 <template>
        <div class="container">
         <div class="product-details">
-            <h2 class="author" @click="goDetail(flit.author)">
+            <div class="flip-header">
+                <h2 class="author" @click="goDetail(flit.author)">
                 &#128044; {{ flit.author }} 
-            </h2>
+                </h2>
+                <div class="follow" v-if="loggedUser&&flit.author!=loggedUser.username">
+                    <button class="btn-k" @click="unfollowUser(flit.author, loggedUser)"
+                    v-if="loggedUser.following.includes(flit.author)">
+                    Unfollow
+                    </button>
+                    <button class="btn-k" v-else @click=followUser(flit.author,loggedUser)>
+                    Follow
+                    </button>
+                </div>
+            </div>
             <p class="date">
                 <!-- //TODO: change to nice date format -->
                 {{ new Date(flit.date).toLocaleString() }}
@@ -25,15 +36,6 @@
                         v-if="flit.kudos.includes(loggedUser.username)"> &#128525;</button>
                     <button style="filter: grayscale(100%)" class="give" @click="giveKudoFromFlit(flit, loggedUser)" v-else>&#128525; </button> 
                 </div>
-                </div>
-                <div class="follow" v-if="loggedUser">
-                    <button class="btn-k" @click="unfollowUser(flit.author, loggedUser)"
-                    v-if="loggedUser.following.includes(flit.author)">
-                    Unfollow
-                    </button>
-                    <button class="btn-k" v-else @click=followUser(flit.author,loggedUser)>
-                    Follow
-                    </button>
                 </div>
             </div>
 </div>
@@ -183,7 +185,7 @@ body {
 
 .author {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 20x;
+    font-size: 16x;
     font-weight: bold;
     color: white;
 }
@@ -223,24 +225,6 @@ body {
     float: right;
     margin-right: 10px;
     background-color: transparent;
-}
-
-.lenght-kudos {
-    margin-left: 20px;
-    font-size: 25px;
-    background-color:white(255, 252, 252);
-    border-radius: 10px;
-}
-.footer-list{
-    display: flex;
-    justify-content:space-between;
-    align-items: center;
-    
-}
-.likes{
-    display: flex;
-    justify-content:space-between;
-    align-items: center;
 }
 
 @media screen and (min-width: 768px) {

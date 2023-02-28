@@ -75,6 +75,7 @@ body {
   background-image: url(https://img.freepik.com/vector-premium/fondo-degradado-triangulo-cuadrado-abstracto-telon-fondo-poligonal-color-hielo-fresco-aplicaciones-moviles-web-bandera-abstracta-geometrica-moda-folleto-concepto-tecnologia-estilo-mosaico_121461-3071.jpg?w=1060g);
   margin: 0px;
   padding: 0px;
+  height: 100vh;
 }
 
 
@@ -84,6 +85,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 
@@ -117,13 +121,13 @@ img {
   /* border-color:  pink; */
   /* color: white; */
   /* color: pink; */
-  color: aqua;
-  border-color: aqua;
+  color: rgb(251 216 238);;
+  border-color: rgb(251 216 238);;
   border-radius: 10px;
 }
 
 .logo {
-  width: 100px;
+  width: 15%;
   max-width: 100px;
   height: auto;
   ;
@@ -150,7 +154,12 @@ img {
   background-color: #000000;
   text-align: center;
   padding: 1%;
-  margin-top: 5%;
+  margin-top: auto;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   color: white;
+   text-align: center;
 }
 
 .image {
@@ -169,7 +178,7 @@ a {
 }
 
 .footer-link:hover {
-  color: aqua;
+  color: rgb(251 216 238);;
 }
 
 p {
@@ -179,4 +188,44 @@ p {
 .link {
   display: flex;
   justify-content: space-between;
-}</style>
+}
+
+.lenght-kudos {
+    font-size: 18px;
+    background-color:white(255, 252, 252);
+    border-radius: 10px;
+    justify-content: center;
+}
+/* .footer-list{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    
+} */
+.likes{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+.flip-header{
+  display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
+.container {
+    background-color: black;
+    padding: 25px;
+    border-radius: 40px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 20px;
+    width: 90%;
+    height: auto;
+    border-color: white;
+    border-width: 3px;
+    border-style: solid;
+    
+
+}
+
+</style>

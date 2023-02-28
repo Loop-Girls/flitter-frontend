@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <ul class="margin" v-if="links">
+    <ul v-if="links">
       <li v-for="(link, index) in links" :key="index">
         <router-link class="navbarlink" :to="link.link">{{ link.label }}</router-link>
       </li>
@@ -35,19 +35,18 @@ nav {
 
 ul {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   list-style: none;
+  margin: 0px;
 }
 
 li {
-  margin: 1rem;
+
   font-weight: bold;
 }
 
 li:hover {
-  margin: 1rem;
   font-weight: bold;
-  color: hotpink;
 }
 
 a {

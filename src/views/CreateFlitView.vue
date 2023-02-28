@@ -11,10 +11,13 @@
             </div>
             <div class="buttons">
                 <div>
-                    <input id="file" type="file" @change="selectImage" />
+                  
                     <!-- TODO: improve -->
                     <!-- <button @click="removeSelectedFile">X</button> -->
-                    <label class="button"></label>
+                    <label class="file-label">
+                        <input id="file" type="file" @change="selectImage" />
+
+                    </label>
                     <input class="date" type="date" v-model="date" :min="today_date" />
                 </div>
                 <div class="post">
@@ -101,17 +104,33 @@ export default defineComponent({
 </script>
 <style scoped>
 .container {
-
     background-color: white;
-    width: 100%;
-    height: 50%;
+    width: 80%;
+    height: auto;
     margin-top: 10%;
     margin-left: auto;
     margin-right: auto;
     padding: 30px;
     border-radius: 30px;
-    box-shadow: 50px 50px rgb(251, 216, 238);
+    box-shadow: 25px 25px rgb(251, 216, 238);
     border-color: inherit;
+}
+#file {
+    appearance: none;
+    background-color: white;
+    cursor: default;
+    align-items: baseline;
+    color: inherit;
+    text-overflow: ellipsis;
+    white-space: pre;
+    text-align: start !important;
+    padding: initial;
+    border: initial;
+    overflow: hidden !important;
+}
+.file-label{
+    display: flex;
+    justify-content: center;
 }
 
 .margin {
@@ -123,7 +142,7 @@ export default defineComponent({
     font-family: Georgia, 'Times New Roman', Times, serif;
     color: rgb(31, 30, 31);
     ;
-    font-size: 40px;
+    font-size: 20px;
     position: relative;
     display: block;
     border-color: inherit;
@@ -140,22 +159,18 @@ export default defineComponent({
 .message {
     background-color: rgb(249, 249, 249);
     width: 100%;
-    height: 150px;
+    height: 70px;
     border-radius: 20px;
     margin-top: 20px;
-
     margin-left: auto;
     margin-right: auto;
-
     border-color: transparent;
-
-
 }
 
 .date {
     border-radius: 20px;
-    padding: 10px;
-    box-shadow: 10px 10px rgb(251, 216, 238);
+    padding: 8px;
+    box-shadow: 5px 5px rgb(251 216 238);
     border-color: transparent;
 }
 
@@ -167,7 +182,7 @@ export default defineComponent({
     color: rgb(27, 26, 26);
     font-size: 30px;
     text-align: center;
-    background-color: rgb(252, 252, 252);
+    background-color: rgb(11, 6, 6);
     box-shadow: 10px 10px rgb(251, 216, 238);
     border-color: transparent;
 }
