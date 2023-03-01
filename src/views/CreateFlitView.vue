@@ -7,7 +7,7 @@
             <div class="margin">
                 <label class="enunciado" for="message">What are you thinking?</label>
 
-                <input class="message" v-model="message" maxlength="150" />
+                <textarea class="message" v-model="message" maxlength="150" rows="4"></textarea>
             </div>
             <div class="buttons">
                 <div>
@@ -159,12 +159,13 @@ export default defineComponent({
 .message {
     background-color: rgb(249, 249, 249);
     width: 100%;
-    height: 70px;
+    height: 150px;
     border-radius: 20px;
     margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
     border-color: transparent;
+    padding: 8px;
 }
 
 .date {
