@@ -44,16 +44,19 @@ const actions: ActionTree<IAuthState, IState> = {
   },
   async login({ commit }, credentials: Credentials) {
     commit("setIsLoading", true);
+    try {
+      const { data } = await flitterApi.post("/auth/login", credentials);
+      console.log('login' + data);
+      // commit("setToken", data);
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("user_id", data.user._id);
+      commit("setIsLoading", false);
+      commit("setUser", data.user);
+      commit("setToken", data.token);
+    } catch (error) {
+      alert('Credentials not valid');
+    }
 
-    const { data } = await flitterApi.post("/auth/login", credentials);
-    console.log('login' + data);
-    // commit("setToken", data);
-    localStorage.setItem("token", data.token);
-    localStorage.setItem("user_id", data.user._id);
-    commit("setIsLoading", false);
-    commit("setUser", data.user);
-    window.location.reload();
-    router.push('/private');
   },
 
   async signup({ commit }, user: URLSearchParams) {
@@ -64,9 +67,9 @@ const actions: ActionTree<IAuthState, IState> = {
     // commit("setToken", data);
     localStorage.setItem("token", data.token);
     localStorage.setItem("user_id", data.savedUser._id);
-
     commit("setIsLoading", false);
     commit("setUser", data.savedUser);
+    commit("setToken", data.token);
 
     window.location.reload();
     router.push('/private');

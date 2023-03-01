@@ -23,7 +23,6 @@ const useAuth = () => {
     },
     login: async (credentials: Credentials) => {
       await store.dispatch("auth/login", credentials);
-
       router.push({ name: "private" });
     },
 
