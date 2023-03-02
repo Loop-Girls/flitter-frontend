@@ -33,10 +33,10 @@ export default defineComponent({
     NavBar,
   },
   setup() {
-    const { isAuthenticated, getProfile } = useAuth();
-    getProfile();
+    const { isAuthenticated} = useAuth();
+
     return {
-      getProfile,
+
       links: computed(() => {
         if (isAuthenticated.value) {
           return [

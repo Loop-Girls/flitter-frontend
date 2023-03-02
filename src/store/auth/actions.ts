@@ -1,6 +1,5 @@
 import flitterApi from "@/api/flitterApi";
 import { Credentials } from "@/models/credentials";
-import { Token } from "@/models/token";
 import { User } from "@/models/user";
 import router from "@/router";
 import { AxiosResponse } from "axios";
@@ -9,21 +8,6 @@ import { IState } from "..";
 import { IAuthState } from "./state";
 
 const actions: ActionTree<IAuthState, IState> = {
-  // async getProfile({ commit }) {
-  //   // usamos la mutación para poner isLoading = true
-  //   commit("setIsLoading", true);
-
-  //   // obtenemos los datos de manera asíncrona
-  //   const { data } = await flitterApi.get<User, AxiosResponse<User>>(
-  //     "/auth/profile"
-  //   );
-
-  //   // usamos la mutación para poner isLoading = false
-  //   commit("setIsLoading", false);
-
-  //   // usamos la mutación para volcar los datos obtenidos en la variable del state users
-  //   commit("setUser", data);
-  // },
   async getProfile({ commit }) {
 
     // usamos la mutación para poner isLoading = true
@@ -70,34 +54,41 @@ const actions: ActionTree<IAuthState, IState> = {
     commit("setIsLoading", false);
     commit("setUser", data.savedUser);
     commit("setToken", data.token);
-
-    window.location.reload();
     router.push('/private');
   },
   async forgotPassword({ commit }, email: URLSearchParams) {
 
-     await flitterApi.post("/auth/forgot", email).then(
-      (res)=> {
+    await flitterApi.post("/auth/forgot", email).then(
+      (res) => {
         alert(res.data);
         router.push('/login');
       },
-      (err)=> console.log(err)
+      (err) => console.log(err)
     );
-     
+
   },
-   //Funcion delete para profile
-   async deleteUserFromDB({ commit }, user_id) {
+  //Funcion delete para profile
+  async deleteUserFromDB({ commit }, user_id) {
     console.log('deleting user');
 
     //En lugar de pasar user_id, puedes cogerlo directamente del localstorage.getItem('user_id);
-    const {data} = await flitterApi.delete<User[], AxiosResponse<User[]>>(
+    const { data } = await flitterApi.delete<User[], AxiosResponse<User[]>>(
       `/users/${user_id}`);
-      console.log(data);
-    localStorage.clear();  
+    console.log(data);
+    localStorage.clear();
     commit("setUser", null);
     window.location.reload();
     router.push('/login')
 
+  },
+  async reset_Password({ commit }, params: URLSearchParams) {
+    await flitterApi.post('/auth/reset-password', params).then(
+      (res) => {
+        alert(res.data);
+        router.push('/login');
+      },
+      (err) => console.log(err)
+    );
   },
 };
 

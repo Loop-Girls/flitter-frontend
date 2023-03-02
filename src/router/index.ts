@@ -6,7 +6,8 @@ import LoginView from '../views/LoginView.vue'
 import PrivateHomeView from '../views/PrivateHomeView.vue';
 import ForgotPassword from '../views/ForgotPassword.vue'
 import haveAuthGuard from "./authGuard";
-import Profile from "../views/ProfileView.vue"
+import Profile from "../views/ProfileView.vue";
+import ErrorView from "../views/ErrorView.vue";
 
 
 const routes: Array<RouteRecordRaw> = [
@@ -66,7 +67,21 @@ const routes: Array<RouteRecordRaw> = [
       const username = route.params.username;
       return { username };
     },
-  }
+  },
+  {
+    path: "/:pathMatch(.*)",
+    name: 'error',
+    component: ErrorView
+  },
+  {
+    path: "/reset-password/:id&:token",
+    name: "reset",
+    component: () =>
+      import(
+        /* webpackChunkName: "user-detail" */ "../views/ResetPasswordView.vue"
+      ),
+
+  },
 ]
 
 const router = createRouter({

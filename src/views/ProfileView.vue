@@ -1,7 +1,7 @@
 <template>
     <div class="profile-page">
         <div class="user-info">
-            <div class="container">
+            <div>
                 <div class="row">
                     <div class="button-container">
                         <button class="btn-k" @click="deleteUser(loggedUser._id)">Unsuscribe</button>
@@ -9,9 +9,13 @@
                 </div>
                 <CreateFlitButton></CreateFlitButton>
                 <div v-if="isLoading">Cargando...</div>
-                <div class="flit-list" v-else>
+            
+                <div  v-else>
                     <SearchbarComponent :following=[]></SearchbarComponent>
-                    <FlitComponent v-for="flit in flits" :key="flit._id" :flit="flit" :loggedUser="loggedUser" />
+                    <div class="flit-list">
+                        <FlitComponent v-for="flit in flits" :key="flit._id" :flit="flit" :loggedUser="loggedUser" />
+                    </div>
+                   
                 </div>
             </div>
         </div>

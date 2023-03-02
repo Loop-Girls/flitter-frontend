@@ -20,7 +20,7 @@ import router from '@/router';
 import { ComputedRef, defineComponent, ref } from 'vue';
 
 export default defineComponent({
-    name: 'loginView',
+    name: 'forgotView',
     setup() {
         const { login, loggedUser, forgotPassword} = useAuth();
         console.log(loggedUser);

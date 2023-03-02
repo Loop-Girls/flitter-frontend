@@ -2,7 +2,7 @@
   <div>
     <div class="card">
       <div class="searchbar">
-        <input type="text" class="form-control" placeholder=" &#128269;   Encuentra tu flit " v-model="title" />
+        <input type="text" class="form-control" placeholder=" &#128269;   Find your flip" v-model="title" />
         <button class="form-example" type="button" id="button-addon2" @click="onSearch()">
           <!-- <i class="fa-solid fa-magnifying-glass"></i> -->
           Search

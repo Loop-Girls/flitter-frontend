@@ -42,7 +42,6 @@ export default defineComponent({
     // console.log('loggedUser?' + getProfile().value);
 
     console.log('gettingFlits')
-    getProfile();
     getFlits();
     let today_date = new Date(new Date());
     console.log(today_date);

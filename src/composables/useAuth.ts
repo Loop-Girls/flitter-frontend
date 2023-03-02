@@ -7,7 +7,6 @@ import { User } from "../models/user";
 const useAuth = () => {
   const router = useRouter();
   const store = useStore();
-
   return {
     isAuthenticated: computed(() => {
       return store.getters["auth/isAuthenticated"];
@@ -25,12 +24,10 @@ const useAuth = () => {
       await store.dispatch("auth/login", credentials);
       router.push({ name: "private" });
     },
-
     loggedUser: computed<User>(() => store.getters["auth/getUser"]),
     getProfile: () => {
       store.dispatch("auth/getProfile");
     },
-
     signup: async (user: URLSearchParams) => {
       await store.dispatch("auth/signup", user);
       router.push({ name: "home" });
@@ -38,8 +35,8 @@ const useAuth = () => {
     forgotPassword: async (email: URLSearchParams) => {
       await store.dispatch("auth/forgotPassword", email);
     },
-    resetPassword: async (email: string) => {
-      await store.dispatch("auth/resetPassword", email);
+    resetPassword: async (email: URLSearchParams) => {
+      await store.dispatch("auth/reset_Password", email);
     },
     deleteUserFromDB: (user: string) =>
     store.dispatch("auth/deleteUserFromDB", user)
