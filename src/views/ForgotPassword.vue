@@ -6,7 +6,7 @@
             <input type="text" placeholder="Enter Email" name="email" required v-model="email">
             <!-- TODO: select avatar image -->
             <div class="clearfix">
-                <button type="button" class="btn-cancel">Cancel</button>
+                <button type="button" class="btn-k">Cancel</button>
                 <button type="submit" class="btn-k">Send</button>
             </div>
         </div>
@@ -60,16 +60,6 @@ export default defineComponent({
     margin-right: auto;
     padding: 30px;
     border-radius: 15px;
- }
- .btn-cancel{
-    background-color: white;
-    color: rgb(61, 36, 255);
-    border-radius: 10px;
- }
- .btn-cancel:hover{
-    color: white;
-    background-color: rgb(47, 47, 50);
-    border-radius: 10px;
  }
  .clearfix{
     margin: 5px;
