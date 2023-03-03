@@ -6,9 +6,9 @@
   <FooterBar class="footer">
     <img class="image" src="@/assets/logo.png" />
     <div class="link">
-      <a class="footer-link" HREf="https://github.com/Andreapf13" target='_blank' > &#10024; Andrea
+      <a class="footer-link" HREf="https://github.com/Andreapf13" target='_blank'> &#10024; Andrea
       </a>
-      <a class="footer-link" HREf="https://github.com/CristinaMercedesNunez" target='_blank' >
+      <a class="footer-link" HREf="https://github.com/CristinaMercedesNunez" target='_blank'>
         Cristina </a>
       <a class="footer-link" HREf="https://github.com/Esthefani5" target='_blank'> Esteff </a>
       <a class="footer-link" HREf="https://github.com/kyl03" target='_blank'> Karen </a>
@@ -33,7 +33,7 @@ export default defineComponent({
     NavBar,
   },
   setup() {
-    const { isAuthenticated} = useAuth();
+    const { isAuthenticated } = useAuth();
 
     return {
 
@@ -58,6 +58,16 @@ export default defineComponent({
 </script>
 
 <style>
+:root {
+  --main-color: rgb(37, 207, 215);
+  --secondary-color: white;
+  --text-color: #424040;
+  --hover-color: #424040;
+  --border-color:rgb(255, 255, 255);
+  --flip-bg:black;
+  --main-font: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -76,6 +86,7 @@ body {
   margin: 0px;
   padding: 0px;
   height: 100vh;
+  font-family: var(--main-font);
 }
 
 
@@ -103,13 +114,11 @@ nav a.router-link-exact-active {
 img {
   max-width: 100%;
 }
-
-
 .btn-k {
   margin: 5px;
-  border-color: white;
-  color: white;
-  background-color: #000000;
+  border-color: var(--secondary-color);
+  color: var(--secondary-color);
+  background-color: var(--flip-bg);
   border-radius: 10px;
   width: max-content;
   padding: 6px;
@@ -121,8 +130,8 @@ img {
   /* border-color:  pink; */
   /* color: white; */
   /* color: pink; */
-  color: rgb(251 216 238);;
-  border-color: rgb(251 216 238);;
+  color: var(--hover-color);
+  border-color: var(--hover-color);
   border-radius: 10px;
 }
 
@@ -151,15 +160,15 @@ img {
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: #000000;
+  background-color: var(--flip-bg);
   text-align: center;
   padding: 1%;
   margin-top: auto;
-   left: 0;
-   bottom: 0;
-   width: 100%;
-   color: white;
-   text-align: center;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: var(--text-color);
+  text-align: center;
 }
 
 .image {
@@ -173,12 +182,13 @@ a {
   font-size: 12px;
   margin-right: 10px;
   font-weight: bold;
-  color: white;
+  color: var(--text-color);
 
 }
 
 .footer-link:hover {
-  color: rgb(251 216 238);;
+  color: var(--text-color);
+  ;
 }
 
 p {
@@ -191,40 +201,276 @@ p {
 }
 
 .lenght-kudos {
-    font-size: 18px;
-    background-color:white(255, 252, 252);
-    border-radius: 10px;
-    justify-content: center;
+  font-size: 18px;
+  border-radius: 10px;
+  justify-content: center;
 }
+
 /* .footer-list{
     display: flex;
     justify-content:space-between;
     align-items: center;
     
 } */
-.likes{
-    display: flex;
-    justify-content:center;
-    align-items: center;
-}
-.flip-header{
+.likes {
   display: flex;
-    justify-content:space-between;
-    align-items: center;
+  justify-content: center;
+  align-items: center;
 }
+
+.flip-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .container {
-    background-color: black;
-    padding: 25px;
-    border-radius: 40px;
-    margin-right: auto;
+  background-color: var(--secondary-color);
+  padding: 25px;
+  border-radius: 40px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 20px;
+  width: 90%;
+  height: auto;
+  border-color: var(--main-color);
+  border-width: 3px;
+  border-style: solid;
+
+
+}
+label {
+  color: var(--text-color);
+}
+
+.btn-create {
+  position: fixed;
+  width: 70px;
+  height: 70px;
+  bottom: 60px;
+  right: 15px;
+  background-color: var(--secondary-color);
+  border-color: var(--main-color);
+  font-size: 40px;
+  color: var(--main-color);
+  border-radius: 50px;
+  border-width: 5px;
+  text-align: center;
+  /* margin-bottom: 20px; */
+  font-weight: bold;
+  margin-right: 15px;
+  margin-bottom: 10px;
+}
+
+.btn-create:hover {
+  /* color:pink;
+	border-color: pink; */
+  color: var(--secondary-color);
+  ;
+  border-color: var(--secondary-color);
+  ;
+  background-color: var(--main-color);
+}
+
+.title-nav {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  background-color: black;
+  color: var(--secondary-color);
+}
+
+.navbarlink {
+  min-height: 30px;
+  background-color: black;
+}
+
+
+.div-btn {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.search-btn {
+  float: left;
+    width: 20%;
+    padding: 10px;
+    background: var(--main-color);
+    color: var(--secondary-color);
+    border: 0px;
+    border-left: none;
+    border-radius: 0px;
+    cursor: pointer;
+ 
+}
+
+.search-btn:hover {
+  /* border-color: pink;
+  color: pink; */
+  color: var(--hover-color);
+  border-color: var(--hover-color);
+}
+
+.search-btn::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+.searchbar{
+  display: flex;
+}
+.btn-page{
+  border-color: var(--secondary-color);
+  border-style: solid;
+  border-radius: 10px;
+  background-color:var(--main-color);
+  width: 40px;
+  color: var(--secondary-color);
+}
+.btn-page:hover{
+  color: var(--hover-color);
+}
+
+/* FlipComponent */
+
+.card {
+    position: relative;
+    display: block;
+    height: 100%;
+    /* border-radius: calc(40 * 1px); */
+    overflow: hidden;
+    text-decoration: none;
     margin-left: auto;
-    margin-top: 20px;
-    width: 90%;
-    height: auto;
-    border-color: white;
-    border-width: 3px;
-    border-style: solid;
-    
+    margin-right: auto;
+    margin-bottom: 10px;
+    position: relative;
+        display: block;
+        min-width: 300px;
+        min-width: 300px;
+        max-width:  100vw;
+        max-height: 300px;
+        border-radius: calc(40 * 1px);
+        overflow: hidden;
+        text-decoration: none;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 10px;
+        border-color: var(--main-color);
+        border-width: 0.5rem;
+}
+
+.date {
+
+font-size: 15px;
+font-weight: bold;
+color: rgb(71, 73, 74);
+margin-left:auto;
+margin-right: auto;
+}
+.message{
+word-wrap: break-word;
+margin-right: auto;
+margin-left: auto;
+color: white;
+}
+.flip-container {
+/* background-color: black; */
+border-color: var(--flip-bg);
+padding: 25px;
+border-radius: 40px;
+margin-right: auto;
+margin-left: auto;
+margin-top: 20px;
+width: 100%;
+height: auto;
+
+border-width: 3px;
+border-style: solid;
+
+
+}
+.flip-container:hover {
+border-color: var(--main-color);
+}
+
+.info {
+word-wrap: break-word;
+margin-right: auto;
+margin-left: auto;
+}
+
+.author {
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+font-size: 13x;
+font-weight: bold;
+color: black;
+}
+.message{
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+font-size: 12x;
+font-weight: bold;
+color: var(--text-color);
+}
+
+.product-image {
+max-width: 100%;
+margin-left: auto;
+margin-right: auto;
+}
+
+.puppy {
+width: auto;
+height: auto;
+border-radius: 15px;
+
+}
+
+.control {
+margin-bottom: 10%;
+margin-top: 5%;
+
+}
+
+.give {
+font-size: 25px;
+border-radius: 50px;
+border: transparent;
+float: right;
+margin-right: 10px;
+background-color: transparent;
+}
+
+.nogive {
+font-size: 25px;
+border-radius: 50px;
+border: transparent;
+float: right;
+margin-right: 10px;
+background-color: transparent;
+}
+
+@media screen and (min-width: 768px) {
+.projects {
+    grid-template-columns: repeat(3, 1fr);
+}
+}
+.btn-follow{
+  margin: 5px;
+
+  color: var(--secondary-color);
+  background-color: var(--flip-bg);
+  border-radius: 10px;
+  width: max-content;
+  padding: 6px;
+}
+.btn-follow:hover{
+
+  color: var(--main-color);
+
 
 }
 

@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div class="card">
+    <div class="search-bar">
       <div class="searchbar">
         <input type="text" class="form-control" placeholder=" &#128269;   Find your flip" v-model="title" />
-        <button class="form-example" type="button" id="button-addon2" @click="onSearch()">
+        <button class="search-btn" type="button" id="button-addon2" @click="onSearch()">
           <!-- <i class="fa-solid fa-magnifying-glass"></i> -->
           Search
         </button>
@@ -132,56 +132,16 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.card {
+.search-bar {
   width: 90%;
   margin-top: 10px;
   margin-bottom: 10px;
   margin-right: auto;
   margin-left: auto;
-
-}
-
-.div-btn {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  display: flex;
-  justify-content: center;
-  margin-left: auto;
-  margin-right: auto;
-}
-.form-example {
-  float: left;
-  width: 20%;
-  padding: 10px;
-  background: black;
-  color: white;
-  border: 1px solid white;
-  border-left: none;
-  cursor: pointer;
- 
-}
-
-.form-example:hover {
-  /* border-color: pink;
-  color: pink; */
-  color: rgb(251 216 238);;
-  border-color: rgb(251 216 238);;
-}
-
-.form-example::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-.searchbar{
-  display: flex;
-}
-.btn-page{
-  border-color: white;
-  border-style: solid;
   border-radius: 10px;
-  background-color:black;
-  width: 40px;
-  color: white;
+  border-width: 3px;
+  border: 3px solid rgb(37, 207, 215);
 }
+
+
 </style>

@@ -11,7 +11,9 @@ const useAuth = () => {
     isAuthenticated: computed(() => {
       return store.getters["auth/isAuthenticated"];
     }),
-  
+    reset: async (email: URLSearchParams) => {
+      await store.dispatch("auth/reset", email);
+    },
     logOut: () => {
       localStorage.removeItem("token");
       localStorage.removeItem("user_id");
@@ -35,11 +37,9 @@ const useAuth = () => {
     forgotPassword: async (email: URLSearchParams) => {
       await store.dispatch("auth/forgotPassword", email);
     },
-    resetPassword: async (email: URLSearchParams) => {
-      await store.dispatch("auth/reset_Password", email);
-    },
-    deleteUserFromDB: (user: string) =>
-    store.dispatch("auth/deleteUserFromDB", user)
+    deleteUserFromDB: (user: string) => {
+      store.dispatch("auth/deleteUserFromDB", user);
+    }
   };
 };
 

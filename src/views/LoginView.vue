@@ -11,10 +11,10 @@
             <label for="psw"><b>Password</b></label>
             <input type="password" placeholder="Enter Password" name="psw" required v-model="password">
             <!-- TODO: select avatar image -->
-            <router-link class="navbarlink" :to="'/forgot-password'">Forgot password?</router-link>
+            <router-link :to="'/forgot-password'">Forgot password?</router-link>
             <div class="clearfix">
-                <button type="button" class="cancelbtn">Cancel</button>
-                <button type="submit" class="loginbtn">Sign in</button>
+                <button type="button" class="btn-k">Cancel</button>
+                <button type="submit" class="btn-k">Sign in</button>
             </div>
         </div>
     </form>
@@ -105,7 +105,7 @@ hr {
 }
 
 /* Set a style for all buttons */
-button {
+/* button {
     background-color: #04AA6D;
     color: white;
     padding: 14px 20px;
@@ -118,7 +118,7 @@ button {
 
 button:hover {
     opacity: 1;
-}
+} */
 
 /* Extra styles for the cancel button */
 .cancelbtn {

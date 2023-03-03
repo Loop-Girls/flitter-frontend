@@ -1,8 +1,8 @@
 <template>
-  <nav>
+  <nav class=navbarlink>
     <ul v-if="links">
       <li v-for="(link, index) in links" :key="index">
-        <router-link class="navbarlink" :to="link.link">{{ link.label }}</router-link>
+        <router-link :to="link.link">{{ link.label }}</router-link>
       </li>
     </ul>
   </nav>
@@ -25,14 +25,6 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.navbarlink{
-font-size: 100%;
-}
-nav {
-  min-height: 30px;
-  background-color: rgb(0, 0, 0);
-}
-
 ul {
   display: flex;
   justify-content: space-evenly;
@@ -40,29 +32,17 @@ ul {
   margin: 0px;
 }
 
-li {
-
-  font-weight: bold;
-}
-
-li:hover {
-  font-weight: bold;
-}
-
 a {
   color: white;
   text-decoration: none;
+  font-size: medium;
 }
-
+a:hover{
+  color: grey;
+}
 
 a:visited {
   color: white;
-}
-
-.image{
-  border-radius: 10px;
-  max-width: 10%;
-  height: auto;
 }
 
 </style>

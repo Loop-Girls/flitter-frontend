@@ -6,7 +6,7 @@
 
         <h4>{{ title }}</h4>
       </div>
-      <div class="links" v-if="loggedUser">
+      <div class="links" v-if="isAuthenticated">
         <button class="btn-k" @click="logout()" color="danger">
             <span class="glyphicon glyphicon-log-out"></span> Log out
         </button>
@@ -47,14 +47,7 @@
   </script>
   
   <style scoped>
-  .title-nav {
-    width: 100%;
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    background-color: black;
-    color: white;
-  }
+
   h4 {
     color: white;
     margin-left: 10px;

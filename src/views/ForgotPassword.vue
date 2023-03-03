@@ -4,7 +4,6 @@
        
             <label for="email"><b>Email</b></label>
             <input type="text" placeholder="Enter Email" name="email" required v-model="email">
-
             <!-- TODO: select avatar image -->
             <div class="clearfix">
                 <button type="button" class="btn-cancel">Cancel</button>
@@ -57,7 +56,6 @@ export default defineComponent({
 <style scoped>
  .container{
     margin: 20px;
-    width: fit-content;
     margin-left: auto;
     margin-right: auto;
     padding: 30px;
@@ -76,4 +74,5 @@ export default defineComponent({
  .clearfix{
     margin: 5px;
  }
+
 </style>

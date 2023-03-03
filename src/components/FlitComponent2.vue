@@ -222,6 +222,9 @@ body {
 .card__header {
     position: relative;
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     align-items: center;
     gap: 2em;
     padding: 1em;

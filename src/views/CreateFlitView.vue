@@ -10,7 +10,7 @@
                 <textarea class="message" v-model="message" maxlength="150" rows="4"></textarea>
             </div>
             <div class="buttons">
-                <div>
+                <div class="inside-btns">
                   
                     <!-- TODO: improve -->
                     <!-- <button @click="removeSelectedFile">X</button> -->
@@ -205,5 +205,10 @@ export default defineComponent({
     padding: 10px;
     margin-top: 10px;
 
+}
+.inside-btns{
+ display: flex;  
+ flex-direction: column;
+    align-items: baseline;
 }
 </style>

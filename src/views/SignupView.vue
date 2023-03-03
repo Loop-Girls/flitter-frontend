@@ -21,8 +21,8 @@
             <p>By creating an account you agree to our <a style="color:dodgerblue">Terms & Privacy</a>.</p>
             <!-- TODO: select avatar image -->
             <div class="clearfix">
-                <button type="button" class="cancelbtn">Cancel</button>
-                <button type="submit" class="signupbtn">Sign Up</button>
+                <button type="button" class="btn-k">Cancel</button>
+                <button type="submit" class="btn-k">Sign Up</button>
             </div>
         </div>
     </form>
@@ -127,46 +127,12 @@ hr {
     margin-bottom: 25px;
 }
 
-/* Set a style for all buttons */
-button {
-    background-color: #04AA6D;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
-    opacity: 0.9;
-}
-
-button:hover {
-    opacity: 1;
-}
-
-/* Extra styles for the cancel button */
-.cancelbtn {
-    padding: 14px 20px;
-    background-color: #f44336;
-}
-
-/* Float cancel and signup buttons and add an equal width */
-.cancelbtn,
-.signupbtn {
-    float: left;
-    width: 50%;
-}
-
 /* Add padding to container elements */
 .container {
     padding: 16px;
 }
 
-/* Clear floats */
-.clearfix::after {
-    content: "";
-    clear: both;
-    display: table;
-}
+
 
 /* Change styles for cancel button and signup button on extra small screens */
 @media screen and (max-width: 300px) {

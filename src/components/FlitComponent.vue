@@ -1,16 +1,16 @@
 <template>
-    <div class="container">
+    <div class="flip-container">
      <div class="product-details">
          <div class="flip-header">
                 <h2 class="author" @click="goDetail(flit.author)">
                 &#128044; {{ flit.author }} 
                 </h2>
                 <div class="follow" v-if="loggedUser&&flit.author!=loggedUser.username">
-                    <button class="btn-k" @click="unfollowUser(flit.author, loggedUser)"
+                    <button class="btn-follow" @click="unfollowUser(flit.author, loggedUser)"
                     v-if="loggedUser.following.includes(flit.author)">
                     Unfollow
                     </button>
-                    <button class="btn-k" v-else @click=followUser(flit.author,loggedUser)>
+                    <button class="btn-follow" v-else @click=followUser(flit.author,loggedUser)>
                     Follow
                     </button>
                 </div>
@@ -141,97 +141,6 @@ export default defineComponent({
 });
 </script>
 <style scoped>
-body {
-    background-image: url(https://img.freepik.com/vector-premium/fondo-degradado-triangulo-cuadrado-abstracto-telon-fondo-poligonal-color-hielo-fresco-aplicaciones-moviles-web-bandera-abstracta-geometrica-moda-folleto-concepto-tecnologia-estilo-mosaico_121461-3071.jpg?w=1060g)
-}
 
-.date {
 
-    font-size: 15px;
-    font-weight: bold;
-    color: rgb(71, 73, 74);
-    margin-left:auto;
-    margin-right: auto;
-}
-.message{
-    color: white;
-    font-size: 18px;
-    margin: 10px;
-    word-wrap: break-word;
-    margin-right: auto;
-    margin-left: auto;
-}
-.container {
-    background-color: black;
-    padding: 25px;
-    border-radius: 40px;
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 20px;
-    width: 90%;
-    height: auto;
-    border-color: white;
-    border-width: 3px;
-    border-style: solid;
-    
-
-}
-.container:hover {
-    border-color: pink;
-}
-.info {
-    word-wrap: break-word;
-    margin-right: auto;
-    margin-left: auto;
-}
-
-.author {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 16x;
-    font-weight: bold;
-    color: white;
-}
-
-.product-image {
-    max-width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.puppy {
-    width: auto;
-    height: auto;
-    border-radius: 15px;
-
-}
-
-.control {
-    margin-bottom: 10%;
-    margin-top: 5%;
-
-}
-
-.give {
-    font-size: 25px;
-    border-radius: 50px;
-    border: transparent;
-    float: right;
-    margin-right: 10px;
-    background-color: transparent;
-}
-
-.nogive {
-    font-size: 25px;
-    border-radius: 50px;
-    border: transparent;
-    float: right;
-    margin-right: 10px;
-    background-color: transparent;
-}
-
-@media screen and (min-width: 768px) {
-    .projects {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
 </style>
