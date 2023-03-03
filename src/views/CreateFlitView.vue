@@ -127,6 +127,7 @@ export default defineComponent({
     padding: initial;
     border: initial;
     overflow: hidden !important;
+    width: 100%;
 }
 .file-label{
     display: flex;
